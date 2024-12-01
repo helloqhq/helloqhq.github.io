@@ -43,30 +43,15 @@
         <div id="compareTab" class="tab-content" style="display: none;">
             <div class="flex-container">
                 <div class="input-section">
-                    <div class="compare-inputs">
-                        <div class="compare-input-group">
-                            <h3>JSON 1</h3>
-                            <textarea id="compareInput1" placeholder="请输入第一个JSON"></textarea>
-                        </div>
-                        <div class="compare-input-group">
-                            <h3>JSON 2</h3>
-                            <textarea id="compareInput2" placeholder="请输入第二个JSON"></textarea>
-                        </div>
-                    </div>
-                    <div class="button-group">
-                        <button id="compareBtn">比对</button>
-                        <button id="mergeBtn">合并差异</button>
-                        <select id="mergeDirection">
-                            <option value="1to2">保留JSON 1的更改</option>
-                            <option value="2to1">保留JSON 2的更改</option>
-                        </select>
-                    </div>
+                    <h3>JSON 1</h3>
+                    <textarea id="compareInput1" placeholder="请输入第一个JSON"></textarea>
                 </div>
                 <div class="result-section">
-                    <h3>比对结果</h3>
-                    <div id="compareResult" class="json-highlight"></div>
+                    <h3>JSON 2</h3>
+                    <textarea id="compareInput2" placeholder="请输入第二个JSON"></textarea>
                 </div>
             </div>
+            <div id="diffResult" class="json-highlight"></div>
         </div>
 
         <!-- 主题设置 -->

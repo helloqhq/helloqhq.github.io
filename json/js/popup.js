@@ -51,31 +51,86 @@ const utils = {
         });
     },
 
-    // JSON 比对
-    compareJSON(json1, json2) {
-        // 这里可以使用 jsondiffpatch 库实现更复杂的比对
-        const diff = {};
-        // 简单实现，实际项目中建议使用成熟的比对库
-        return this.highlightDifferences(json1, json2);
+    // 比较两个值是否相等
+    isEqual(value1, value2) {
+        if (typeof value1 !== typeof value2) return false;
+        if (typeof value1 !== 'object' || value1 === null || value2 === null) {
+            return value1 === value2;
+        }
+        if (Array.isArray(value1) !== Array.isArray(value2)) return false;
+        
+        const keys1 = Object.keys(value1);
+        const keys2 = Object.keys(value2);
+        if (keys1.length !== keys2.length) return false;
+        
+        return keys1.every(key => 
+            keys2.includes(key) && this.isEqual(value1[key], value2[key])
+        );
     },
 
-    highlightDifferences(obj1, obj2) {
-        // 简单的差异高亮实现
-        const result = document.createElement('div');
-        result.className = 'json-highlight';
+    // 比对两个JSON对象并生成带有差异标记的HTML
+    compareJSON(json1, json2) {
+        // 先对两个JSON对象进行排序
+        const sorted1 = this.sortJSON(json1, true);
+        const sorted2 = this.sortJSON(json2, true);
         
-        const str1 = JSON.stringify(obj1, null, 2);
-        const str2 = JSON.stringify(obj2, null, 2);
-        
-        if (str1 === str2) {
-            result.innerHTML = this.highlightJSON(str1);
-            return result;
+        // 生成比对结果HTML
+        return this.generateDiffHTML(sorted1, sorted2);
+    },
+
+    // 生成差异对比的HTML
+    generateDiffHTML(obj1, obj2, path = '') {
+        if (typeof obj1 !== 'object' || obj1 === null || typeof obj2 !== 'object' || obj2 === null) {
+            const isEqual = obj1 === obj2;
+            const value = JSON.stringify(obj2 || obj1);
+            return `<span class="${isEqual ? '' : 'diff-modified'}">${value}</span>`;
         }
 
-        // 这里应该实现更复杂的差异比对和高亮
-        // 可以使用 diff 库来实现
-        result.innerHTML = `<div class="diff-modified">${this.highlightJSON(str2)}</div>`;
-        return result;
+        const isArray = Array.isArray(obj1);
+        const keys = new Set([...Object.keys(obj1), ...Object.keys(obj2)]);
+        const lines = [];
+
+        if (isArray) {
+            lines.push('[');
+        } else {
+            lines.push('{');
+        }
+
+        for (const key of Array.from(keys).sort()) {
+            const value1 = obj1[key];
+            const value2 = obj2[key];
+            const keyStr = isArray ? '' : `"${key}": `;
+            
+            if (!(key in obj1)) {
+                // 新增的属性
+                lines.push(`  ${keyStr}<span class="diff-added">${JSON.stringify(value2)}</span>`);
+            } else if (!(key in obj2)) {
+                // 删除的属性
+                lines.push(`  ${keyStr}<span class="diff-removed">${JSON.stringify(value1)}</span>`);
+            } else if (!this.isEqual(value1, value2)) {
+                // 修改的属性
+                if (typeof value1 === 'object' && typeof value2 === 'object' && value1 && value2) {
+                    lines.push(`  ${keyStr}${this.generateDiffHTML(value1, value2, path + '.' + key)}`);
+                } else {
+                    lines.push(`  ${keyStr}<span class="diff-modified">${JSON.stringify(value2)}</span>`);
+                }
+            } else {
+                // 相同的属性
+                lines.push(`  ${keyStr}${JSON.stringify(value1)}`);
+            }
+
+            if (Array.from(keys).indexOf(key) < keys.size - 1) {
+                lines[lines.length - 1] += ',';
+            }
+        }
+
+        if (isArray) {
+            lines.push(']');
+        } else {
+            lines.push('}');
+        }
+
+        return lines.join('\n');
     }
 };
 
@@ -215,6 +270,22 @@ function copyToClipboard(text) {
     });
 }
 
+// 添加自动比对功能
+function autoCompare() {
+    const input1 = document.getElementById('compareInput1');
+    const input2 = document.getElementById('compareInput2');
+    const diffResult = document.getElementById('diffResult');
+
+    try {
+        const json1 = JSON.parse(input1.value || '{}');
+        const json2 = JSON.parse(input2.value || '{}');
+        const diffHtml = utils.compareJSON(json1, json2);
+        diffResult.innerHTML = `<pre>${diffHtml}</pre>`;
+    } catch (e) {
+        diffResult.innerHTML = `<div class="error">错误: ${e.message}</div>`;
+    }
+}
+
 // 初始化页面
 document.addEventListener('DOMContentLoaded', () => {
     initThemeSettings();
@@ -249,4 +320,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 初始化第一个标签页为激活状态
     document.querySelector('.nav-tab[data-tab="format"]').click();
+
+    // 添加比对输入框的事件监听
+    const compareInput1 = document.getElementById('compareInput1');
+    const compareInput2 = document.getElementById('compareInput2');
+
+    const debouncedCompare = debounce(autoCompare, 300);
+
+    compareInput1.addEventListener('input', debouncedCompare);
+    compareInput2.addEventListener('input', debouncedCompare);
+    compareInput1.addEventListener('paste', debouncedCompare);
+    compareInput2.addEventListener('paste', debouncedCompare);
 });
