@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>JSON工具</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="nav-tabs">
+            <button class="nav-tab" data-tab="format">格式化</button>
+            <button class="nav-tab" data-tab="compare">比对</button>
+        </div>
+
+        <!-- 格式化标签页 -->
+        <div id="formatTab" class="tab-content">
+            <div class="sub-tabs">
+                <button class="sub-tab active" data-subtab="sort">排序</button>
+                <button class="sub-tab" data-subtab="toUnicode">中文转Unicode</button>
+                <button class="sub-tab" data-subtab="fromUnicode">Unicode转中文</button>
+            </div>
+
+            <div class="flex-container">
+                <div class="input-section">
+                    <h3>输入JSON</h3>
+                    <textarea id="formatInput" placeholder="请输入JSON"></textarea>
+                    <div class="button-group">
+                        <button id="copyBtn">复制结果</button>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="recursiveSort" checked>
+                            递归排序
+                        </label>
+                    </div>
+                </div>
+                <div class="result-section">
+                    <h3>处理结果</h3>
+                    <div id="formatResult" class="json-highlight"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 比对标签页 -->
+        <div id="compareTab" class="tab-content" style="display: none;">
+            <div class="flex-container">
+                <div class="input-section">
+                    <div class="compare-inputs">
+                        <div class="compare-input-group">
+                            <h3>JSON 1</h3>
+                            <textarea id="compareInput1" placeholder="请输入第一个JSON"></textarea>
+                        </div>
+                        <div class="compare-input-group">
+                            <h3>JSON 2</h3>
+                            <textarea id="compareInput2" placeholder="请输入第二个JSON"></textarea>
+                        </div>
+                    </div>
+                    <div class="button-group">
+                        <button id="compareBtn">比对</button>
+                        <button id="mergeBtn">合并差异</button>
+                        <select id="mergeDirection">
+                            <option value="1to2">保留JSON 1的更改</option>
+                            <option value="2to1">保留JSON 2的更改</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="result-section">
+                    <h3>比对结果</h3>
+                    <div id="compareResult" class="json-highlight"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 主题设置 -->
+        <div class="theme-settings">
+            <button id="themeToggle">切换主题</button>
+            <div class="theme-panel" style="display: none;">
+                <!-- 主题设置面板将通过JS动态生成 -->
+            </div>
+        </div>
+    </div>
+    <script src="lib/jsondiffpatch.min.js"></script>
+    <script src="js/popup.js"></script>
+</body>
+</html> 
