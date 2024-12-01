@@ -191,4 +191,57 @@ button:hover {
     .compare-inputs {
         flex-direction: column;
     }
+}
+
+/* 比对相关样式 */
+.compare-wrapper {
+    position: relative;
+    margin: 10px 0;
+}
+
+.compare-wrapper textarea {
+    width: 100%;
+    height: 400px;
+    padding: 10px;
+    font-family: monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    white-space: pre;
+    tab-size: 2;
+    color: transparent;
+    background: transparent;
+    caret-color: black; /* 让光标可见 */
+    position: relative;
+    z-index: 2;
+    resize: none;
+}
+
+.compare-highlight {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 10px;
+    font-family: monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    white-space: pre;
+    pointer-events: none;
+    overflow: auto;
+    color: black;
+    background: white;
+    z-index: 1;
+}
+
+/* 差异高亮样式 */
+.diff-line {
+    display: block;
+    width: 100%;
+}
+
+.diff-modified {
+    background-color: rgba(255, 193, 7, 0.2);
+    display: inline-block;
+    width: 100%;
 } 

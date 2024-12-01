@@ -131,6 +131,70 @@ const utils = {
         }
 
         return lines.join('\n');
+    },
+
+    // 生成带有差异标记的JSON字符串
+    generateDiffMarkup(originalText, compareText) {
+        try {
+            // 解析 JSON
+            const json1 = JSON.parse(originalText);
+            const json2 = JSON.parse(compareText);
+            
+            // 对比较对象进行排序
+            const sortedJson2 = this.sortJSON(json2, true);
+            
+            // 将原始文本分行
+            const lines = originalText.split('\n');
+            
+            // 生成比对结果
+            return lines.map(line => {
+                // 如果是空行或只包含括号/逗号的行，直接返回
+                if (!line.trim() || /^[\s\{\}\[\],]*$/.test(line)) {
+                    return `<span class="diff-line">${line}</span>`;
+                }
+
+                // 检查是否是键值对行
+                const keyMatch = line.match(/^(\s*)"([^"]+)":\s*(.+?)(,?)$/);
+                if (keyMatch) {
+                    const [, indent, key, value, comma] = keyMatch;
+                    
+                    // 从两个对象中获取值进行比较
+                    let path = key.split('.');
+                    let val1 = json1;
+                    let val2 = sortedJson2;
+                    
+                    for (const p of path) {
+                        val1 = val1?.[p];
+                        val2 = val2?.[p];
+                    }
+
+                    // 如果值不相等，标记整行为修改
+                    if (!this.isEqual(val1, val2)) {
+                        return `<span class="diff-line"><span class="diff-modified">${line}</span></span>`;
+                    }
+                } else {
+                    // 处理数组元素或其他值
+                    try {
+                        const valueOnly = line.trim().replace(/,$/, '');
+                        if (valueOnly && !/^[\{\}\[\],]*$/.test(valueOnly)) {
+                            const parsedValue = JSON.parse(valueOnly);
+                            if (!this.isEqual(parsedValue, sortedJson2)) {
+                                return `<span class="diff-line"><span class="diff-modified">${line}</span></span>`;
+                            }
+                        }
+                    } catch (e) {
+                        // 解析失败，可能是部分值，跳过
+                    }
+                }
+                
+                return `<span class="diff-line">${line}</span>`;
+            }).join('\n');
+        } catch (e) {
+            console.error('比对错误:', e);
+            return originalText.split('\n')
+                .map(line => `<span class="diff-line">${line}</span>`)
+                .join('\n');
+        }
     }
 };
 
@@ -270,20 +334,103 @@ function copyToClipboard(text) {
     });
 }
 
-// 添加自动比对功能
+// 修改自动比对功能
 function autoCompare() {
     const input1 = document.getElementById('compareInput1');
     const input2 = document.getElementById('compareInput2');
-    const diffResult = document.getElementById('diffResult');
+    const highlight1 = document.getElementById('compareHighlight1');
+    const highlight2 = document.getElementById('compareHighlight2');
 
     try {
-        const json1 = JSON.parse(input1.value || '{}');
-        const json2 = JSON.parse(input2.value || '{}');
-        const diffHtml = utils.compareJSON(json1, json2);
-        diffResult.innerHTML = `<pre>${diffHtml}</pre>`;
+        // 获取输入值
+        const text1 = input1.value;
+        const text2 = input2.value;
+
+        // 如果任一输入为空，清空高亮并返回
+        if (!text1.trim() || !text2.trim()) {
+            highlight1.innerHTML = text1;
+            highlight2.innerHTML = text2;
+            return;
+        }
+
+        // 解析 JSON
+        const json1 = JSON.parse(text1);
+        const json2 = JSON.parse(text2);
+
+        // 格式化 JSON
+        const formatted1 = JSON.stringify(json1, null, 2);
+        const formatted2 = JSON.stringify(json2, null, 2);
+
+        // 更新输入框的格式化文本
+        input1.value = formatted1;
+        input2.value = formatted2;
+
+        // 对第二个对象进行排序用于比对
+        const sortedJson2 = utils.sortJSON(json2, true);
+
+        // 逐行比对
+        const lines1 = formatted1.split('\n');
+        const lines2 = formatted2.split('\n');
+
+        // 生成高亮文本
+        const highlightedLines1 = lines1.map(line => {
+            // 尝试提取键和值
+            const match = line.match(/^(\s*)"([^"]+)":\s*(.+?)(,?)$/);
+            if (match) {
+                const [, indent, key, value] = match;
+                // 从两个对象中获取对应的值
+                const path = key.split('.');
+                let val1 = json1;
+                let val2 = sortedJson2;
+                for (const p of path) {
+                    val1 = val1?.[p];
+                    val2 = val2?.[p];
+                }
+                // 如果值不相等，高亮整行
+                if (JSON.stringify(val1) !== JSON.stringify(val2)) {
+                    return `<span class="diff-modified">${line}</span>`;
+                }
+            }
+            return line;
+        });
+
+        const highlightedLines2 = lines2.map(line => {
+            const match = line.match(/^(\s*)"([^"]+)":\s*(.+?)(,?)$/);
+            if (match) {
+                const [, indent, key, value] = match;
+                const path = key.split('.');
+                let val1 = json2;
+                let val2 = utils.sortJSON(json1, true);
+                for (const p of path) {
+                    val1 = val1?.[p];
+                    val2 = val2?.[p];
+                }
+                if (JSON.stringify(val1) !== JSON.stringify(val2)) {
+                    return `<span class="diff-modified">${line}</span>`;
+                }
+            }
+            return line;
+        });
+
+        // 更新高亮显示
+        highlight1.innerHTML = highlightedLines1.join('\n');
+        highlight2.innerHTML = highlightedLines2.join('\n');
+
+        // 同步滚动位置
+        syncScroll(input1, highlight1);
+        syncScroll(input2, highlight2);
     } catch (e) {
-        diffResult.innerHTML = `<div class="error">错误: ${e.message}</div>`;
+        // 发生错误时显示原始文本
+        console.error('比对错误:', e);
+        highlight1.innerHTML = input1.value;
+        highlight2.innerHTML = input2.value;
     }
+}
+
+// 同步滚动位置
+function syncScroll(textarea, overlay) {
+    overlay.scrollTop = textarea.scrollTop;
+    overlay.scrollLeft = textarea.scrollLeft;
 }
 
 // 初始化页面
@@ -324,11 +471,19 @@ document.addEventListener('DOMContentLoaded', () => {
     // 添加比对输入框的事件监听
     const compareInput1 = document.getElementById('compareInput1');
     const compareInput2 = document.getElementById('compareInput2');
+    const highlight1 = document.getElementById('compareHighlight1');
+    const highlight2 = document.getElementById('compareHighlight2');
 
+    // 使用防抖处理比对操作
     const debouncedCompare = debounce(autoCompare, 300);
 
+    // 监听输入和粘贴事件
     compareInput1.addEventListener('input', debouncedCompare);
     compareInput2.addEventListener('input', debouncedCompare);
     compareInput1.addEventListener('paste', debouncedCompare);
     compareInput2.addEventListener('paste', debouncedCompare);
+
+    // 监听滚动事件
+    compareInput1.addEventListener('scroll', () => syncScroll(compareInput1, highlight1));
+    compareInput2.addEventListener('scroll', () => syncScroll(compareInput2, highlight2));
 });

@@ -44,14 +44,19 @@
             <div class="flex-container">
                 <div class="input-section">
                     <h3>JSON 1</h3>
-                    <textarea id="compareInput1" placeholder="请输入第一个JSON"></textarea>
+                    <div class="compare-wrapper">
+                        <textarea id="compareInput1" placeholder="请输入第一个JSON"></textarea>
+                        <pre id="compareHighlight1" class="compare-highlight"></pre>
+                    </div>
                 </div>
                 <div class="result-section">
                     <h3>JSON 2</h3>
-                    <textarea id="compareInput2" placeholder="请输入第二个JSON"></textarea>
+                    <div class="compare-wrapper">
+                        <textarea id="compareInput2" placeholder="请输入第二个JSON"></textarea>
+                        <pre id="compareHighlight2" class="compare-highlight"></pre>
+                    </div>
                 </div>
             </div>
-            <div id="diffResult" class="json-highlight"></div>
         </div>
 
         <!-- 主题设置 -->
@@ -62,7 +67,6 @@
             </div>
         </div>
     </div>
-    <script src="lib/jsondiffpatch.min.js"></script>
     <script src="js/popup.js"></script>
 </body>
 </html> 
