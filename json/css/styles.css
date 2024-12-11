@@ -30,7 +30,7 @@ html, body {
     padding: 10px 20px;
     cursor: pointer;
     border: none;
-    background: #eee;
+    background: #9c9897;
     border-radius: 4px;
 }
 
@@ -130,7 +130,7 @@ button:hover {
 
 .sub-tab {
     padding: 8px 15px;
-    background: #eee;
+    background: #9c9897;
     border: none;
     border-radius: 3px;
     cursor: pointer;
