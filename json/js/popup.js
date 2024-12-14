@@ -146,7 +146,7 @@ const utils = {
             // 将原始文本分行
             const lines = originalText.split('\n');
             
-            // 生成��对结果
+            // 生成比对结果
             return lines.map(line => {
                 // 如果是空行或只包含括号/逗号的行，直接返回
                 if (!line.trim() || /^[\s\{\}\[\],]*$/.test(line)) {
@@ -254,22 +254,34 @@ const executeOperation = debounce(() => {
             
             case 'toUnicode':
                 try {
+                    // 先尝试作为 JSON 解析
                     const obj = JSON.parse(inputValue);
-                    const unicodeStr = utils.toUnicode(JSON.stringify(obj));
-                    result = JSON.stringify(JSON.parse(unicodeStr), null, 2);
+                    result = JSON.stringify(obj, null, 2);
+                    // 转换为 Unicode
+                    result = utils.toUnicode(result);
+                    // 更新输入框的值
+                    input.value = result;
                 } catch {
+                    // 如果不是有效的 JSON，直接转换文本
                     result = utils.toUnicode(inputValue);
+                    input.value = result;
                 }
                 resultDiv.innerHTML = utils.highlightJSON(result);
                 break;
             
             case 'fromUnicode':
                 try {
-                    const obj = JSON.parse(inputValue);
-                    const normalStr = utils.fromUnicode(JSON.stringify(obj));
-                    result = JSON.stringify(JSON.parse(normalStr), null, 2);
+                    // 先转换 Unicode
+                    const normalStr = utils.fromUnicode(inputValue);
+                    // 尝试作为 JSON 解析和格式化
+                    const obj = JSON.parse(normalStr);
+                    result = JSON.stringify(obj, null, 2);
+                    // 更新输入框的值
+                    input.value = result;
                 } catch {
+                    // 如果不是有效的 JSON，直接转换文本
                     result = utils.fromUnicode(inputValue);
+                    input.value = result;
                 }
                 resultDiv.innerHTML = utils.highlightJSON(result);
                 break;
@@ -425,7 +437,7 @@ function autoCompare() {
             return line;
         });
 
-        // 更新高亮���示
+        // 更新高亮显示
         highlight1.innerHTML = highlightedLines1.join('\n');
         highlight2.innerHTML = highlightedLines2.join('\n');
 
