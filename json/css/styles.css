@@ -274,4 +274,117 @@ button:hover {
 h3 {
     margin: 0 0 10px 0;
 }
+
+/* 基础样式 */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* JSON高亮样式 */
+.json-highlight {
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    font-family: 'Consolas', 'Monaco', monospace;
+    white-space: pre-wrap;
+    overflow: auto;
+    padding: 1rem;
+    height: 100%;
+}
+
+.json-key { color: #d63384; }
+.json-string { color: #198754; }
+.json-number { color: #0d6efd; }
+.json-boolean { color: #dc3545; }
+.json-null { color: #6c757d; }
+
+/* 比对相关样式 */
+.compare-wrapper {
+    position: relative;
+    height: 100%;
+}
+
+.compare-wrapper textarea {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    white-space: pre;
+    tab-size: 2;
+    color: transparent;
+    background: transparent;
+    caret-color: black;
+    z-index: 2;
+    resize: none;
+}
+
+.compare-highlight {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 1rem;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    white-space: pre;
+    pointer-events: none;
+    overflow: auto;
+    color: black;
+    background: white;
+    z-index: 1;
+    margin: 0;
+}
+
+/* 差异高亮样式 */
+.diff-line {
+    display: block;
+    width: 100%;
+}
+
+.diff-modified {
+    background-color: rgba(255, 193, 7, 0.2);
+    display: inline-block;
+    width: 100%;
+}
+
+/* 卡片样式优化 */
+.card {
+    box-shadow: 0 2px 4px rgba(0,0,0,.05);
+}
+
+.card-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid rgba(0,0,0,.125);
+}
+
+/* 文本域样式 */
+textarea {
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 14px;
+}
+
+/* 标签页内容区域 */
+.tab-content {
+    height: calc(100vh - 120px);
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .tab-content {
+        height: auto;
+    }
+    
+    .card {
+        height: 300px !important;
+        margin-bottom: 1rem;
+    }
+}
  
