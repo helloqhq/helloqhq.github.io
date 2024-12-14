@@ -380,4 +380,117 @@ textarea {
         margin-bottom: 1rem;
     }
 }
+
+/* 基础布局样式 */
+html, body {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* 容器样式 */
+.container-fluid {
+    height: 98vh;
+    padding: 1vh;
+}
+
+/* 标签页内容区域 */
+.tab-content {
+    height: 90vh; /* 留出空间给导航和按钮组 */
+}
+
+/* 卡片样式 */
+.card.h-100 {
+    height: 85vh !important; /* 设置为视窗高度的85% */
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    border-radius: 4px;
+}
+
+.card-header {
+    flex-shrink: 0; /* 防止头部被压缩 */
+    padding: 0.75rem 1rem;
+}
+
+.card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 1vh;
+    overflow: hidden;
+}
+
+/* 输入框容器样式 */
+.compare-wrapper {
+    flex: 1;
+    position: relative;
+    width: 98%;
+    height: 98%;
+    margin: auto;
+}
+
+/* 文本框样式 */
+.compare-wrapper textarea {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 1vh;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    white-space: pre;
+    tab-size: 2;
+    color: transparent;
+    background: transparent;
+    caret-color: black;
+    z-index: 2;
+    resize: none;
+}
+
+/* 高亮显示样式 */
+.compare-highlight {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 1vh;
+    margin: 0;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    white-space: pre;
+    pointer-events: none;
+    overflow: auto;
+    color: black;
+    background: white;
+    z-index: 1;
+}
+
+/* 比对页面布局 */
+#compareTab .row {
+    height: 85vh;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .container-fluid {
+        padding: 0.5vh;
+    }
+
+    .card.h-100 {
+        height: 80vh !important;
+    }
+
+    .compare-wrapper {
+        width: 96%;
+        height: 96%;
+    }
+}
  
