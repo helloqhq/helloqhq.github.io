@@ -1,17 +1,17 @@
 // 工具函数
 const utils = {
     // JSON 排序
-    sortJSON(obj, recursive = true) {
+    sortJSON(obj) {
         if (typeof obj !== 'object' || obj === null) return obj;
         
         if (Array.isArray(obj)) {
-            return obj.map(item => recursive ? this.sortJSON(item, true) : item);
+            return obj.map(item => this.sortJSON(item));
         }
         
         return Object.keys(obj)
             .sort()
             .reduce((acc, key) => {
-                acc[key] = recursive ? this.sortJSON(obj[key], true) : obj[key];
+                acc[key] = this.sortJSON(obj[key]);
                 return acc;
             }, {});
     },
@@ -51,7 +51,7 @@ const utils = {
         });
     },
 
-    // 比较两个值是否相等
+    // 比较两个��是否相等
     isEqual(value1, value2) {
         if (typeof value1 !== typeof value2) return false;
         if (typeof value1 !== 'object' || value1 === null || value2 === null) {
@@ -240,14 +240,13 @@ function debounce(func, wait) {
 const executeOperation = debounce(() => {
     const input = document.getElementById('formatInput');
     const resultDiv = document.getElementById('formatResult');
-    const recursiveSort = document.getElementById('recursiveSort');
 
     try {
         let result;
         switch (currentOperation) {
             case 'sort':
                 const obj = JSON.parse(input.value);
-                result = utils.sortJSON(obj, recursiveSort.checked);
+                result = utils.sortJSON(obj);
                 resultDiv.innerHTML = utils.highlightJSON(JSON.stringify(result, null, 2));
                 break;
             
@@ -439,12 +438,10 @@ document.addEventListener('DOMContentLoaded', () => {
     initTabs();
     
     const formatInput = document.getElementById('formatInput');
-    const recursiveSort = document.getElementById('recursiveSort');
 
-    // 监听输入变化（包括粘贴事件）
+    // 监听输入变化
     formatInput.addEventListener('input', executeOperation);
     formatInput.addEventListener('paste', executeOperation);
-    recursiveSort.addEventListener('change', executeOperation);
 
     // 绑定复制按钮事件
     const copyBtn = document.getElementById('copyBtn');

@@ -224,9 +224,7 @@ button:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    margin: 0;
-    padding: 10px;
-    font-family: monospace;
+    font-family: 'Consolas', 'Monaco', monospace;
     font-size: 14px;
     line-height: 1.5;
     white-space: pre;
@@ -235,8 +233,9 @@ button:hover {
     background: transparent;
     caret-color: black;
     z-index: 2;
-    resize: none;
-    box-sizing: border-box;
+    resize: both;
+    min-height: 200px;
+    overflow: auto;
 }
 
 .compare-highlight {
@@ -245,8 +244,8 @@ button:hover {
     left: 0;
     right: 0;
     bottom: 0;
-    padding: 10px;
-    font-family: monospace;
+    padding: 1rem;
+    font-family: 'Consolas', 'Monaco', monospace;
     font-size: 14px;
     line-height: 1.5;
     white-space: pre;
@@ -255,7 +254,8 @@ button:hover {
     color: black;
     background: white;
     z-index: 1;
-    box-sizing: border-box;
+    margin: 0;
+    height: 100%;
 }
 
 /* 差异高亮样式 */
@@ -303,25 +303,9 @@ html, body {
 /* 比对相关样式 */
 .compare-wrapper {
     position: relative;
-    height: 100%;
-}
-
-.compare-wrapper textarea {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    font-family: 'Consolas', 'Monaco', monospace;
-    font-size: 14px;
-    line-height: 1.5;
-    white-space: pre;
-    tab-size: 2;
-    color: transparent;
-    background: transparent;
-    caret-color: black;
-    z-index: 2;
-    resize: none;
+    height: auto;
+    min-height: 200px;
+    overflow: visible;
 }
 
 .compare-highlight {
@@ -341,6 +325,7 @@ html, body {
     background: white;
     z-index: 1;
     margin: 0;
+    height: 100%;
 }
 
 /* 差异高亮样式 */
@@ -357,7 +342,15 @@ html, body {
 
 /* 卡片样式优化 */
 .card {
-    box-shadow: 0 2px 4px rgba(0,0,0,.05);
+    height: auto !important;
+    min-height: 300px;
+}
+
+.card-body {
+    height: auto;
+    min-height: 200px;
+    padding: 1rem;
+    position: relative;
 }
 
 .card-header {

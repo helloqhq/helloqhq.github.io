@@ -29,32 +29,17 @@
                     <button class="btn btn-outline-primary" data-subtab="fromUnicode">Unicode转中文</button>
                 </div>
 
-                <div class="row h-100">
-                    <div class="col-md-6 mb-3 mb-md-0">
-                        <div class="card h-100">
-                            <div class="card-header">
-                                <h5 class="card-title mb-0">输入JSON</h5>
-                            </div>
-                            <div class="card-body d-flex flex-column">
-                                <textarea id="formatInput" class="form-control flex-grow-1 mb-3" placeholder="请输入JSON"></textarea>
-                                <div class="d-flex align-items-center">
-                                    <button id="copyBtn" class="btn btn-primary me-3">复制结果</button>
-                                    <div class="form-check">
-                                        <input type="checkbox" id="recursiveSort" class="form-check-input" checked>
-                                        <label class="form-check-label" for="recursiveSort">递归排序</label>
-                                    </div>
-                                </div>
-                            </div>
+                <div class="card h-100">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="card-title mb-0">JSON</h5>
+                        <div class="d-flex align-items-center">
+                            <button id="copyBtn" class="btn btn-primary btn-sm">复制</button>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="card h-100">
-                            <div class="card-header">
-                                <h5 class="card-title mb-0">处理结果</h5>
-                            </div>
-                            <div class="card-body">
-                                <div id="formatResult" class="json-highlight h-100"></div>
-                            </div>
+                    <div class="card-body">
+                        <div class="compare-wrapper h-100">
+                            <textarea id="formatInput" class="form-control" placeholder="请输入JSON"></textarea>
+                            <pre id="formatResult" class="compare-highlight"></pre>
                         </div>
                     </div>
                 </div>
