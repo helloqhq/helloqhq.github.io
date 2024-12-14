@@ -421,9 +421,9 @@ html, body {
     flex: 1;
     display: flex;
     flex-direction: column;
-    padding: 0rem 0.5rem 0.5rem 0.5rem;
-    padding-bottom: 1rem;
-    overflow: hidden;
+    padding: 0.5rem;
+    position: relative;
+    overflow: visible;
 }
 
 /* 输入框容器样式 */
@@ -441,12 +441,12 @@ html, body {
 /* 文本框样式 */
 .card-body textarea {
     position: absolute;
-    top: 50%;
+    top: 45%;
     left: 50%;
-    transform: translate(-50%, -50%); /* 实现居中 */
-    width: 98%; /* 稍微减小宽度，确保边框可见 */
-    height: 96%; /* 减小高度，确保底部边框可见 */
-    padding: 0rem 0.5rem 0.5rem 0.5rem;
+    transform: translate(-50%, -50%);
+    width: 98%;
+    height: 90%;
+    padding: 0.5rem;
     border: 1px solid #303133;
     border-radius: 4px;
     font-family: 'Consolas', 'Monaco', monospace;
@@ -464,11 +464,11 @@ html, body {
 /* 高亮显示样式 */
 .compare-highlight {
     position: absolute;
-    top: 50%;
+    top: 45%;
     left: 50%;
-    transform: translate(-50%, -50%); /* 实现居中 */
+    transform: translate(-50%, -50%);
     width: 98%;
-    height: 96%;
+    height: 90%;
     padding: 0.5rem;
     margin: 0;
     font-family: 'Consolas', 'Monaco', monospace;
