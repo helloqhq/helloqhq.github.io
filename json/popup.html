@@ -23,19 +23,16 @@
         <div class="tab-content h-100">
             <!-- 格式化标签页 -->
             <div id="formatTab" class="tab-pane fade show active h-100">
-                <div class="btn-group mb-3" role="group">
-                    <button class="btn btn-outline-primary active" data-subtab="sort">排序</button>
-                    <button class="btn btn-outline-primary" data-subtab="toUnicode">中文转Unicode</button>
-                    <button class="btn btn-outline-primary" data-subtab="fromUnicode">Unicode转中文</button>
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div class="btn-group" role="group">
+                        <button class="btn btn-outline-primary active" data-subtab="sort">排序</button>
+                        <button class="btn btn-outline-primary" data-subtab="toUnicode">中文转Unicode</button>
+                        <button class="btn btn-outline-primary" data-subtab="fromUnicode">Unicode转中文</button>
+                    </div>
+                    <button id="copyBtn" class="btn btn-primary">复制</button>
                 </div>
 
                 <div class="card h-100">
-                    <div class="card-header d-flex justify-content-between align-items-center">
-                        <h5 class="card-title mb-0">JSON</h5>
-                        <div class="d-flex align-items-center">
-                            <button id="copyBtn" class="btn btn-primary btn-sm">复制</button>
-                        </div>
-                    </div>
                     <div class="card-body">
                         <div class="compare-wrapper h-100">
                             <textarea id="formatInput" class="form-control" placeholder="请输入JSON"></textarea>
@@ -48,11 +45,8 @@
             <!-- 比对标签页 -->
             <div id="compareTab" class="tab-pane fade h-100">
                 <div class="row h-100">
-                    <div class="col-md-6 mb-3 mb-md-0">
+                    <div class="col-md-6">
                         <div class="card h-100">
-                            <div class="card-header">
-                                <h5 class="card-title mb-0">JSON 1</h5>
-                            </div>
                             <div class="card-body">
                                 <div class="compare-wrapper h-100">
                                     <textarea id="compareInput1" class="form-control" placeholder="请输入第一个JSON"></textarea>
@@ -63,9 +57,6 @@
                     </div>
                     <div class="col-md-6">
                         <div class="card h-100">
-                            <div class="card-header">
-                                <h5 class="card-title mb-0">JSON 2</h5>
-                            </div>
                             <div class="card-body">
                                 <div class="compare-wrapper h-100">
                                     <textarea id="compareInput2" class="form-control" placeholder="请输入第二个JSON"></textarea>

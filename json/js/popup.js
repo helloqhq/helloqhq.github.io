@@ -51,7 +51,7 @@ const utils = {
         });
     },
 
-    // 比较两个��是否相等
+    // 比较两个是否相等
     isEqual(value1, value2) {
         if (typeof value1 !== typeof value2) return false;
         if (typeof value1 !== 'object' || value1 === null || value2 === null) {
@@ -243,20 +243,38 @@ const executeOperation = debounce(() => {
 
     try {
         let result;
+        let inputValue = input.value;
+        
         switch (currentOperation) {
             case 'sort':
-                const obj = JSON.parse(input.value);
+                const obj = JSON.parse(inputValue);
                 result = utils.sortJSON(obj);
                 resultDiv.innerHTML = utils.highlightJSON(JSON.stringify(result, null, 2));
                 break;
             
             case 'toUnicode':
-                result = utils.toUnicode(input.value);
+                // 先尝试解析JSON，如果成功则转换后重新格式化
+                try {
+                    const obj = JSON.parse(inputValue);
+                    const unicodeStr = utils.toUnicode(JSON.stringify(obj));
+                    result = JSON.stringify(JSON.parse(unicodeStr), null, 2);
+                } catch {
+                    // 如果不是有效的JSON，直接转换文本
+                    result = utils.toUnicode(inputValue);
+                }
                 resultDiv.innerHTML = utils.highlightJSON(result);
                 break;
             
             case 'fromUnicode':
-                result = utils.fromUnicode(input.value);
+                // 先尝试解析JSON，如果成功则转换后重新格式化
+                try {
+                    const obj = JSON.parse(inputValue);
+                    const normalStr = utils.fromUnicode(JSON.stringify(obj));
+                    result = JSON.stringify(JSON.parse(normalStr), null, 2);
+                } catch {
+                    // 如果不是有效的JSON，直接转换文本
+                    result = utils.fromUnicode(inputValue);
+                }
                 resultDiv.innerHTML = utils.highlightJSON(result);
                 break;
         }
@@ -452,13 +470,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // 监听子标签页切换
-    const subTabs = document.querySelectorAll('.sub-tab');
+    const subTabs = document.querySelectorAll('[data-subtab]');
     subTabs.forEach(tab => {
         tab.addEventListener('click', () => {
+            // 移除所有活动状态
             subTabs.forEach(t => t.classList.remove('active'));
+            // 添加当前活动状态
             tab.classList.add('active');
+            // 更新当前操作
             currentOperation = tab.dataset.subtab;
-            executeOperation(); // 切换操作类型后立即执行
+            // 立即执行操作
+            executeOperation();
         });
     });
 
