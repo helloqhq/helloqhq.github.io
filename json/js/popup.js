@@ -146,7 +146,7 @@ const utils = {
             // 将原始文本分行
             const lines = originalText.split('\n');
             
-            // 生成比对结果
+            // 生成��对结果
             return lines.map(line => {
                 // 如果是空行或只包含括号/逗号的行，直接返回
                 if (!line.trim() || /^[\s\{\}\[\],]*$/.test(line)) {
@@ -253,26 +253,22 @@ const executeOperation = debounce(() => {
                 break;
             
             case 'toUnicode':
-                // 先尝试解析JSON，如果成功则转换后重新格式化
                 try {
                     const obj = JSON.parse(inputValue);
                     const unicodeStr = utils.toUnicode(JSON.stringify(obj));
                     result = JSON.stringify(JSON.parse(unicodeStr), null, 2);
                 } catch {
-                    // 如果不是有效的JSON，直接转换文本
                     result = utils.toUnicode(inputValue);
                 }
                 resultDiv.innerHTML = utils.highlightJSON(result);
                 break;
             
             case 'fromUnicode':
-                // 先尝试解析JSON，如果成功则转换后重新格式化
                 try {
                     const obj = JSON.parse(inputValue);
                     const normalStr = utils.fromUnicode(JSON.stringify(obj));
                     result = JSON.stringify(JSON.parse(normalStr), null, 2);
                 } catch {
-                    // 如果不是有效的JSON，直接转换文本
                     result = utils.fromUnicode(inputValue);
                 }
                 resultDiv.innerHTML = utils.highlightJSON(result);
@@ -429,7 +425,7 @@ function autoCompare() {
             return line;
         });
 
-        // 更新高亮显示
+        // 更新高亮���示
         highlight1.innerHTML = highlightedLines1.join('\n');
         highlight2.innerHTML = highlightedLines2.join('\n');
 
@@ -452,11 +448,11 @@ function syncScroll(textarea, overlay) {
 
 // 初始化页面
 document.addEventListener('DOMContentLoaded', () => {
-    initThemeSettings();
-    initTabs();
-    
-    const formatInput = document.getElementById('formatInput');
+    // 初始化当前操作为排序
+    currentOperation = 'sort';
 
+    const formatInput = document.getElementById('formatInput');
+    
     // 监听输入变化
     formatInput.addEventListener('input', executeOperation);
     formatInput.addEventListener('paste', executeOperation);
@@ -469,40 +465,21 @@ document.addEventListener('DOMContentLoaded', () => {
         copyToClipboard(textToCopy);
     });
 
-    // 监听子标签页切换
-    const subTabs = document.querySelectorAll('[data-subtab]');
-    subTabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            // 移除所有活动状态
-            subTabs.forEach(t => t.classList.remove('active'));
-            // 添加当前活动状态
-            tab.classList.add('active');
+    // 监听功能按钮点击
+    const buttons = document.querySelectorAll('[data-subtab]');
+    buttons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            // 移除所有按钮的激活状态
+            buttons.forEach(btn => btn.classList.remove('active'));
+            // 添加当前按钮的激活状态
+            button.classList.add('active');
             // 更新当前操作
-            currentOperation = tab.dataset.subtab;
-            // 立即执行操作
+            currentOperation = button.getAttribute('data-subtab');
+            // 执行操作
             executeOperation();
         });
     });
 
-    // 初始化第一个标签页为激活状态
-    document.querySelector('.nav-tab[data-tab="format"]').click();
-
-    // 添加比对输入框的事件监听
-    const compareInput1 = document.getElementById('compareInput1');
-    const compareInput2 = document.getElementById('compareInput2');
-    const highlight1 = document.getElementById('compareHighlight1');
-    const highlight2 = document.getElementById('compareHighlight2');
-
-    // 使用防抖处理比对操作
-    const debouncedCompare = debounce(autoCompare, 300);
-
-    // 监听输入和粘贴事件
-    compareInput1.addEventListener('input', debouncedCompare);
-    compareInput2.addEventListener('input', debouncedCompare);
-    compareInput1.addEventListener('paste', debouncedCompare);
-    compareInput2.addEventListener('paste', debouncedCompare);
-
-    // 监听滚动事件
-    compareInput1.addEventListener('scroll', () => syncScroll(compareInput1, highlight1));
-    compareInput2.addEventListener('scroll', () => syncScroll(compareInput2, highlight2));
+    // 初始化时执行一次操作
+    executeOperation();
 });
