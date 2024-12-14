@@ -421,7 +421,7 @@ html, body {
     flex: 1;
     display: flex;
     flex-direction: column;
-    padding: 0.5rem;
+    padding: 0rem 0.5rem 0.5rem 0.5rem;
     padding-bottom: 1rem;
     overflow: hidden;
 }
@@ -446,7 +446,7 @@ html, body {
     transform: translate(-50%, -50%); /* 实现居中 */
     width: 98%; /* 稍微减小宽度，确保边框可见 */
     height: 96%; /* 减小高度，确保底部边框可见 */
-    padding: 0.5rem;
+    padding: 0rem 0.5rem 0.5rem 0.5rem;
     border: 1px solid #303133;
     border-radius: 4px;
     font-family: 'Consolas', 'Monaco', monospace;
