@@ -503,4 +503,14 @@ html, body {
         height: 96%;
     }
 }
+
+/* 按钮组样式 */
+.btn-group {
+    margin-left: 0.5rem; /* 添加左侧外边距 */
+}
+
+/* 或者调整容器的内边距 */
+.d-flex.justify-content-between {
+    padding: 0 0.5rem; /* 给整个容器添加左右内边距 */
+}
  
