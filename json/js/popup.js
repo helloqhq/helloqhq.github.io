@@ -72,7 +72,7 @@ function debounce(func, wait) {
 const executeOperation = debounce(() => {
     const input = document.getElementById('formatInput');
     const resultDiv = document.getElementById('formatResult');
-
+    
     try {
         let result;
         let inputValue = input.value;
@@ -88,11 +88,10 @@ const executeOperation = debounce(() => {
                 try {
                     // 先尝试作为 JSON 解析
                     const obj = JSON.parse(inputValue);
-                    result = JSON.stringify(obj, null, 2);
+                    result = utils.sortJSON(obj);
                     // 转换为 Unicode
-                    result = utils.toUnicode(result);
-                    // 更新输入框的值
-                    input.value = result;
+                    result = utils.toUnicode(JSON.stringify(result, null, 2));
+                    resultDiv.innerHTML = utils.highlightJSON(JSON.stringify(result, null, 2));
                 } catch {
                     // 如果不是有效的 JSON，直接转换文本
                     result = utils.toUnicode(inputValue);
@@ -107,9 +106,9 @@ const executeOperation = debounce(() => {
                     const normalStr = utils.fromUnicode(inputValue);
                     // 尝试作为 JSON 解析和格式化
                     const obj = JSON.parse(normalStr);
-                    result = JSON.stringify(obj, null, 2);
+                    result = utils.sortJSON(obj);
                     // 更新输入框的值
-                    input.value = result;
+                    input.value = JSON.stringify(result, null, 2);
                 } catch {
                     // 如果不是有效的 JSON，直接转换文本
                     result = utils.fromUnicode(inputValue);
@@ -162,5 +161,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // 初始化时执行一次操作
-    executeOperation();
+    // executeOperation();
 });
