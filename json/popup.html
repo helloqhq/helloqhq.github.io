@@ -1,12 +1,28 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>JSON工具</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
+
+    <!-- 广告 -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9120805129279072"
+        crossorigin="anonymous"></script>
+
+    <!-- Google 分析 tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q6WD33L36W"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-Q6WD33L36W');
+    </script>
 </head>
+
 <body class="bg-light">
     <div class="container-fluid h-100 py-3">
         <!-- 导航标签 -->
@@ -47,7 +63,8 @@
                         <div class="card h-100">
                             <div class="card-body">
                                 <div class="compare-wrapper h-100">
-                                    <textarea id="compareInput1" class="form-control" placeholder="请输入第一个JSON"></textarea>
+                                    <textarea id="compareInput1" class="form-control"
+                                        placeholder="请输入第一个JSON"></textarea>
                                     <pre id="compareHighlight1" class="compare-highlight"></pre>
                                 </div>
                             </div>
@@ -57,7 +74,8 @@
                         <div class="card h-100">
                             <div class="card-body">
                                 <div class="compare-wrapper h-100">
-                                    <textarea id="compareInput2" class="form-control" placeholder="请输入第二个JSON"></textarea>
+                                    <textarea id="compareInput2" class="form-control"
+                                        placeholder="请输入第二个JSON"></textarea>
                                     <pre id="compareHighlight2" class="compare-highlight"></pre>
                                 </div>
                             </div>
@@ -71,4 +89,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/popup.js"></script>
 </body>
-</html> 
+
+</html>
