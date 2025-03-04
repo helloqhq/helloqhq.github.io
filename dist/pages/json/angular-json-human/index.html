@@ -21,8 +21,9 @@
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <title>Angular JSON Human Demo Page</title>
-  <meta name="description" content="" />
+  <title>json转表格</title>
+  <meta name="description" content="在线JSON转表格工具" />
+  <meta name="description" content="Online JSON to table tool" />
   <meta name="viewport" content="width=device-width" />
   <link data-require="purecss@0.4.2" data-semver="0.4.2" rel="stylesheet" href="https://fastly.jsdelivr.net/gh/helloqhq/helloqhq.github.io@json.to.table/dist/css/pure/0.4.1/pure-min.css" />
   <style>
@@ -39,6 +40,24 @@
     }
   </style>
   <link href="https://fastly.jsdelivr.net/gh/helloqhq/helloqhq.github.io@json.to.table/dist/pages/json/angular-json-human/angular-json-human.css" rel="stylesheet" />
+
+  <style>
+    .credits {
+      position: relative;
+      min-height: 20px;
+    }
+    .credits p {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      margin: 0;
+      color: #666;
+      font-size: 0.9em;
+    }
+    .credits a {
+      color: #888;
+    }
+  </style>
 </head>
 
 <body ng-controller="MainCtrl">
@@ -54,6 +73,11 @@
       <div json-human="jsonStr"></div>
     </div>
   </div>
+</div>
+<div class="credits">
+  <p>
+    感谢 <a href="https://github.com/yaru22/angular-json-human"> github.com/yaru22/angular-json-human </a>
+  </p>
 </div>
 <script data-require="lodash.js@2.4.1" data-semver="2.4.1" src="https://fastly.jsdelivr.net/gh/helloqhq/helloqhq.github.io@json.to.table/dist/js/ajax/libs/lodash.js/2.4.1/lodash.js"></script>
 <script data-require="angular.js@1.2.14" data-semver="1.2.14" src="https://fastly.jsdelivr.net/gh/helloqhq/helloqhq.github.io@json.to.table/dist/js/angularjs/1.2.14/angular.js"></script>
