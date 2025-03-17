@@ -42,7 +42,8 @@
   />
   <!--end::Third Party Plugin(Bootstrap Icons)-->
   <!--begin::Required Plugin(AdminLTE)-->
-  <link rel="stylesheet" href="../../dist/css/adminlte.css" />
+  <link rel="stylesheet"
+        href="https://fastly.jsdelivr.net/gh/helloqhq/helloqhq.github.io@json.to.table/dist/css/adminlte.css" />
   <!--end::Required Plugin(AdminLTE)-->
 
   <!-- Favicon -->
@@ -56,17 +57,134 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q6WD33L36W"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
     gtag('js', new Date());
     gtag('config', 'G-Q6WD33L36W');
   </script>
 
+  <script>
+    // 立即开始 fetch，不等待 DOMContentLoaded
+    (function() {
+      const menuUrl = '/dist/pages/left_menu.html';
+
+      // 发起菜单文件请求
+      fetch(menuUrl)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`HTTP错误! 状态码: ${response.status}`);
+          }
+          return response.text();
+        })
+        .then(html => {
+          function initMenuInteractions() {
+            // 获取当前页面的路径
+            const currentPath = window.location.pathname;
+
+            // 选择所有.nav-item下的a标签
+            document.querySelectorAll('.nav-treeview .nav-item a').forEach(link => {
+              // 获取a标签的href属性（相对路径）
+              const href = link.getAttribute('href');
+
+              // 如果路径匹配，则添加active类
+              if (href === currentPath) {
+                link.classList.add('active');
+              }
+            });
+          }
+
+          // 定义检测容器的函数，若未找到则10ms后重试
+          function insertMenu() {
+            const targetContainer = document.getElementById('left-menu');
+            if (!targetContainer) {
+              setTimeout(insertMenu, 10);
+              return;
+            }
+
+            // 添加加载提示
+            targetContainer.innerHTML = '<div class="loading">加载菜单中...</div>';
+
+            // 创建临时容器以解析 HTML 内容
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = html;
+
+            // 处理样式标签（link 或 style）
+            const styleElements = tempDiv.querySelectorAll('link[rel="stylesheet"], style');
+            styleElements.forEach(style => {
+              if (style.tagName.toLowerCase() === 'link') {
+                if (!document.querySelector(`link[href="${style.href}"]`)) {
+                  const newLink = document.createElement('link');
+                  newLink.rel = 'stylesheet';
+                  newLink.href = style.href;
+                  document.head.appendChild(newLink);
+                }
+              } else {
+                const newStyle = document.createElement('style');
+                newStyle.textContent = style.textContent;
+                document.head.appendChild(newStyle);
+              }
+            });
+
+            // 处理并执行脚本标签
+            const scriptElements = tempDiv.querySelectorAll('script');
+            scriptElements.forEach(script => {
+              const newScript = document.createElement('script');
+              if (script.src) {
+                newScript.src = script.src;
+                newScript.async = true;
+              } else {
+                newScript.textContent = script.textContent;
+              }
+              document.body.appendChild(newScript);
+            });
+
+            // 移除临时容器中已处理的标签
+            styleElements.forEach(el => el.remove());
+            scriptElements.forEach(el => el.remove());
+
+            // 将剩余的 HTML 内容插入目标容器
+            targetContainer.innerHTML = tempDiv.innerHTML;
+
+            // 可选：调用菜单相关初始化函数
+            if (typeof initMenuInteractions === 'function') {
+              initMenuInteractions();
+            }
+          }
+
+          // 开始检测容器是否存在
+          insertMenu();
+        })
+        .catch(error => {
+          console.error('菜单加载失败:', error);
+
+          // 如果 fetch 失败，同样等待容器出现后再显示错误信息
+          function showError() {
+            const targetContainer = document.getElementById('left-menu');
+            if (!targetContainer) {
+              setTimeout(showError, 10);
+              return;
+            }
+            targetContainer.innerHTML = `
+            <div class="error">
+              菜单加载失败，请<a href="javascript:location.reload()">刷新页面</a>或联系管理员
+            </div>
+          `;
+          }
+
+          showError();
+        });
+    })();
+  </script>
+
   <style>
     .center-box-text {
-      display: flex;          /* 启用 flex 布局 */
+      display: flex; /* 启用 flex 布局 */
       justify-content: center; /* 水平居中 */
-      align-items: center;    /* 垂直居中 */
-      height: 200px;         /* 需要明确高度 */
+      align-items: center; /* 垂直居中 */
+      height: 200px; /* 需要明确高度 */
     }
   </style>
 </head>
@@ -100,7 +218,7 @@
       <a href="../json/table.html" class="brand-link">
         <!--begin::Brand Image-->
         <img
-          src="../../dist/assets/img/utool.png"
+          src="../../../../dist/assets/img/utool.png"
           alt="utool.top Logo"
           class="brand-image opacity-75 shadow"
         />
@@ -113,43 +231,8 @@
     </div>
     <!--end::Sidebar Brand-->
     <!--begin::Sidebar Wrapper-->
-    <div class="sidebar-wrapper">
-      <nav class="mt-2">
-        <!--begin::Sidebar Menu-->
-        <ul
-          class="nav sidebar-menu flex-column"
-          data-lte-toggle="treeview"
-          role="menu"
-          data-accordion="false"
-        >
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link">
-              <i class="nav-icon bi bi-pencil-square"></i>
-              <p>
-                JSON工具
-                <i class="nav-arrow bi bi-chevron-right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="./json/angular-json-human/index.html" class="nav-link active">
-                  <i class="nav-icon bi bi-circle"></i>
-                  <p>JSON转表格</p>
-                </a>
-              </li>
-            </ul>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="./json/json-diff/index.html" class="nav-link">
-                  <i class="nav-icon bi bi-circle"></i>
-                  <p>JSON比较</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-        <!--end::Sidebar Menu-->
-      </nav>
+    <div class="sidebar-wrapper" id="left-menu">
+
     </div>
     <!--end::Sidebar Wrapper-->
   </aside>
@@ -157,13 +240,13 @@
   <!--begin::App Main-->
   <main class="app-main">
     <div id="loadingIndicator" style="display:none;" class="center-box-text">加载中...</div>
-    <iframe id="contentFrame" style="height: 100%" src="./json/angular-json-human/index.html"></iframe>
+    <iframe id="contentFrame" style="height: 100%" src="./index.html"></iframe>
   </main>
   <!--end::App Main-->
   <!--begin::Footer-->
   <footer class="app-footer">
     <!--begin::To the end-->
-<!--    <div class="float-end d-none d-sm-inline">Anything you want</div>-->
+    <!--    <div class="float-end d-none d-sm-inline">Anything you want</div>-->
     <!--end::To the end-->
     <!--begin::Copyright-->
     <strong>
@@ -196,24 +279,24 @@
   crossorigin="anonymous"
 ></script>
 <!--end::Required Plugin(Bootstrap 5)--><!--begin::Required Plugin(AdminLTE)-->
-<script src="../../dist/js/adminlte.js"></script>
+<script src="https://fastly.jsdelivr.net/gh/helloqhq/helloqhq.github.io@json.to.table/dist/js/adminlte.js"></script>
 <!--end::Required Plugin(AdminLTE)--><!--begin::OverlayScrollbars Configure-->
 <script>
   const SELECTOR_SIDEBAR_WRAPPER = '.sidebar-wrapper';
   const Default = {
     scrollbarTheme: 'os-theme-light',
     scrollbarAutoHide: 'leave',
-    scrollbarClickScroll: true,
+    scrollbarClickScroll: true
   };
-  document.addEventListener('DOMContentLoaded', function () {
+  document.addEventListener('DOMContentLoaded', function() {
     const sidebarWrapper = document.querySelector(SELECTOR_SIDEBAR_WRAPPER);
     if (sidebarWrapper && typeof OverlayScrollbarsGlobal?.OverlayScrollbars !== 'undefined') {
       OverlayScrollbarsGlobal.OverlayScrollbars(sidebarWrapper, {
         scrollbars: {
           theme: Default.scrollbarTheme,
           autoHide: Default.scrollbarAutoHide,
-          clickScroll: Default.scrollbarClickScroll,
-        },
+          clickScroll: Default.scrollbarClickScroll
+        }
       });
     }
   });
@@ -224,45 +307,10 @@
 <script>
   $(document).ready(function() {
     // 监听iframe加载完成事件
-    $("#contentFrame").on("load", function () {
+    $('#contentFrame').on('load', function() {
       // iframe加载完成后，隐藏加载提示并显示iframe内容
-      $("#loadingIndicator").hide();
-      $("#contentFrame").fadeIn();
-    });
-
-    // 绑定点击事件到 .nav-treeview 内的 .nav-link a 标签
-    $('.nav-treeview .nav-link').click(function(e) {
-      e.preventDefault(); // 阻止默认链接跳转行为
-
-      // 先隐藏iframe内容，并显示加载中提示
-      $("#contentFrame").hide();
-      $("#loadingIndicator").show();
-
-      // 获取当前点击的 a 标签对象
-      const $clickedLink = $(this);
-
-      // ---------- 第一部分：样式切换逻辑 ----------
-      // 移除所有 .nav-treeview .nav-link 的 active 类
-      $(".nav-treeview .nav-link").removeClass("active");
-
-      // 2. 为当前点击的 a 标签添加 active 样式
-      $clickedLink.addClass('active');
-
-      // ---------- 第二部分：iframe 更新逻辑 ----------
-      // 1. 获取链接的目标地址（假设 href 包含 iframe 需要加载的 URL）
-      const targetUrl = $clickedLink.attr('href');
-
-      // 2. 更新 iframe 的 src（假设 iframe 的 ID 是 #contentFrame）
-      $('#contentFrame').attr('src', targetUrl);
-
-      // 3. 强制重新加载页面（如果目标 URL 未变化时需要）
-      // 方法一：通过添加时间戳绕过缓存
-      // $('#contentFrame').attr('src', targetUrl + '?t=' + Date.now());
-
-      // 方法二：先清空再设置（兼容性更好）
-      // $('#contentFrame').attr('src', 'about:blank').attr('src', targetUrl);
-
-      $('#iframeWrapper').addClass('loading'); // 显示加载状态
+      $('#loadingIndicator').hide();
+      $('#contentFrame').fadeIn();
     });
   });
 </script>
