@@ -1,21 +1,33 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="lt-ie9"> <![endif]-->
+<!--[if lt IE 7]>
+<html class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
 <html ng-app="app">
 
-<!--[if lt IE 7]>      <html class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="lt-ie9"> <![endif]-->
+<!--[if lt IE 7]>
+<html class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
-<!--[if lt IE 7]>      <html class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="lt-ie9"> <![endif]-->
+<!--[if lt IE 7]>
+<html class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
-<!--[if lt IE 7]>      <html class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="lt-ie9"> <![endif]-->
+<!--[if lt IE 7]>
+<html class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
 <!--<![endif]-->
 <head>
@@ -25,7 +37,8 @@
   <meta name="description" content="在线JSON转表格工具" />
   <meta name="description" content="Online JSON to table tool" />
   <meta name="viewport" content="width=device-width" />
-  <link data-require="purecss@0.4.2" data-semver="0.4.2" rel="stylesheet" href="https://fastly.jsdelivr.net/gh/helloqhq/helloqhq.github.io@json.to.table/dist/css/pure/0.4.1/pure-min.css" />
+  <link data-require="purecss@0.4.2" data-semver="0.4.2" rel="stylesheet"
+        href="https://fastly.jsdelivr.net/gh/helloqhq/helloqhq.github.io@json.to.table/dist/css/pure/0.4.1/pure-min.css" />
   <style>
     .l-box {
       padding: 1em;
@@ -39,13 +52,16 @@
       width: 100%;
     }
   </style>
-  <link href="https://fastly.jsdelivr.net/gh/helloqhq/helloqhq.github.io@json.to.table/dist/pages/json/angular-json-human/angular-json-human.css" rel="stylesheet" />
+  <link
+    href="https://fastly.jsdelivr.net/gh/helloqhq/helloqhq.github.io@json.to.table/dist/pages/json/angular-json-human/angular-json-human.css"
+    rel="stylesheet" />
 
   <style>
     .credits {
       position: relative;
       min-height: 20px;
     }
+
     .credits p {
       position: absolute;
       bottom: 0;
@@ -54,6 +70,7 @@
       color: #666;
       font-size: 0.9em;
     }
+
     .credits a {
       color: #888;
     }
@@ -65,7 +82,7 @@
   <div class="pure-u-1-2">
     <div class="l-box">
       <div class="pure-button pure-button-primary prettify-button" ng-click="prettify()">美化JSON</div>
-      <textarea class="json-editor" ng-model="jsonStr" rows="15"></textarea>
+      <textarea class="json-editor" ng-model="jsonStr" rows="15" style="height: 80vh;"></textarea>
     </div>
   </div>
   <div class="pure-u-1-2">
@@ -79,17 +96,20 @@
     感谢 <a href="https://github.com/yaru22/angular-json-human"> github.com/yaru22/angular-json-human </a>
   </p>
 </div>
-<script data-require="lodash.js@2.4.1" data-semver="2.4.1" src="https://fastly.jsdelivr.net/gh/helloqhq/helloqhq.github.io@json.to.table/dist/js/ajax/libs/lodash.js/2.4.1/lodash.js"></script>
-<script data-require="angular.js@1.2.14" data-semver="1.2.14" src="https://fastly.jsdelivr.net/gh/helloqhq/helloqhq.github.io@json.to.table/dist/js/angularjs/1.2.14/angular.js"></script>
-<script src="https://fastly.jsdelivr.net/gh/helloqhq/helloqhq.github.io@json.to.table/dist/pages/json/angular-json-human/angular-json-human.js"></script>
+<script data-require="lodash.js@2.4.1" data-semver="2.4.1"
+        src="https://fastly.jsdelivr.net/gh/helloqhq/helloqhq.github.io@json.to.table/dist/js/ajax/libs/lodash.js/2.4.1/lodash.js"></script>
+<script data-require="angular.js@1.2.14" data-semver="1.2.14"
+        src="https://fastly.jsdelivr.net/gh/helloqhq/helloqhq.github.io@json.to.table/dist/js/angularjs/1.2.14/angular.js"></script>
+<script
+  src="https://fastly.jsdelivr.net/gh/helloqhq/helloqhq.github.io@json.to.table/dist/pages/json/angular-json-human/angular-json-human.js"></script>
 <script>
   var app = angular.module('app', [
     'yaru22.jsonHuman'
   ]);
-  app.controller('MainCtrl', function ($scope) {
+  app.controller('MainCtrl', function($scope) {
     $scope.jsonStr = JSON.stringify({}, undefined, 2);
 
-    $scope.prettify = function () {
+    $scope.prettify = function() {
       try {
         $scope.jsonStr = JSON.stringify(JSON.parse($scope.jsonStr), undefined, 2);
       } catch (e) {
