@@ -3,19 +3,13 @@
 <!--begin::Head-->
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <title>utool.top 工具集</title>
+  <title>utool.top toolset</title>
   <!--begin::Primary Meta Tags-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="title" content="json tool" />
+  <meta name="title" content="json to table" />
   <meta name="author" content="ColorlibHQ" />
-  <meta
-    name="description"
-    content="utool.top 是一个工具类网站，包含json处理等工具"
-  />
-  <meta
-    name="keywords"
-    content="json, json format, json to table"
-  />
+  <meta name="description" content="utool.top This is a tool website, including json processing and other tools" />
+  <meta name="keywords" content="json, json format, json to table" />
   <!--end::Primary Meta Tags-->
   <!--begin::Fonts-->
   <link
@@ -41,6 +35,7 @@
     crossorigin="anonymous"
   />
   <!--end::Third Party Plugin(Bootstrap Icons)-->
+
   <!--begin::Required Plugin(AdminLTE)-->
   <link rel="stylesheet"
         href="https://fastly.jsdelivr.net/gh/helloqhq/helloqhq.github.io@json.to.table/dist/css/adminlte.css" />
@@ -67,12 +62,10 @@
   </script>
 
   <script>
-    // 立即开始 fetch，不等待 DOMContentLoaded
-    (function() {
-      const menuUrl = '/dist/pages/left_menu.html';
-
-      // 发起菜单文件请求
-      fetch(menuUrl)
+    // 立即开始加载顶部菜单，不等待 DOMContentLoaded
+    function loadSubHtml(id, url) {
+      // 发起左侧菜单文件请求
+      fetch(url)
         .then(response => {
           if (!response.ok) {
             throw new Error(`HTTP错误! 状态码: ${response.status}`);
@@ -81,24 +74,26 @@
         })
         .then(html => {
           function initMenuInteractions() {
-            // 获取当前页面的路径
-            const currentPath = window.location.pathname;
+            if (id === 'left-menu') {
+              // 获取当前页面的路径
+              const currentPath = window.location.pathname;
 
-            // 选择所有.nav-item下的a标签
-            document.querySelectorAll('.nav-treeview .nav-item a').forEach(link => {
-              // 获取a标签的href属性（相对路径）
-              const href = link.getAttribute('href');
+              // 选择所有.nav-item下的a标签
+              document.querySelectorAll('.nav-treeview .nav-item a').forEach(link => {
+                // 获取a标签的href属性（相对路径）
+                const href = link.getAttribute('href');
 
-              // 如果路径匹配，则添加active类
-              if (href === currentPath) {
-                link.classList.add('active');
-              }
-            });
+                // 如果路径匹配，则添加active类
+                if (href === currentPath) {
+                  link.classList.add('active');
+                }
+              });
+            }
           }
 
           // 定义检测容器的函数，若未找到则10ms后重试
           function insertMenu() {
-            const targetContainer = document.getElementById('left-menu');
+            const targetContainer = document.getElementById(id);
             if (!targetContainer) {
               setTimeout(insertMenu, 10);
               return;
@@ -153,14 +148,16 @@
               initMenuInteractions();
             }
           }
+
           // 开始检测容器是否存在
           insertMenu();
         })
         .catch(error => {
           console.error('菜单加载失败:', error);
+
           // 如果 fetch 失败，同样等待容器出现后再显示错误信息
           function showError() {
-            const targetContainer = document.getElementById('left-menu');
+            const targetContainer = document.getElementById(id);
             if (!targetContainer) {
               setTimeout(showError, 10);
               return;
@@ -171,9 +168,13 @@
             </div>
           `;
           }
+
           showError();
         });
-    })();
+    };
+
+    loadSubHtml('top-menu', '/dist/pages/top_menu.html');
+    loadSubHtml('left-menu', '/dist/pages/left_menu.html');
   </script>
 
   <style>
@@ -191,47 +192,13 @@
 <!--begin::App Wrapper-->
 <div class="app-wrapper">
   <!--begin::Header-->
-  <nav class="app-header navbar navbar-expand bg-body">
-    <!--begin::Container-->
-    <div class="container-fluid">
-      <!--begin::Start Navbar Links-->
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" data-lte-toggle="sidebar" href="#" role="button">
-            <i class="bi bi-list"></i>
-          </a>
-        </li>
-      </ul>
-      <!--end::End Navbar Links-->
-    </div>
-    <!--end::Container-->
+  <nav class="app-header navbar navbar-expand bg-body" id="top-menu">
+
   </nav>
   <!--end::Header-->
   <!--begin::Sidebar-->
-  <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
-    <!--begin::Sidebar Brand-->
-    <div class="sidebar-brand">
-      <!--begin::Brand Link-->
-      <a href="/" class="brand-link">
-        <!--begin::Brand Image-->
-        <img
-          src="../../../../dist/assets/img/utool.png"
-          alt="utool.top Logo"
-          class="brand-image opacity-75 shadow"
-        />
-        <!--end::Brand Image-->
-        <!--begin::Brand Text-->
-        <!--            <span class="brand-text fw-light">UTOOL</span>-->
-        <!--end::Brand Text-->
-      </a>
-      <!--end::Brand Link-->
-    </div>
-    <!--end::Sidebar Brand-->
-    <!--begin::Sidebar Wrapper-->
-    <div class="sidebar-wrapper" id="left-menu">
+  <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark" id="left-menu">
 
-    </div>
-    <!--end::Sidebar Wrapper-->
   </aside>
   <!--end::Sidebar-->
   <!--begin::App Main-->
@@ -243,9 +210,9 @@
   <!--begin::Footer-->
   <footer class="app-footer">
     <!--begin::To the end-->
-        <div class="float-end d-none d-sm-inline">
-          感谢 <a href="https://github.com/yaru22/angular-json-human"> yaru22/angular-json-human </a>
-        </div>
+    <div class="float-end d-none d-sm-inline">
+      Thanks <a href="https://github.com/yaru22/angular-json-human"> yaru22/angular-json-human </a>
+    </div>
     <!--end::To the end-->
     <!--begin::Copyright-->
     <strong>
@@ -317,4 +284,5 @@
 <!--end::Script-->
 </body>
 <!--end::Body-->
+
 </html>
