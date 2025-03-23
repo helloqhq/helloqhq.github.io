@@ -77,7 +77,6 @@
       document.querySelectorAll('.nav-treeview .nav-item a').forEach(link => {
         // 获取a标签的href属性（相对路径）
         const href = link.getAttribute('href');
-        console.log(href);
 
         // 如果路径匹配，则添加active类
         if (href === currentPath) {
