@@ -11,6 +11,19 @@
   <!--end::End Navbar Links-->
 
   <ul class="navbar-nav ml-auto">
+    <!--begin::Language Switcher-->
+    <li class="nav-item dropdown" id="language-switcher">
+      <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="bi bi-globe"></i>
+        <span id="current-language">English</span>
+      </a>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
+        <li><a class="dropdown-item" href="javascript:switchLanguage('en')" id="lang-en">English</a></li>
+        <li><a class="dropdown-item" href="javascript:switchLanguage('zh')" id="lang-zh">中文</a></li>
+      </ul>
+    </li>
+    <!--end::Language Switcher-->
+    
     <!--begin::Fullscreen Toggle-->
     <li class="nav-item">
       <a class="nav-link" href="#" data-lte-toggle="fullscreen">
@@ -22,3 +35,78 @@
   </ul>
 </div>
 <!--end::Container-->
+
+<!-- 顶部菜单加载后初始化语言显示 -->
+<script>
+  // 检查是否已定义语言切换功能，如果没有，则定义基本函数
+  if (typeof switchLanguage !== 'function') {
+    function getCurrentLanguage() {
+      return localStorage.getItem('language') || 'en';
+    }
+
+    function switchLanguage(lang) {
+      localStorage.setItem('language', lang);
+      location.reload(); // 重新加载页面应用新语言
+    }
+  }
+
+  // 等待DOM完全加载后初始化语言切换器
+  document.addEventListener('DOMContentLoaded', function() {
+    initLanguageSwitcher();
+  });
+  
+  // 立即尝试初始化一次，以防DOMContentLoaded已经触发
+  setTimeout(initLanguageSwitcher, 0);
+  
+  function initLanguageSwitcher() {
+    const currentLang = getCurrentLanguage();
+    const currentLangText = document.getElementById('current-language');
+    if (currentLangText) {
+      currentLangText.textContent = currentLang === 'en' ? 'English' : '中文';
+    }
+    
+    const langEn = document.getElementById('lang-en');
+    const langZh = document.getElementById('lang-zh');
+    
+    if (langEn && langZh) {
+      if (currentLang === 'en') {
+        langEn.classList.add('active');
+        langZh.classList.remove('active');
+      } else {
+        langEn.classList.remove('active');
+        langZh.classList.add('active');
+      }
+    }
+  }
+</script>
+
+<!-- 语言切换器样式 -->
+<style>
+  .dropdown-menu-end {
+    right: 0;
+    left: auto;
+  }
+  
+  .navbar-nav .nav-link .bi-globe {
+    margin-right: 5px;
+  }
+  
+  .dropdown-item.active {
+    background-color: #0d6efd;
+    color: white;
+    font-weight: bold;
+  }
+  
+  #language-switcher .dropdown-toggle::after {
+    vertical-align: middle;
+  }
+  
+  #language-switcher {
+    position: relative;
+  }
+  
+  #language-switcher .dropdown-menu {
+    min-width: 100%;
+    transform: translateX(-10%);
+  }
+</style>

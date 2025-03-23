@@ -62,6 +62,258 @@
   </script>
 
   <script>
+    // 获取当前语言设置，默认为英文
+    function getCurrentLanguage() {
+      return localStorage.getItem('language') || 'en';
+    }
+
+    // 切换语言
+    function switchLanguage(lang) {
+      localStorage.setItem('language', lang);
+      location.reload(); // 重新加载页面应用新语言
+    }
+
+    // 翻译字典 - 包含中英文的文本对照
+    const translations = {
+      en: {
+        "loading": "Loading...",
+        "menu_loading": "Loading menu...",
+        "menu_error": "Menu loading failed, please <a href=\"javascript:location.reload()\">refresh the page</a> or contact the administrator",
+        "all_rights_reserved": "All rights reserved.",
+        "thanks": "Thanks",
+        "copyright": "Copyright",
+        "json_to_table": "JSON to Table",
+        "utool_description": "This is a tool website, including json processing and other tools",
+        "prettify": "Prettify",
+        "prettify_zh": "美化"
+        // 可以继续添加更多翻译
+      },
+      zh: {
+        "loading": "加载中...",
+        "menu_loading": "加载菜单中...",
+        "menu_error": "菜单加载失败，请<a href=\"javascript:location.reload()\">刷新页面</a>或联系管理员",
+        "all_rights_reserved": "保留所有权利。",
+        "thanks": "感谢",
+        "copyright": "版权所有",
+        "json_to_table": "JSON转表格",
+        "utool_description": "这是一个工具网站，包括JSON处理和其他工具",
+        "prettify": "美化",
+        "prettify_zh": "美化"
+        // 可以继续添加更多翻译
+      }
+    };
+
+    // 翻译函数 - 根据key获取当前语言的翻译
+    function translate(key) {
+      const lang = getCurrentLanguage();
+      return translations[lang][key] || key;
+    }
+
+    // 翻译特定元素
+    function translateElement(element, translationKey) {
+      if (element) {
+        element.innerHTML = translate(translationKey);
+      }
+    }
+
+    // 翻译HTML属性
+    function translateAttribute(element, attribute, translationKey) {
+      if (element) {
+        element.setAttribute(attribute, translate(translationKey));
+      }
+    }
+
+    // 扫描iframe内容并翻译
+    function translateIframeContent() {
+      const iframe = document.getElementById('contentFrame');
+      if (!iframe || !iframe.contentDocument) return;
+      
+      const iframeDoc = iframe.contentDocument;
+      const currentLang = getCurrentLanguage();
+      
+      // 避免翻译textarea内容
+      const skipElements = iframeDoc.querySelectorAll('textarea');
+      skipElements.forEach(el => {
+        el.setAttribute('data-no-translate', 'true');
+      });
+      
+      // 翻译页面标题和描述等元数据
+      const title = iframeDoc.querySelector('title');
+      if (title) {
+        title.textContent = currentLang === 'zh' ? 'JSON转表格' : 'JSON to Table';
+      }
+      
+      // 查找并翻译带有data-i18n属性的元素
+      const i18nElements = iframeDoc.querySelectorAll('[data-i18n]');
+      i18nElements.forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[currentLang][key]) {
+          el.innerHTML = translations[currentLang][key];
+        }
+      });
+      
+      // 直接深入搜索所有可能包含"Prettify"的按钮或元素
+      if (currentLang === 'zh') {
+        // 直接使用更广泛的选择器查找按钮
+        const buttons = iframeDoc.querySelectorAll('button, .btn, [role="button"], input[type="button"], input[type="submit"]');
+        buttons.forEach(button => {
+          const buttonText = button.textContent || button.value || '';
+          if (buttonText.trim().toLowerCase() === 'prettify') {
+            if (button.tagName.toLowerCase() === 'input') {
+              button.value = '美化';
+            } else {
+              button.textContent = '美化';
+            }
+          }
+        });
+        
+        // 遍历所有元素查找Prettify文本
+        const allElements = iframeDoc.querySelectorAll('*');
+        allElements.forEach(el => {
+          // 跳过已标记为不翻译的元素
+          if (el.hasAttribute('data-no-translate')) return;
+          // 跳过脚本和样式元素
+          if (el.tagName === 'SCRIPT' || el.tagName === 'STYLE') return;
+          // 跳过textarea元素
+          if (el.tagName === 'TEXTAREA') return;
+          // 跳过已处理的按钮元素
+          if (el.tagName === 'BUTTON' || el.classList.contains('btn')) return;
+          
+          // 处理元素的文本内容
+          if (el.childNodes.length === 1 && el.childNodes[0].nodeType === Node.TEXT_NODE) {
+            const text = el.textContent.trim();
+            if (text.toLowerCase() === 'prettify') {
+              el.textContent = '美化';
+            }
+          }
+        });
+      }
+      
+      // 设置MutationObserver监听DOM变化，处理动态加载的内容
+      setupMutationObserver(iframeDoc);
+      
+      // 针对特殊情况：可能嵌套在shadow DOM或更深层iframe中的内容
+      try {
+        // 查找所有iframe
+        const nestedIframes = iframeDoc.querySelectorAll('iframe');
+        nestedIframes.forEach(nestedFrame => {
+          if (nestedFrame.contentDocument) {
+            // 对嵌套iframe应用相同的翻译逻辑
+            const nestedDoc = nestedFrame.contentDocument;
+            if (currentLang === 'zh') {
+              const nestedButtons = nestedDoc.querySelectorAll('button, .btn, [role="button"]');
+              nestedButtons.forEach(btn => {
+                if (btn.textContent.trim().toLowerCase() === 'prettify') {
+                  btn.textContent = '美化';
+                }
+              });
+            }
+          }
+        });
+      } catch (e) {
+        console.log('处理嵌套iframe时出错:', e);
+      }
+    }
+    
+    // 设置MutationObserver来监听DOM变化
+    function setupMutationObserver(doc) {
+      // 检查是否已经设置过观察器
+      if (doc.documentElement && doc.documentElement.hasAttribute('data-translation-observer-attached')) {
+        return;
+      }
+      
+      // 标记文档已附加观察器
+      if (doc.documentElement) {
+        doc.documentElement.setAttribute('data-translation-observer-attached', 'true');
+      }
+      
+      // 创建观察器实例
+      const observer = new MutationObserver(function(mutations) {
+        // 使用节流函数来减少高频率重复处理
+        clearTimeout(doc.translateThrottle);
+        doc.translateThrottle = setTimeout(function() {
+          // 处理所有变化
+          const currentLang = getCurrentLanguage();
+          if (currentLang !== 'zh') return; // 只在中文模式下进行动态翻译
+          
+          const addedNodes = [];
+          mutations.forEach(function(mutation) {
+            if (mutation.addedNodes && mutation.addedNodes.length > 0) {
+              mutation.addedNodes.forEach(function(node) {
+                if (node.nodeType === Node.ELEMENT_NODE) {
+                  addedNodes.push(node);
+                }
+              });
+            }
+          });
+          
+          // 处理所有新添加的节点
+          if (addedNodes.length > 0) {
+            // 翻译按钮
+            addedNodes.forEach(function(node) {
+              // 处理按钮
+              if (node.tagName === 'BUTTON' || 
+                  node.classList.contains('btn') || 
+                  node.hasAttribute('role') && node.getAttribute('role') === 'button') {
+                if (node.textContent.trim().toLowerCase() === 'prettify') {
+                  node.textContent = '美化';
+                }
+              }
+              
+              // 处理输入按钮
+              if (node.tagName === 'INPUT' && 
+                 (node.type === 'button' || node.type === 'submit') && 
+                  node.value.trim().toLowerCase() === 'prettify') {
+                node.value = '美化';
+              }
+              
+              // 处理节点内部的元素
+              const buttons = node.querySelectorAll('button, .btn, [role="button"], input[type="button"], input[type="submit"]');
+              buttons.forEach(button => {
+                const buttonText = button.textContent || button.value || '';
+                if (buttonText.trim().toLowerCase() === 'prettify') {
+                  if (button.tagName.toLowerCase() === 'input') {
+                    button.value = '美化';
+                  } else {
+                    button.textContent = '美化';
+                  }
+                }
+              });
+              
+              // 处理可能包含文本的元素
+              const textElements = node.querySelectorAll('*');
+              textElements.forEach(el => {
+                // 跳过特定元素
+                if (el.tagName === 'SCRIPT' || el.tagName === 'STYLE' || 
+                    el.tagName === 'TEXTAREA' || el.hasAttribute('data-no-translate') ||
+                    el.tagName === 'BUTTON' || el.classList.contains('btn')) {
+                  return;
+                }
+                
+                // 检查是否只有一个文本节点
+                if (el.childNodes.length === 1 && el.childNodes[0].nodeType === Node.TEXT_NODE) {
+                  const text = el.textContent.trim();
+                  if (text.toLowerCase() === 'prettify') {
+                    el.textContent = '美化';
+                  }
+                }
+              });
+            });
+          }
+        }, 100); // 100ms节流延迟
+      });
+      
+      // 配置观察选项
+      const config = {
+        childList: true, // 观察子节点的增删
+        subtree: true,   // 观察所有后代节点
+        characterData: true // 观察文本内容变化
+      };
+      
+      // 开始观察文档
+      observer.observe(doc, config);
+    }
+
     // 立即开始加载顶部菜单，不等待 DOMContentLoaded
     function loadSubHtml(id, url) {
       // 发起左侧菜单文件请求
@@ -99,8 +351,8 @@
               return;
             }
 
-            // 添加加载提示
-            targetContainer.innerHTML = '<div class="loading">加载菜单中...</div>';
+            // 添加加载提示，使用翻译函数
+            targetContainer.innerHTML = `<div class="loading">${translate('menu_loading')}</div>`;
 
             // 创建临时容器以解析 HTML 内容
             const tempDiv = document.createElement('div');
@@ -143,6 +395,9 @@
             // 将剩余的 HTML 内容插入目标容器
             targetContainer.innerHTML = tempDiv.innerHTML;
 
+            // 翻译菜单内容
+            translateMenuContent(targetContainer);
+
             // 可选：调用菜单相关初始化函数
             if (typeof initMenuInteractions === 'function') {
               initMenuInteractions();
@@ -164,7 +419,7 @@
             }
             targetContainer.innerHTML = `
             <div class="error">
-              菜单加载失败，请<a href="javascript:location.reload()">刷新页面</a>或联系管理员
+              ${translate('menu_error')}
             </div>
           `;
           }
@@ -173,8 +428,134 @@
         });
     };
 
+    // 翻译菜单内容
+    function translateMenuContent(menuContainer) {
+      if (!menuContainer) return;
+      
+      const currentLang = getCurrentLanguage();
+      if (currentLang === 'en') return; // 默认英文不需要翻译
+      
+      // 简单的菜单项翻译映射（这里可以根据实际菜单项扩展）
+      const menuTranslations = {
+        "Dashboard": "仪表盘",
+        "Tools": "工具",
+        "Json To Table": "Json转表格",
+        "Json Diff": "Json比较",
+        "JSON Formatter": "JSON格式化",
+        "JSON Validator": "JSON验证器",
+        "Settings": "设置",
+        "Profile": "个人资料",
+        "Help": "帮助",
+        "Prettify": "美化"
+        // 可以继续添加更多菜单项的翻译
+      };
+      
+      // 查找并翻译菜单项
+      const menuItems = menuContainer.querySelectorAll('.nav-link, .nav-header');
+      menuItems.forEach(item => {
+        const originalText = item.textContent.trim();
+        if (menuTranslations[originalText]) {
+          // 保留原始图标
+          const icon = item.querySelector('i');
+          const iconHTML = icon ? icon.outerHTML : '';
+          // 替换文本部分
+          item.innerHTML = iconHTML + ' ' + menuTranslations[originalText];
+        }
+      });
+    }
+
     loadSubHtml('top-menu', '/dist/pages/top_menu.html');
     loadSubHtml('left-menu', '/dist/pages/left_menu.html');
+    
+    // 根据当前语言设置来处理页面文本
+    document.addEventListener('DOMContentLoaded', function() {
+      const currentLang = getCurrentLanguage();
+      
+      // 更新页面上的可见文本
+      const loadingIndicator = document.getElementById('loadingIndicator');
+      if (loadingIndicator) {
+        loadingIndicator.textContent = translate('loading');
+      }
+      
+      // 更新页面标题
+      document.title = currentLang === 'zh' ? 'utool.top 工具集' : 'utool.top toolset';
+      
+      // 更新meta标签
+      const metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc) {
+        metaDesc.content = translate('utool_description');
+      }
+      
+      const metaTitle = document.querySelector('meta[name="title"]');
+      if (metaTitle) {
+        metaTitle.content = translate('json_to_table');
+      }
+      
+      // 翻译页脚
+      const footer = document.querySelector('.app-footer');
+      if (footer) {
+        const thanksPart = footer.querySelector('.float-end.d-none.d-sm-inline');
+        if (thanksPart) {
+          const thanksLink = thanksPart.querySelector('a');
+          if (thanksLink) {
+            thanksPart.innerHTML = translate('thanks') + ' ';
+            thanksPart.appendChild(thanksLink);
+          }
+        }
+        
+        const copyright = footer.querySelector('strong');
+        if (copyright) {
+          const copyrightLink = copyright.querySelector('a');
+          if (copyrightLink) {
+            copyright.innerHTML = translate('copyright') + ' &copy; 2025-2028&nbsp;';
+            copyright.appendChild(copyrightLink.cloneNode(true));
+            copyright.innerHTML += '.';
+          }
+        }
+        
+        const rightsReserved = footer.childNodes[footer.childNodes.length - 1];
+        if (rightsReserved && rightsReserved.nodeType === Node.TEXT_NODE) {
+          rightsReserved.textContent = translate('all_rights_reserved');
+        }
+      }
+      
+      // 监听iframe加载完成，并翻译iframe内容
+      const contentFrame = document.getElementById('contentFrame');
+      if (contentFrame) {
+        // 为已加载的iframe尝试翻译
+        if (contentFrame.contentDocument && contentFrame.contentDocument.readyState === 'complete') {
+          console.log('iframe已加载，开始翻译');
+          translateIframeContentWithRetry();
+        }
+        
+        // 监听iframe加载事件
+        contentFrame.addEventListener('load', function() {
+          console.log('iframe load事件触发，开始翻译');
+          translateIframeContentWithRetry();
+        });
+      }
+      
+      // 无论如何，在页面加载后尝试翻译iframe内容
+      setTimeout(function() {
+        const iframe = document.getElementById('contentFrame');
+        if (iframe && iframe.contentDocument) {
+          console.log('页面加载后定时尝试翻译iframe');
+          translateIframeContentWithRetry();
+        }
+      }, 1000);
+    });
+    
+    // 带重试机制的iframe内容翻译
+    function translateIframeContentWithRetry() {
+      // 立即尝试一次翻译
+      translateIframeContent();
+      
+      // 多次尝试翻译，确保动态加载的内容和延迟渲染的内容都能被翻译
+      const retryIntervals = [300, 800, 1500, 3000, 5000];
+      retryIntervals.forEach(interval => {
+        setTimeout(translateIframeContent, interval);
+      });
+    }
   </script>
 
   <style>
@@ -183,6 +564,16 @@
       justify-content: center; /* 水平居中 */
       align-items: center; /* 垂直居中 */
       height: 200px; /* 需要明确高度 */
+    }
+    
+    /* 语言切换器样式 */
+    .dropdown-menu-end {
+      right: 0;
+      left: auto;
+    }
+    
+    .navbar-nav .nav-link .bi-globe {
+      margin-right: 5px;
     }
   </style>
 </head>
