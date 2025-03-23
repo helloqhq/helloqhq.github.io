@@ -3,11 +3,7 @@
   <!--begin::Brand Link-->
   <a href="/" class="brand-link">
     <!--begin::Brand Image-->
-    <img
-      src="../../../../dist/assets/img/utool.png"
-      alt="utool.top Logo"
-      class="brand-image opacity-75 shadow"
-    />
+    <img src="../../../../dist/assets/img/utool.png" alt="utool.top Logo" class="brand-image opacity-75 shadow" />
     <!--end::Brand Image-->
     <!--begin::Brand Text-->
     <!--            <span class="brand-text fw-light">UTOOL</span>-->
@@ -19,42 +15,85 @@
 <!--begin::Sidebar Wrapper-->
 <div class="sidebar-wrapper">
 
-<nav class="mt-2" style="width: 100%">
-  <!--begin::Sidebar Menu-->
-  <ul
-    class="nav sidebar-menu flex-column"
-    data-lte-toggle="treeview"
-    role="menu"
-    data-accordion="false"
-  >
-    <li class="nav-item menu-open">
-      <a href="#" class="nav-link">
-        <i class="nav-icon bi bi-filetype-json"></i>
-        <p>
-          Json
-          <i class="nav-arrow bi bi-chevron-right"></i>
-        </p>
-      </a>
-      <ul class="nav nav-treeview">
-        <li class="nav-item">
-          <a href="/dist/pages/json/angular-json-human/entry.html" class="nav-link">
-            <i class="nav-icon bi bi-table"></i>
-            <p>Json To Table</p>
-          </a>
-        </li>
-      </ul>
-      <ul class="nav nav-treeview">
-        <li class="nav-item">
-          <a href="/dist/pages/json/json-diff/entry.html" class="nav-link">
-            <i class="nav-icon bi bi-file-diff"></i>
-            <p>Json Diff</p>
-          </a>
-        </li>
-      </ul>
-    </li>
-  </ul>
-  <!--end::Sidebar Menu-->
-</nav>
+  <nav class="mt-2" style="width: 100%">
+    <!--begin::Sidebar Menu-->
+    <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="menu" data-accordion="false">
+      <li class="nav-item">
+        <a href="#" class="nav-link">
+          <i class="nav-icon bi bi-filetype-json"></i>
+          <p>
+            Json
+            <i class="nav-arrow bi bi-chevron-right"></i>
+          </p>
+        </a>
+        <ul class="nav nav-treeview">
+          <li class="nav-item">
+            <a href="/dist/pages/json/angular-json-human/entry.html" class="nav-link">
+              <i class="nav-icon bi bi-table"></i>
+              <p>Json To Table</p>
+            </a>
+          </li>
+        </ul>
+        <ul class="nav nav-treeview">
+          <li class="nav-item">
+            <a href="/dist/pages/json/json-diff/entry.html" class="nav-link">
+              <i class="nav-icon bi bi-file-diff"></i>
+              <p>Json Diff</p>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">
+          <i class="nav-icon bi bi-textarea-t"></i>
+          <p>
+            文本处理
+            <i class="nav-arrow bi bi-chevron-right"></i>
+          </p>
+        </a>
+        <ul class="nav nav-treeview">
+          <li class="nav-item">
+            <a href="/dist/pages/text/case-converter/entry.html" class="nav-link">
+              <i class="nav-icon bi bi-type"></i>
+              <p>大小写转换</p>
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <!--end::Sidebar Menu-->
+  </nav>
 
 </div>
 <!--end::Sidebar Wrapper-->
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    function initMenu() {
+      // 获取当前页面的路径
+      const currentPath = window.location.pathname;
+
+      // 选择所有.nav-item下的a标签
+      document.querySelectorAll('.nav-treeview .nav-item a').forEach(link => {
+        // 获取a标签的href属性（相对路径）
+        const href = link.getAttribute('href');
+        console.log(href);
+
+        // 如果路径匹配，则添加active类
+        if (href === currentPath) {
+          link.classList.add('active');
+          // 找到当前活跃链接的父li元素
+          let parentLi = link.closest('li');
+          // 找到该父li元素的最近父li元素
+          let parentParentLi = parentLi.closest('ul').closest('li.nav-item');
+          // 给父级li元素添加manu_open类
+          if (parentParentLi) {
+            parentParentLi.classList.add('menu-open');
+          }
+        }
+      });
+    }
+
+    initMenu();
+  });
+</script>

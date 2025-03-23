@@ -362,21 +362,7 @@
         })
         .then(html => {
           function initMenuInteractions() {
-            if (id === 'left-menu') {
-              // 获取当前页面的路径
-              const currentPath = window.location.pathname;
-
-              // 选择所有.nav-item下的a标签
-              document.querySelectorAll('.nav-treeview .nav-item a').forEach(link => {
-                // 获取a标签的href属性（相对路径）
-                const href = link.getAttribute('href');
-
-                // 如果路径匹配，则添加active类
-                if (href === currentPath) {
-                  link.classList.add('active');
-                }
-              });
-            }
+            
           }
 
           // 定义检测容器的函数，若未找到则10ms后重试

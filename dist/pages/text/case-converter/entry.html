@@ -6,10 +6,10 @@
   <title>utool.top toolset</title>
   <!--begin::Primary Meta Tags-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="title" content="json to table" />
+  <meta name="title" content="case converter" />
   <meta name="author" content="ColorlibHQ" />
-  <meta name="description" content="utool.top This is a tool website, including json processing and other tools" />
-  <meta name="keywords" content="json, json format, json to table" />
+  <meta name="description" content="utool.top This is a tool website, including text case conversion and other tools" />
+  <meta name="keywords" content="text, case, uppercase, lowercase, camelCase, PascalCase, kebab-case, CONSTANT_CASE" />
   <!--end::Primary Meta Tags-->
   <!--begin::Fonts-->
   <link
@@ -82,10 +82,10 @@
         "all_rights_reserved": "All rights reserved.",
         "thanks": "Thanks",
         "copyright": "Copyright",
-        "json_to_table": "JSON to Table",
-        "utool_description": "This is a tool website, including json processing and other tools",
-        "prettify": "Prettify",
-        "prettify_zh": "美化"
+        "case_converter": "Case Converter",
+        "utool_description": "This is a tool website, including text case conversion and other tools",
+        "convert": "Convert",
+        "convert_zh": "转换"
         // 可以继续添加更多翻译
       },
       zh: {
@@ -95,10 +95,10 @@
         "all_rights_reserved": "保留所有权利。",
         "thanks": "感谢",
         "copyright": "版权所有",
-        "json_to_table": "JSON转表格",
-        "utool_description": "这是一个工具网站，包括JSON处理和其他工具",
-        "prettify": "美化",
-        "prettify_zh": "美化"
+        "case_converter": "大小写转换",
+        "utool_description": "这是一个工具网站，包括文本大小写转换和其他工具",
+        "convert": "转换",
+        "convert_zh": "转换"
         // 可以继续添加更多翻译
       }
     };
@@ -140,7 +140,7 @@
       // 翻译页面标题和描述等元数据
       const title = iframeDoc.querySelector('title');
       if (title) {
-        title.textContent = currentLang === 'zh' ? 'JSON转表格' : 'JSON to Table';
+        title.textContent = currentLang === 'zh' ? '大小写转换' : 'Case Converter';
       }
       
       // 查找并翻译带有data-i18n属性的元素
@@ -152,22 +152,22 @@
         }
       });
       
-      // 直接深入搜索所有可能包含"Prettify"的按钮或元素
+      // 直接深入搜索所有可能包含"Convert"的按钮或元素
       if (currentLang === 'zh') {
         // 直接使用更广泛的选择器查找按钮
         const buttons = iframeDoc.querySelectorAll('button, .btn, [role="button"], input[type="button"], input[type="submit"]');
         buttons.forEach(button => {
           const buttonText = button.textContent || button.value || '';
-          if (buttonText.trim().toLowerCase() === 'prettify') {
+          if (buttonText.trim().toLowerCase() === 'convert') {
             if (button.tagName.toLowerCase() === 'input') {
-              button.value = '美化';
+              button.value = '转换';
             } else {
-              button.textContent = '美化';
+              button.textContent = '转换';
             }
           }
         });
         
-        // 遍历所有元素查找Prettify文本
+        // 遍历所有元素查找Convert文本
         const allElements = iframeDoc.querySelectorAll('*');
         allElements.forEach(el => {
           // 跳过已标记为不翻译的元素
@@ -182,8 +182,8 @@
           // 处理元素的文本内容
           if (el.childNodes.length === 1 && el.childNodes[0].nodeType === Node.TEXT_NODE) {
             const text = el.textContent.trim();
-            if (text.toLowerCase() === 'prettify') {
-              el.textContent = '美化';
+            if (text.toLowerCase() === 'convert') {
+              el.textContent = '转换';
             }
           }
         });
@@ -203,8 +203,8 @@
             if (currentLang === 'zh') {
               const nestedButtons = nestedDoc.querySelectorAll('button, .btn, [role="button"]');
               nestedButtons.forEach(btn => {
-                if (btn.textContent.trim().toLowerCase() === 'prettify') {
-                  btn.textContent = '美化';
+                if (btn.textContent.trim().toLowerCase() === 'convert') {
+                  btn.textContent = '转换';
                 }
               });
             }
@@ -255,27 +255,27 @@
               if (node.tagName === 'BUTTON' || 
                   node.classList.contains('btn') || 
                   node.hasAttribute('role') && node.getAttribute('role') === 'button') {
-                if (node.textContent.trim().toLowerCase() === 'prettify') {
-                  node.textContent = '美化';
+                if (node.textContent.trim().toLowerCase() === 'convert') {
+                  node.textContent = '转换';
                 }
               }
               
               // 处理输入按钮
               if (node.tagName === 'INPUT' && 
                  (node.type === 'button' || node.type === 'submit') && 
-                  node.value.trim().toLowerCase() === 'prettify') {
-                node.value = '美化';
+                  node.value.trim().toLowerCase() === 'convert') {
+                node.value = '转换';
               }
               
               // 处理节点内部的元素
               const buttons = node.querySelectorAll('button, .btn, [role="button"], input[type="button"], input[type="submit"]');
               buttons.forEach(button => {
                 const buttonText = button.textContent || button.value || '';
-                if (buttonText.trim().toLowerCase() === 'prettify') {
+                if (buttonText.trim().toLowerCase() === 'convert') {
                   if (button.tagName.toLowerCase() === 'input') {
-                    button.value = '美化';
+                    button.value = '转换';
                   } else {
-                    button.textContent = '美化';
+                    button.textContent = '转换';
                   }
                 }
               });
@@ -293,8 +293,8 @@
                 // 检查是否只有一个文本节点
                 if (el.childNodes.length === 1 && el.childNodes[0].nodeType === Node.TEXT_NODE) {
                   const text = el.textContent.trim();
-                  if (text.toLowerCase() === 'prettify') {
-                    el.textContent = '美化';
+                  if (text.toLowerCase() === 'convert') {
+                    el.textContent = '转换';
                   }
                 }
               });
@@ -432,7 +432,9 @@
         "Settings": "设置",
         "Profile": "个人资料",
         "Help": "帮助",
-        "Prettify": "美化"
+        "Case Converter": "大小写转换",
+        "Text Processing": "文本处理",
+        "Convert": "转换"
         // 可以继续添加更多菜单项的翻译
       };
       
@@ -474,7 +476,7 @@
       
       const metaTitle = document.querySelector('meta[name="title"]');
       if (metaTitle) {
-        metaTitle.content = translate('json_to_table');
+        metaTitle.content = translate('case_converter');
       }
       
       // 翻译页脚
@@ -588,7 +590,7 @@
   <footer class="app-footer">
     <!--begin::To the end-->
     <div class="float-end d-none d-sm-inline">
-      Thanks <a href="https://github.com/yaru22/angular-json-human"> yaru22/angular-json-human </a>
+      Thanks <a href="https://github.com/utool/case-converter"> utool/case-converter </a>
     </div>
     <!--end::To the end-->
     <!--begin::Copyright-->
@@ -662,4 +664,4 @@
 </body>
 <!--end::Body-->
 
-</html>
+</html> 

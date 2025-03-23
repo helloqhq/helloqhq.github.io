@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>大小写转换</title>
+  <meta name="description" content="在线文本大小写转换工具" />
+  <meta name="description" content="Online text case converter tool" />
+  <meta name="viewport" content="width=device-width" />
+  <link data-require="purecss@0.4.2" data-semver="0.4.2" rel="stylesheet"
+        href="https://fastly.jsdelivr.net/gh/helloqhq/helloqhq.github.io@json.to.table/dist/css/pure/0.4.1/pure-min.css" />
+  <style>
+    .l-box {
+      padding: 1em;
+    }
+
+    .action-button {
+      margin: 0.5em 0.5em 0.5em 0;
+    }
+
+    .text-editor {
+      width: 100%;
+    }
+    
+    .result-container {
+      margin-top: 1em;
+      border: 1px solid #ddd;
+      padding: 1em;
+      min-height: 100px;
+      background-color: #f9f9f9;
+      border-radius: 4px;
+      overflow-wrap: break-word;
+    }
+    
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 1em;
+    }
+    
+    .label {
+      font-weight: bold;
+      margin-bottom: 0.5em;
+      display: block;
+    }
+    
+    .credit {
+      margin-top: 2em;
+      color: #888;
+      font-size: 0.9em;
+      text-align: right;
+    }
+  </style>
+</head>
+
+<body ng-controller="MainCtrl">
+<div class="pure-g-r">
+  <div class="pure-u-1">
+    <div class="l-box">
+      <div class="label">输入文本：</div>
+      <textarea class="text-editor" ng-model="inputText" rows="8" placeholder="在此输入需要转换的文本..."></textarea>
+      
+      <div class="btn-group">
+        <button class="pure-button pure-button-primary action-button" ng-click="convertCase('uppercase')">全转大写</button>
+        <button class="pure-button pure-button-primary action-button" ng-click="convertCase('lowercase')">全转小写</button>
+        <button class="pure-button pure-button-primary action-button" ng-click="convertCase('capitalized')">首字母大写</button>
+        <button class="pure-button pure-button-primary action-button" ng-click="convertCase('decapitalized')">首字母小写</button>
+        <button class="pure-button pure-button-primary action-button" ng-click="convertCase('camelCase')">小驼峰命名法</button>
+        <button class="pure-button pure-button-primary action-button" ng-click="convertCase('PascalCase')">大驼峰命名法</button>
+        <button class="pure-button pure-button-primary action-button" ng-click="convertCase('kebab-case')">连字符命名法</button>
+        <button class="pure-button pure-button-primary action-button" ng-click="convertCase('CONSTANT_CASE')">常量命名法</button>
+      </div>
+      
+      <div class="label">转换结果：</div>
+      <div class="result-container" ng-bind="resultText"></div>
+      
+      <div class="credit">转换功能由 utool.top 提供</div>
+    </div>
+  </div>
+</div>
+
+<script data-require="angular.js@1.2.14" data-semver="1.2.14"
+        src="https://fastly.jsdelivr.net/gh/helloqhq/helloqhq.github.io@json.to.table/dist/js/angularjs/1.2.14/angular.js"></script>
+<script>
+  var app = angular.module('app', []);
+  
+  app.controller('MainCtrl', function($scope) {
+    $scope.inputText = '';
+    $scope.resultText = '';
+
+    // 转换函数
+    $scope.convertCase = function(caseType) {
+      if (!$scope.inputText) {
+        $scope.resultText = '';
+        return;
+      }
+      
+      var result = '';
+      var input = $scope.inputText;
+      
+      switch(caseType) {
+        case 'uppercase':
+          // 全转大写
+          result = input.toUpperCase();
+          break;
+          
+        case 'lowercase':
+          // 全转小写
+          result = input.toLowerCase();
+          break;
+          
+        case 'capitalized':
+          // 首字母大写
+          result = input.replace(/\b\w/g, function(char) {
+            return char.toUpperCase();
+          });
+          break;
+          
+        case 'decapitalized':
+          // 首字母小写
+          result = input.replace(/\b\w/g, function(char) {
+            return char.toLowerCase();
+          });
+          break;
+          
+        case 'camelCase':
+          // 小驼峰命名法: 第一个单词小写，之后的单词首字母大写，单词之间没有分隔符
+          result = input
+            .replace(/[\s_-]+(\w)/g, function(_, char) {
+              return char.toUpperCase();
+            })
+            .replace(/^\w/, function(char) {
+              return char.toLowerCase();
+            });
+          break;
+          
+        case 'PascalCase':
+          // 大驼峰命名法: 所有单词的首字母大写，单词之间没有分隔符
+          result = input
+            .replace(/[\s_-]+(\w)/g, function(_, char) {
+              return char.toUpperCase();
+            })
+            .replace(/^\w/, function(char) {
+              return char.toUpperCase();
+            });
+          break;
+          
+        case 'kebab-case':
+          // 连字符命名法: 所有字母小写，单词之间用连字符（-）分隔
+          result = input
+            .replace(/\s+/g, '-')
+            .replace(/_+/g, '-')
+            .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
+            .toLowerCase();
+          break;
+          
+        case 'CONSTANT_CASE':
+          // 常量命名法: 所有字母大写，单词之间用下划线（_）分隔
+          result = input
+            .replace(/\s+/g, '_')
+            .replace(/-+/g, '_')
+            .replace(/([a-z0-9])([A-Z])/g, '$1_$2')
+            .toUpperCase();
+          break;
+          
+        default:
+          result = input;
+      }
+      
+      $scope.resultText = result;
+    };
+  });
+</script>
+</body>
+</html> 
