@@ -85,8 +85,17 @@
         "case_converter": "Case Converter",
         "utool_description": "This is a tool website, including text case conversion and other tools",
         "convert": "Convert",
-        "convert_zh": "转换"
-        // 可以继续添加更多翻译
+        "convert_zh": "转换",
+        "input_text": "Input Text:",
+        "result_text": "Result:",
+        "uppercase": "UPPERCASE",
+        "lowercase": "lowercase",
+        "capitalize": "Capitalize Words",
+        "decapitalize": "decapitalize words",
+        "camelcase": "camelCase",
+        "pascalcase": "PascalCase",
+        "kebabcase": "kebab-case",
+        "constantcase": "CONSTANT_CASE"
       },
       zh: {
         "loading": "加载中...",
@@ -98,8 +107,17 @@
         "case_converter": "大小写转换",
         "utool_description": "这是一个工具网站，包括文本大小写转换和其他工具",
         "convert": "转换",
-        "convert_zh": "转换"
-        // 可以继续添加更多翻译
+        "convert_zh": "转换",
+        "input_text": "输入文本：",
+        "result_text": "转换结果：",
+        "uppercase": "全转大写",
+        "lowercase": "全转小写",
+        "capitalize": "首字母大写",
+        "decapitalize": "首字母小写",
+        "camelcase": "小驼峰命名法",
+        "pascalcase": "大驼峰命名法",
+        "kebabcase": "连字符命名法",
+        "constantcase": "常量命名法"
       }
     };
 
@@ -152,22 +170,45 @@
         }
       });
       
-      // 直接深入搜索所有可能包含"Convert"的按钮或元素
+      // 替换textbox的placeholder
+      const textareas = iframeDoc.querySelectorAll('textarea');
+      textareas.forEach(textarea => {
+        if (currentLang === 'zh' && textarea.placeholder === 'Enter text to convert...') {
+          textarea.placeholder = '在此输入需要转换的文本...';
+        } else if (currentLang === 'en' && textarea.placeholder === 'Enter text to convert...') {
+          textarea.placeholder = 'Enter text to convert...';
+        }
+      });
+      
+      // 直接深入搜索所有可能包含特定文本的按钮或元素
       if (currentLang === 'zh') {
         // 直接使用更广泛的选择器查找按钮
         const buttons = iframeDoc.querySelectorAll('button, .btn, [role="button"], input[type="button"], input[type="submit"]');
         buttons.forEach(button => {
           const buttonText = button.textContent || button.value || '';
-          if (buttonText.trim().toLowerCase() === 'convert') {
+          const buttonTextLower = buttonText.trim().toLowerCase();
+          
+          // 处理常见按钮文本
+          if (buttonTextLower === 'convert') {
             if (button.tagName.toLowerCase() === 'input') {
               button.value = '转换';
             } else {
               button.textContent = '转换';
             }
           }
+          
+          // 检查按钮有data-i18n属性
+          const i18nKey = button.getAttribute('data-i18n');
+          if (i18nKey && translations[currentLang][i18nKey]) {
+            if (button.tagName.toLowerCase() === 'input') {
+              button.value = translations[currentLang][i18nKey];
+            } else {
+              button.textContent = translations[currentLang][i18nKey];
+            }
+          }
         });
         
-        // 遍历所有元素查找Convert文本
+        // 遍历所有元素查找特定文本
         const allElements = iframeDoc.querySelectorAll('*');
         allElements.forEach(el => {
           // 跳过已标记为不翻译的元素
@@ -182,9 +223,25 @@
           // 处理元素的文本内容
           if (el.childNodes.length === 1 && el.childNodes[0].nodeType === Node.TEXT_NODE) {
             const text = el.textContent.trim();
-            if (text.toLowerCase() === 'convert') {
+            const textLower = text.toLowerCase();
+            if (textLower === 'convert') {
               el.textContent = '转换';
             }
+            
+            // 检查元素有data-i18n属性
+            const i18nKey = el.getAttribute('data-i18n');
+            if (i18nKey && translations[currentLang][i18nKey]) {
+              el.textContent = translations[currentLang][i18nKey];
+            }
+          }
+        });
+      } else {
+        // 英文模式下，将中文元素翻译成英文
+        const i18nElements = iframeDoc.querySelectorAll('[data-i18n]');
+        i18nElements.forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          if (translations[currentLang][key]) {
+            el.innerHTML = translations[currentLang][key];
           }
         });
       }
@@ -205,6 +262,12 @@
               nestedButtons.forEach(btn => {
                 if (btn.textContent.trim().toLowerCase() === 'convert') {
                   btn.textContent = '转换';
+                }
+                
+                // 检查按钮有data-i18n属性
+                const i18nKey = btn.getAttribute('data-i18n');
+                if (i18nKey && translations[currentLang][i18nKey]) {
+                  btn.textContent = translations[currentLang][i18nKey];
                 }
               });
             }
@@ -251,12 +314,24 @@
           if (addedNodes.length > 0) {
             // 翻译按钮
             addedNodes.forEach(function(node) {
+              // 检查节点是否有data-i18n属性
+              const nodeI18nKey = node.getAttribute && node.getAttribute('data-i18n');
+              if (nodeI18nKey && translations[currentLang][nodeI18nKey]) {
+                node.textContent = translations[currentLang][nodeI18nKey];
+              }
+              
               // 处理按钮
               if (node.tagName === 'BUTTON' || 
                   node.classList.contains('btn') || 
                   node.hasAttribute('role') && node.getAttribute('role') === 'button') {
                 if (node.textContent.trim().toLowerCase() === 'convert') {
                   node.textContent = '转换';
+                }
+                
+                // 检查按钮有data-i18n属性
+                const i18nKey = node.getAttribute('data-i18n');
+                if (i18nKey && translations[currentLang][i18nKey]) {
+                  node.textContent = translations[currentLang][i18nKey];
                 }
               }
               
@@ -267,7 +342,16 @@
                 node.value = '转换';
               }
               
-              // 处理节点内部的元素
+              // 处理节点内部的带有data-i18n属性的元素
+              const i18nElements = node.querySelectorAll('[data-i18n]');
+              i18nElements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[currentLang][key]) {
+                  el.innerHTML = translations[currentLang][key];
+                }
+              });
+              
+              // 处理节点内部的按钮
               const buttons = node.querySelectorAll('button, .btn, [role="button"], input[type="button"], input[type="submit"]');
               buttons.forEach(button => {
                 const buttonText = button.textContent || button.value || '';
@@ -276,6 +360,16 @@
                     button.value = '转换';
                   } else {
                     button.textContent = '转换';
+                  }
+                }
+                
+                // 检查按钮有data-i18n属性
+                const i18nKey = button.getAttribute('data-i18n');
+                if (i18nKey && translations[currentLang][i18nKey]) {
+                  if (button.tagName.toLowerCase() === 'input') {
+                    button.value = translations[currentLang][i18nKey];
+                  } else {
+                    button.textContent = translations[currentLang][i18nKey];
                   }
                 }
               });
@@ -287,6 +381,13 @@
                 if (el.tagName === 'SCRIPT' || el.tagName === 'STYLE' || 
                     el.tagName === 'TEXTAREA' || el.hasAttribute('data-no-translate') ||
                     el.tagName === 'BUTTON' || el.classList.contains('btn')) {
+                  return;
+                }
+                
+                // 检查是否有data-i18n属性
+                const i18nKey = el.getAttribute('data-i18n');
+                if (i18nKey && translations[currentLang][i18nKey]) {
+                  el.innerHTML = translations[currentLang][i18nKey];
                   return;
                 }
                 
@@ -550,7 +651,7 @@
   <footer class="app-footer">
     <!--begin::To the end-->
     <div class="float-end d-none d-sm-inline">
-      Thanks <a href="https://github.com/utool/case-converter"> utool/case-converter </a>
+      
     </div>
     <!--end::To the end-->
     <!--begin::Copyright-->

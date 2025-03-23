@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <title>大小写转换</title>
-  <meta name="description" content="在线文本大小写转换工具" />
+  <title>Case Converter</title>
   <meta name="description" content="Online text case converter tool" />
+  <meta name="description" content="在线文本大小写转换工具" />
   <meta name="viewport" content="width=device-width" />
   <link data-require="purecss@0.4.2" data-semver="0.4.2" rel="stylesheet"
         href="https://fastly.jsdelivr.net/gh/helloqhq/helloqhq.github.io@json.to.table/dist/css/pure/0.4.1/pure-min.css" />
@@ -57,21 +57,21 @@
 <div class="pure-g-r">
   <div class="pure-u-1">
     <div class="l-box">
-      <div class="label">输入文本：</div>
-      <textarea class="text-editor" ng-model="inputText" rows="8" placeholder="在此输入需要转换的文本..." style="height: 35vh;"></textarea>
+      <div class="label" data-i18n="input_text">Input Text:</div>
+      <textarea class="text-editor" ng-model="inputText" rows="8" placeholder="Enter text to convert..." style="height: 35vh;"></textarea>
       
       <div class="btn-group">
-        <button class="pure-button pure-button-primary action-button" ng-click="convertCase('uppercase')">全转大写</button>
-        <button class="pure-button pure-button-primary action-button" ng-click="convertCase('lowercase')">全转小写</button>
-        <button class="pure-button pure-button-primary action-button" ng-click="convertCase('capitalized')">首字母大写</button>
-        <button class="pure-button pure-button-primary action-button" ng-click="convertCase('decapitalized')">首字母小写</button>
-        <button class="pure-button pure-button-primary action-button" ng-click="convertCase('camelCase')">小驼峰命名法</button>
-        <button class="pure-button pure-button-primary action-button" ng-click="convertCase('PascalCase')">大驼峰命名法</button>
-        <button class="pure-button pure-button-primary action-button" ng-click="convertCase('kebab-case')">连字符命名法</button>
-        <button class="pure-button pure-button-primary action-button" ng-click="convertCase('CONSTANT_CASE')">常量命名法</button>
+        <button class="pure-button pure-button-primary action-button" ng-click="convertCase('uppercase')" data-i18n="uppercase">UPPERCASE</button>
+        <button class="pure-button pure-button-primary action-button" ng-click="convertCase('lowercase')" data-i18n="lowercase">lowercase</button>
+        <button class="pure-button pure-button-primary action-button" ng-click="convertCase('capitalized')" data-i18n="capitalize">Capitalize Words</button>
+        <button class="pure-button pure-button-primary action-button" ng-click="convertCase('decapitalized')" data-i18n="decapitalize">decapitalize words</button>
+        <button class="pure-button pure-button-primary action-button" ng-click="convertCase('camelCase')" data-i18n="camelcase">camelCase</button>
+        <button class="pure-button pure-button-primary action-button" ng-click="convertCase('PascalCase')" data-i18n="pascalcase">PascalCase</button>
+        <button class="pure-button pure-button-primary action-button" ng-click="convertCase('kebab-case')" data-i18n="kebabcase">kebab-case</button>
+        <button class="pure-button pure-button-primary action-button" ng-click="convertCase('CONSTANT_CASE')" data-i18n="constantcase">CONSTANT_CASE</button>
       </div>
       
-      <div class="label">转换结果：</div>
+      <div class="label" data-i18n="result_text">Result:</div>
       <div class="result-container" ng-bind="resultText" style="height: 35vh;"></div>
       
     </div>
