@@ -47,7 +47,7 @@
         <a href="#" class="nav-link">
           <i class="nav-icon bi bi-textarea-t"></i>
           <p>
-            文本处理
+            Text Processing
             <i class="nav-arrow bi bi-chevron-right"></i>
           </p>
         </a>
@@ -55,7 +55,7 @@
           <li class="nav-item">
             <a href="/dist/pages/text/case-converter/entry.html" class="nav-link">
               <i class="nav-icon bi bi-type"></i>
-              <p>大小写转换</p>
+              <p>Case Converter</p>
             </a>
           </li>
         </ul>
@@ -68,7 +68,11 @@
 <!--end::Sidebar Wrapper-->
 
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
+  document.addEventListener('DOMContentLoaded', function() {
+    function removeTrailingHash(str) {
+      return str.replace(/#+$/g, '');
+    }
+
     function initMenu() {
       // 获取当前页面的路径
       const currentPath = window.location.pathname;
@@ -76,7 +80,7 @@
       // 选择所有.nav-item下的a标签
       document.querySelectorAll('.nav-treeview .nav-item a').forEach(link => {
         // 获取a标签的href属性（相对路径）
-        const href = link.getAttribute('href');
+        const href = removeTrailingHash(link.getAttribute('href'));
 
         // 如果路径匹配，则添加active类
         if (href === currentPath) {
@@ -93,6 +97,44 @@
       });
     }
 
+    // 翻译菜单内容
+    function translateMenuContent() {
+      const currentLang = getCurrentLanguage();
+      if (currentLang === 'en') return; // 默认英文不需要翻译
+      
+      // 简单的菜单项翻译映射（这里可以根据实际菜单项扩展）
+      const menuTranslations = {
+        "Dashboard": "仪表盘",
+        "Tools": "工具",
+        "Json To Table": "Json转表格",
+        "Json Diff": "Json比较",
+        "JSON Formatter": "JSON格式化",
+        "JSON Validator": "JSON验证器",
+        "Settings": "设置",
+        "Profile": "个人资料",
+        "Help": "帮助",
+        "Case Converter": "大小写转换",
+        "Text Processing": "文本处理",
+        "Convert": "转换"
+        // 可以继续添加更多菜单项的翻译
+      };
+      
+      // 查找并翻译菜单项
+      const menuItems = document.getElementById("left-menu").querySelectorAll('.nav-link, .nav-header');
+      menuItems.forEach(item => {
+        const originalText = item.textContent.trim();
+        if (menuTranslations[originalText]) {
+          // 保留原始图标
+          const icon = item.querySelector('i');
+          const iconHTML = icon ? icon.outerHTML : '';
+          // 替换文本部分
+          item.innerHTML = iconHTML + ' ' + menuTranslations[originalText];
+        }
+      });
+    }
+
     initMenu();
+    // 翻译菜单内容
+    translateMenuContent();
   });
 </script>
