@@ -58,7 +58,7 @@
   <div class="pure-u-1">
     <div class="l-box">
       <div class="label">输入文本：</div>
-      <textarea class="text-editor" ng-model="inputText" rows="8" placeholder="在此输入需要转换的文本..."></textarea>
+      <textarea class="text-editor" ng-model="inputText" rows="8" placeholder="在此输入需要转换的文本..." style="height: 35vh;"></textarea>
       
       <div class="btn-group">
         <button class="pure-button pure-button-primary action-button" ng-click="convertCase('uppercase')">全转大写</button>
@@ -72,9 +72,8 @@
       </div>
       
       <div class="label">转换结果：</div>
-      <div class="result-container" ng-bind="resultText"></div>
+      <div class="result-container" ng-bind="resultText" style="height: 35vh;"></div>
       
-      <div class="credit">转换功能由 utool.top 提供</div>
     </div>
   </div>
 </div>
