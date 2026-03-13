@@ -4,6 +4,10 @@
   <url><loc>https://utool.top/privacy-policy/</loc></url>
   <url><loc>https://utool.top/disclaimer/</loc></url>
   <url><loc>https://utool.top/contact-us/</loc></url>
+  <url><loc>https://utool.top/en/</loc></url>
+  <url><loc>https://utool.top/en/privacy-policy/</loc></url>
+  <url><loc>https://utool.top/en/disclaimer/</loc></url>
+  <url><loc>https://utool.top/en/contact-us/</loc></url>
   <url><loc>https://utool.top/tools/json/</loc></url>
   <url><loc>https://utool.top/tools/json-sort/</loc></url>
   <url><loc>https://utool.top/tools/json-to-xml/</loc></url>
@@ -81,4 +85,81 @@
   <url><loc>https://utool.top/tools/hsv-cmyk-converter/</loc></url>
   <url><loc>https://utool.top/tools/invert-color/</loc></url>
   <url><loc>https://utool.top/tools/css-gradient-generator/</loc></url>
+  <url><loc>https://utool.top/en/tools/json/</loc></url>
+  <url><loc>https://utool.top/en/tools/json-sort/</loc></url>
+  <url><loc>https://utool.top/en/tools/json-to-xml/</loc></url>
+  <url><loc>https://utool.top/en/tools/json-to-csv/</loc></url>
+  <url><loc>https://utool.top/en/tools/json-to-yaml/</loc></url>
+  <url><loc>https://utool.top/en/tools/json-to-java/</loc></url>
+  <url><loc>https://utool.top/en/tools/json-to-typescript/</loc></url>
+  <url><loc>https://utool.top/en/tools/json-to-python/</loc></url>
+  <url><loc>https://utool.top/en/tools/json-to-go/</loc></url>
+  <url><loc>https://utool.top/en/tools/base64/</loc></url>
+  <url><loc>https://utool.top/en/tools/base32/</loc></url>
+  <url><loc>https://utool.top/en/tools/url-codec/</loc></url>
+  <url><loc>https://utool.top/en/tools/unicode-converter/</loc></url>
+  <url><loc>https://utool.top/en/tools/html-entity/</loc></url>
+  <url><loc>https://utool.top/en/tools/ascii-converter/</loc></url>
+  <url><loc>https://utool.top/en/tools/image-to-base64/</loc></url>
+  <url><loc>https://utool.top/en/tools/jwt-tool/</loc></url>
+  <url><loc>https://utool.top/en/tools/hash-generator/</loc></url>
+  <url><loc>https://utool.top/en/tools/md5-tool/</loc></url>
+  <url><loc>https://utool.top/en/tools/aes-des/</loc></url>
+  <url><loc>https://utool.top/en/tools/password-generator/</loc></url>
+  <url><loc>https://utool.top/en/tools/uuid-generator/</loc></url>
+  <url><loc>https://utool.top/en/tools/qr-code-generator/</loc></url>
+  <url><loc>https://utool.top/en/tools/text-diff/</loc></url>
+  <url><loc>https://utool.top/en/tools/text-reverse/</loc></url>
+  <url><loc>https://utool.top/en/tools/text-shuffle/</loc></url>
+  <url><loc>https://utool.top/en/tools/text-line-tools/</loc></url>
+  <url><loc>https://utool.top/en/tools/text-sort/</loc></url>
+  <url><loc>https://utool.top/en/tools/regex-tester/</loc></url>
+  <url><loc>https://utool.top/en/tools/word-count/</loc></url>
+  <url><loc>https://utool.top/en/tools/case-converter/</loc></url>
+  <url><loc>https://utool.top/en/tools/markdown-preview/</loc></url>
+  <url><loc>https://utool.top/en/tools/markdown-to-pdf/</loc></url>
+  <url><loc>https://utool.top/en/tools/markdown-to-word/</loc></url>
+  <url><loc>https://utool.top/en/tools/word-to-pdf/</loc></url>
+  <url><loc>https://utool.top/en/tools/invisible-chars/</loc></url>
+  <url><loc>https://utool.top/en/tools/timestamp-converter/</loc></url>
+  <url><loc>https://utool.top/en/tools/unix-time-converter/</loc></url>
+  <url><loc>https://utool.top/en/tools/base-converter/</loc></url>
+  <url><loc>https://utool.top/en/tools/storage-converter/</loc></url>
+  <url><loc>https://utool.top/en/tools/binary-calculator/</loc></url>
+  <url><loc>https://utool.top/en/tools/hex-calculator/</loc></url>
+  <url><loc>https://utool.top/en/tools/octal-calculator/</loc></url>
+  <url><loc>https://utool.top/en/tools/complement-calculator/</loc></url>
+  <url><loc>https://utool.top/en/tools/scientific-notation/</loc></url>
+  <url><loc>https://utool.top/en/tools/gray-code-converter/</loc></url>
+  <url><loc>https://utool.top/en/tools/calculator/</loc></url>
+  <url><loc>https://utool.top/en/tools/pi-tool/</loc></url>
+  <url><loc>https://utool.top/en/tools/gcd-lcm/</loc></url>
+  <url><loc>https://utool.top/en/tools/bitwise-operations/</loc></url>
+  <url><loc>https://utool.top/en/tools/random-generator/</loc></url>
+  <url><loc>https://utool.top/en/tools/prime-generator/</loc></url>
+  <url><loc>https://utool.top/en/tools/fibonacci-generator/</loc></url>
+  <url><loc>https://utool.top/en/tools/variance-calculator/</loc></url>
+  <url><loc>https://utool.top/en/tools/image-crop/</loc></url>
+  <url><loc>https://utool.top/en/tools/nine-grid-cutter/</loc></url>
+  <url><loc>https://utool.top/en/tools/text-to-image/</loc></url>
+  <url><loc>https://utool.top/en/tools/image-resize/</loc></url>
+  <url><loc>https://utool.top/en/tools/image-rotate/</loc></url>
+  <url><loc>https://utool.top/en/tools/image-flip/</loc></url>
+  <url><loc>https://utool.top/en/tools/placeholder-image/</loc></url>
+  <url><loc>https://utool.top/en/tools/drawing-board/</loc></url>
+  <url><loc>https://utool.top/en/tools/image-color-picker/</loc></url>
+  <url><loc>https://utool.top/en/tools/ip-generator/</loc></url>
+  <url><loc>https://utool.top/en/tools/user-agent-generator/</loc></url>
+  <url><loc>https://utool.top/en/tools/mac-address-generator/</loc></url>
+  <url><loc>https://utool.top/en/tools/url-parser/</loc></url>
+  <url><loc>https://utool.top/en/tools/ip-info/</loc></url>
+  <url><loc>https://utool.top/en/tools/color-converter/</loc></url>
+  <url><loc>https://utool.top/en/tools/rgb-hex-converter/</loc></url>
+  <url><loc>https://utool.top/en/tools/hex-hsv-converter/</loc></url>
+  <url><loc>https://utool.top/en/tools/rgb-hsv-converter/</loc></url>
+  <url><loc>https://utool.top/en/tools/rgb-cmyk-converter/</loc></url>
+  <url><loc>https://utool.top/en/tools/hex-cmyk-converter/</loc></url>
+  <url><loc>https://utool.top/en/tools/hsv-cmyk-converter/</loc></url>
+  <url><loc>https://utool.top/en/tools/invert-color/</loc></url>
+  <url><loc>https://utool.top/en/tools/css-gradient-generator/</loc></url>
 </urlset>
