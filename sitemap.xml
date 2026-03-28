@@ -10,6 +10,7 @@
   <url><loc>https://utool.top/en/contact-us/</loc></url>
   <url><loc>https://utool.top/tools/json/</loc></url>
   <url><loc>https://utool.top/tools/json-editor/</loc></url>
+  <url><loc>https://utool.top/tools/xml-editor/</loc></url>
   <url><loc>https://utool.top/tools/json-sort/</loc></url>
   <url><loc>https://utool.top/tools/json-diff/</loc></url>
   <url><loc>https://utool.top/tools/json-to-xml/</loc></url>
@@ -50,7 +51,6 @@
   <url><loc>https://utool.top/tools/word-to-pdf/</loc></url>
   <url><loc>https://utool.top/tools/invisible-chars/</loc></url>
   <url><loc>https://utool.top/tools/timestamp-converter/</loc></url>
-  <url><loc>https://utool.top/tools/unix-time-converter/</loc></url>
   <url><loc>https://utool.top/tools/base-converter/</loc></url>
   <url><loc>https://utool.top/tools/storage-converter/</loc></url>
   <url><loc>https://utool.top/tools/binary-calculator/</loc></url>
@@ -98,6 +98,7 @@
   <url><loc>https://utool.top/tools/css-gradient-generator/</loc></url>
   <url><loc>https://utool.top/en/tools/json/</loc></url>
   <url><loc>https://utool.top/en/tools/json-editor/</loc></url>
+  <url><loc>https://utool.top/en/tools/xml-editor/</loc></url>
   <url><loc>https://utool.top/en/tools/json-sort/</loc></url>
   <url><loc>https://utool.top/en/tools/json-diff/</loc></url>
   <url><loc>https://utool.top/en/tools/json-to-xml/</loc></url>
@@ -138,7 +139,6 @@
   <url><loc>https://utool.top/en/tools/word-to-pdf/</loc></url>
   <url><loc>https://utool.top/en/tools/invisible-chars/</loc></url>
   <url><loc>https://utool.top/en/tools/timestamp-converter/</loc></url>
-  <url><loc>https://utool.top/en/tools/unix-time-converter/</loc></url>
   <url><loc>https://utool.top/en/tools/base-converter/</loc></url>
   <url><loc>https://utool.top/en/tools/storage-converter/</loc></url>
   <url><loc>https://utool.top/en/tools/binary-calculator/</loc></url>
