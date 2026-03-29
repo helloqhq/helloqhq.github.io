@@ -12,25 +12,25 @@
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JWT Tool Online - UTool</title>
-    <meta name="description" content="JWT Tool online tool to generate credentials, hashes, and security-related debugging output directly in the browser, with local processing and quick copy-ready results." />
+    <title>JWT Decoder Online - UTool</title>
+    <meta name="description" content="JWT Decoder online tool for locally decoding header and payload, inspecting claims, and checking expiration during auth debugging." />
     <meta name="robots" content="index, follow" />
-    <meta property="og:title" content="JWT Tool Online - UTool" />
-    <meta property="og:description" content="JWT Tool online tool to generate credentials, hashes, and security-related debugging output directly in the browser, with local processing and quick copy-ready results." />
+    <meta property="og:title" content="JWT Decoder Online - UTool" />
+    <meta property="og:description" content="JWT Decoder online tool for locally decoding header and payload, inspecting claims, and checking expiration during auth debugging." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://utool.top/en/tools/jwt-tool/" />
     <meta property="og:site_name" content="UTool" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="JWT Tool Online - UTool" />
-    <meta name="twitter:description" content="JWT Tool online tool to generate credentials, hashes, and security-related debugging output directly in the browser, with local processing and quick copy-ready results." />
+    <meta name="twitter:title" content="JWT Decoder Online - UTool" />
+    <meta name="twitter:description" content="JWT Decoder online tool for locally decoding header and payload, inspecting claims, and checking expiration during auth debugging." />
     <link rel="canonical" href="https://utool.top/en/tools/jwt-tool/" />
 
     <link rel="alternate" hreflang="zh-CN" href="https://utool.top/tools/jwt-tool/" data-seo-managed="alternate" />
     <link rel="alternate" hreflang="en" href="https://utool.top/en/tools/jwt-tool/" data-seo-managed="alternate" />
     <link rel="alternate" hreflang="x-default" href="https://utool.top/tools/jwt-tool/" data-seo-managed="alternate" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <script type="application/ld+json" data-seo-managed="json-ld">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"JWT Tool","description":"JWT Tool online tool to generate credentials, hashes, and security-related debugging output directly in the browser, with local processing and quick copy-ready results.","url":"https://utool.top/en/tools/jwt-tool/","applicationCategory":"DeveloperApplication","operatingSystem":"Any","inLanguage":"en","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-    <script type="application/ld+json" data-seo-managed="json-ld">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"UTool","item":"https://utool.top/en/"},{"@type":"ListItem","position":2,"name":"JWT Tool","item":"https://utool.top/en/tools/jwt-tool/"}]}</script>
+    <script type="application/ld+json" data-seo-managed="json-ld">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"JWT Decoder","description":"JWT Decoder online tool for locally decoding header and payload, inspecting claims, and checking expiration during auth debugging.","url":"https://utool.top/en/tools/jwt-tool/","applicationCategory":"DeveloperApplication","operatingSystem":"Any","inLanguage":"en","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+    <script type="application/ld+json" data-seo-managed="json-ld">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"UTool","item":"https://utool.top/en/"},{"@type":"ListItem","position":2,"name":"JWT Decoder","item":"https://utool.top/en/tools/jwt-tool/"}]}</script>
     <style>
       #seo-static {
         background: #ffffff;
@@ -144,7 +144,7 @@
         }
       }
     </style>
-    <script type="module" crossorigin src="/assets/main-DZWX8F8B.js"></script>
+    <script type="module" crossorigin src="/assets/main-DwmSG5sA.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/main-CQhsjJUb.css">
   </head>
   <body>
@@ -154,56 +154,56 @@
         <nav class="seo-static-breadcrumbs" aria-label="Breadcrumb">
           <a href="/en/">UTool</a>
           <span>/</span>
-          <span>JWT Tool</span>
+          <span>JWT Decoder</span>
         </nav>
         <article class="seo-static-article">
           <header class="seo-static-hero seo-static-hero--tool">
             <p class="seo-static-kicker">Security &amp; Identity</p>
-            <h1>JWT Tool</h1>
-            <p>JWT Tool online tool to generate credentials, hashes, and security-related debugging output directly in the browser, with local processing and quick copy-ready results.</p>
+            <h1>JWT Decoder</h1>
+            <p>JWT Decoder online tool for locally decoding header and payload, inspecting claims, and checking expiration during auth debugging.</p>
           </header>
           <section class="seo-static-card">
             <h2>About this tool</h2>
-          <p>JWT Tool belongs to the Security &amp; Identity collection and useful for auth checks, temporary credentials, and token inspection.</p>
-          <p>When you need to handle jwt content quickly, this page keeps the main input, processing, and output steps in one browser workspace.</p>
+          <p>JWT Decoder helps you inspect a token header, payload, and expiration timestamp directly in the browser so auth claims stay easy to review during debugging.</p>
+          <p>This page focuses on local decoding and readable output. It does not verify the signature and does not mint or re-sign tokens, which keeps the workflow aligned with quick inspection tasks.</p>
           </section>
           <section class="seo-static-card">
             <h2>Best use cases</h2>
           <ul>
-            <li>Generate or inspect jwt values before testing login, signing, or token flows.</li>
-            <li>Prepare one-off credentials, digests, or copyable security fields for staging work.</li>
-            <li>Handle sensitive strings locally in the browser instead of pasting them into third-party tools.</li>
+            <li>Inspect JWTs from login or API flows and verify claims such as issuer, subject, audience, role, or custom fields.</li>
+            <li>Check `exp` and related time-based claims while debugging auth failures, expired sessions, or mismatched environments.</li>
+            <li>Review token contents locally in the browser instead of pasting staging credentials into third-party sites.</li>
           </ul>
           </section>
           <section class="seo-static-card">
             <h2>How to use it</h2>
           <ol>
-            <li>Prepare the content or file you want to process with JWT Tool.</li>
-            <li>Run the core JWT Tool action and review the immediate output or stats.</li>
-            <li>Copy, download, or continue into a related tool for the next step in your workflow.</li>
+            <li>Paste the full JWT string, usually in `header.payload.signature` format.</li>
+            <li>Click `Decode JWT` to inspect the formatted header, payload, and expiration field.</li>
+            <li>Copy the decoded result or continue into JSON, Base64, or hash tools for the next debugging step.</li>
           </ol>
           </section>
           <section class="seo-static-card">
             <h2>FAQ</h2>
             <article class="seo-static-faq">
-              <h3>Does JWT Tool upload my data?</h3>
-              <p>Unless a page explicitly calls out a network request, the current workflow runs locally in your browser.</p>
+              <h3>Does JWT Decoder upload my token?</h3>
+              <p>Unless the page explicitly says a network request is required, the decoding flow runs locally in your browser.</p>
             </article>
             <article class="seo-static-faq">
-              <h3>When should I use JWT Tool?</h3>
-              <p>Use it when you need to inspect auth data, generate test credentials, or verify security-related values quickly.</p>
+              <h3>Does JWT Decoder verify signatures?</h3>
+              <p>No. This tool is for decoding and readable inspection only. It does not validate signatures or issue new JWTs.</p>
             </article>
             <article class="seo-static-faq">
-              <h3>What tools pair well with JWT Tool?</h3>
-              <p>It usually works well with nearby formatter, converter, generator, or validation tools in the same category.</p>
+              <h3>When should I use JWT Decoder?</h3>
+              <p>Use it when you need to inspect claims, confirm payload content, or check whether a token has expired during auth debugging.</p>
             </article>
           </section>
                     <section class="seo-static-card">
             <h2>Related tools</h2>
           <ul class="seo-static-links">
+            <li><a href="/en/tools/json/">JSON Formatter</a></li>
+            <li><a href="/en/tools/base64/">Base64</a></li>
             <li><a href="/en/tools/hash-generator/">Hash Generator</a></li>
-            <li><a href="/en/tools/md5-tool/">MD5 Tool</a></li>
-            <li><a href="/en/tools/aes-des/">AES/DES</a></li>
           </ul>
           </section>
                     <section class="seo-static-card">
