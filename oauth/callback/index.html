@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>OAuth Callback</title>
+  </head>
+  <body>
+    <main style="max-width: 720px; margin: 48px auto; padding: 0 16px; font-family: Arial, sans-serif; line-height: 1.7; color: #0f172a;">
+      <h1 id="title">正在跳转到本地服务...</h1>
+      <p id="message">请确保本地 OAuth 服务正在运行。</p>
+    </main>
+
+    <script>
+      const localBase = "http://127.0.0.1:8080";
+      const params = new URLSearchParams(location.search);
+      const parts = location.pathname.split("/").filter(Boolean);
+      const pathPlatform = parts[parts.length - 1] || "";
+      const platform = ["oauth", "callback"].includes(pathPlatform)
+        ? params.get("platform")
+        : pathPlatform || params.get("platform");
+      const title = document.getElementById("title");
+      const message = document.getElementById("message");
+
+      if (!platform) {
+        title.textContent = "缺少 OAuth 平台";
+        message.textContent = "请在回调 URL 中添加 platform 参数，例如 /oauth/callback/?platform=x。";
+      } else if (!/^[a-z0-9_-]+$/i.test(platform)) {
+        title.textContent = "OAuth 平台无效";
+        message.textContent = "platform 只能包含字母、数字、下划线或连字符。";
+      } else {
+        const target = new URL(`${localBase}/api/oauth/${platform}/callback`);
+        for (const [key, value] of params) {
+          target.searchParams.set(key, value);
+        }
+
+        location.replace(target.toString());
+      }
+    </script>
+  </body>
+</html>
