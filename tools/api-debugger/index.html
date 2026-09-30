@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>API调试在线工具 - 无需安装软件的浏览器本地网络与调试工作流处理、高效结果检查与日常开发调试 | U途工具</title>
+    <meta name="description" content="API 调试在线工具，支持在浏览器中发送 GET、POST 等 HTTP 请求，查看状态码、耗时、响应头和响应体，并复制 cURL。" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content="API调试在线工具 - 无需安装软件的浏览器本地网络与调试工作流处理、高效结果检查与日常开发调试 | U途工具" />
+    <meta property="og:description" content="API 调试在线工具，支持在浏览器中发送 GET、POST 等 HTTP 请求，查看状态码、耗时、响应头和响应体，并复制 cURL。" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://utool.top/tools/api-debugger/" />
+    <meta property="og:site_name" content="U途工具" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="API调试在线工具 - 无需安装软件的浏览器本地网络与调试工作流处理、高效结果检查与日常开发调试 | U途工具" />
+    <meta name="twitter:description" content="API 调试在线工具，支持在浏览器中发送 GET、POST 等 HTTP 请求，查看状态码、耗时、响应头和响应体，并复制 cURL。" />
+    <link rel="canonical" href="https://utool.top/tools/api-debugger/" />
+
+    <link rel="alternate" hreflang="zh-CN" href="https://utool.top/tools/api-debugger/" data-seo-managed="alternate" />
+    <link rel="alternate" hreflang="en" href="https://utool.top/en/tools/api-debugger/" data-seo-managed="alternate" />
+    <link rel="alternate" hreflang="x-default" href="https://utool.top/tools/api-debugger/" data-seo-managed="alternate" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script type="application/ld+json" data-seo-managed="json-ld">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"API调试","description":"API 调试在线工具，支持在浏览器中发送 GET、POST 等 HTTP 请求，查看状态码、耗时、响应头和响应体，并复制 cURL。","url":"https://utool.top/tools/api-debugger/","applicationCategory":"DeveloperApplication","operatingSystem":"Any","inLanguage":"zh-CN","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+    <script type="application/ld+json" data-seo-managed="json-ld">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"U途工具","item":"https://utool.top/"},{"@type":"ListItem","position":2,"name":"API调试","item":"https://utool.top/tools/api-debugger/"}]}</script>
+    <style>
+      #seo-static {
+        background: #ffffff;
+        color: #0f172a;
+      }
+
+      .seo-static-shell {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 32px 16px 56px;
+        font-family: Arial, sans-serif;
+        line-height: 1.7;
+      }
+
+      .seo-static-hero {
+        padding: 12px 0 24px;
+      }
+
+      .seo-static-hero--tool {
+        padding-top: 0;
+      }
+
+      .seo-static-kicker {
+        margin: 0 0 8px;
+        color: #1d4ed8;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .seo-static-hero h1,
+      .seo-static-card h2,
+      .seo-static-faq h3,
+      .seo-static-contact h3 {
+        margin: 0 0 12px;
+      }
+
+      .seo-static-hero h1 {
+        font-size: 36px;
+        line-height: 1.15;
+      }
+
+      .seo-static-breadcrumbs {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        margin-bottom: 24px;
+        font-size: 14px;
+      }
+
+      .seo-static-card,
+      .seo-static-footer {
+        margin-top: 20px;
+        padding: 24px;
+        border: 1px solid #dbe3f0;
+        border-radius: 18px;
+        background: #f8fbff;
+      }
+
+      .seo-static-links {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 10px 18px;
+        padding-left: 18px;
+      }
+
+      .seo-static-faq + .seo-static-faq,
+      .seo-static-contact + .seo-static-contact {
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid #dbe3f0;
+      }
+
+      .seo-static-contact-list {
+        display: grid;
+        gap: 16px;
+      }
+
+      .seo-static-footer nav {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .seo-static-separator {
+        color: #64748b;
+      }
+
+      #seo-static a {
+        color: #1d4ed8;
+        text-decoration: none;
+      }
+
+      #seo-static a:hover {
+        text-decoration: underline;
+      }
+
+      @media (max-width: 720px) {
+        .seo-static-shell {
+          padding: 24px 14px 40px;
+        }
+
+        .seo-static-hero h1 {
+          font-size: 28px;
+        }
+
+        .seo-static-card,
+        .seo-static-footer {
+          padding: 18px;
+        }
+      }
+    </style>
+    <script type="module" crossorigin src="/assets/chunk-main-C3bI75IL.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/main-Ct1ASo-y.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    <div id="seo-static" data-static-content="true">
+      <main class="seo-static-shell">
+        <nav class="seo-static-breadcrumbs" aria-label="面包屑">
+          <a href="/">U途工具</a>
+          <span>/</span>
+          <span>API调试</span>
+        </nav>
+        <article class="seo-static-article">
+          <header class="seo-static-hero seo-static-hero--tool">
+            <p class="seo-static-kicker">网络与调试</p>
+            <h1>API调试</h1>
+            <p>API 调试在线工具，支持在浏览器中发送 GET、POST 等 HTTP 请求，查看状态码、耗时、响应头和响应体，并复制 cURL。</p>
+          </header>
+          <section class="seo-static-card">
+            <h2>工具介绍</h2>
+          <p>API 调试工具用于在浏览器中模拟发送 HTTP 请求，快速检查接口状态、响应头和响应内容。</p>
+          <p>它适合轻量联调和临时排查；请求由浏览器发起，因此会受到 CORS、混合内容和浏览器禁止 Header 的限制。</p>
+          </section>
+          <section class="seo-static-card">
+            <h2>适用场景</h2>
+          <ul>
+            <li>快速验证支持 CORS 的 API 是否返回预期状态码、内容类型和响应体。</li>
+            <li>整理接口请求参数、Header 和 Body，并复制为 cURL 交给后端或同事复现。</li>
+            <li>排查 JSON、文本或 HTML 响应内容，确认耗时、大小和响应 Header 是否符合预期。</li>
+          </ul>
+          </section>
+          <section class="seo-static-card">
+            <h2>使用步骤</h2>
+          <ol>
+            <li>选择请求方法，输入接口 URL，可填写相对路径或完整 URL。</li>
+            <li>按需填写请求 Header 和 Body；GET 与 HEAD 请求不会发送 Body。</li>
+            <li>点击“发送”后查看状态、耗时、响应大小、响应 Header 和格式化后的响应体。</li>
+          </ol>
+          </section>
+          <section class="seo-static-card">
+            <h2>常见问题</h2>
+            <article class="seo-static-faq">
+              <h3>API调试 会上传我的数据吗？</h3>
+              <p>除非页面明确说明需要网络请求，当前主要处理流程默认只在浏览器本地运行。</p>
+            </article>
+            <article class="seo-static-faq">
+              <h3>什么时候适合使用 API调试？</h3>
+              <p>当你需要为浏览器内的临时处理、结果检查和下一步交付快速得到API调试 结果时，API调试 会比较合适。</p>
+            </article>
+            <article class="seo-static-faq">
+              <h3>使用 API调试 前需要准备什么？</h3>
+              <p>通常只需要准备好网络与调试 输入内容，并明确下一步想检查、复制或继续使用的结果。</p>
+            </article>
+          </section>
+                    <section class="seo-static-card">
+            <h2>相关工具</h2>
+          <ul class="seo-static-links">
+            <li><a href="/tools/header-formatter/">Header格式化</a></li>
+            <li><a href="/tools/url-parser/">URL解析工具</a></li>
+            <li><a href="/tools/json/">JSON格式化</a></li>
+          </ul>
+          </section>
+                    <section class="seo-static-card">
+            <h2>同类工具</h2>
+          <ul class="seo-static-links">
+            <li><a href="/tools/ip-generator/">IP地址生成器</a></li>
+            <li><a href="/tools/user-agent-generator/">UserAgent生成器</a></li>
+            <li><a href="/tools/mac-address-generator/">MAC地址生成器</a></li>
+            <li><a href="/tools/url-parser/">URL解析工具</a></li>
+            <li><a href="/tools/url-query-formatter/">URL GET参数格式化</a></li>
+            <li><a href="/tools/cookie-formatter/">Cookie格式化</a></li>
+            <li><a href="/tools/header-formatter/">Header格式化</a></li>
+            <li><a href="/tools/ip-info/">IP与浏览器信息</a></li>
+          </ul>
+          </section>
+        </article>
+      <footer class="seo-static-footer">
+        <nav aria-label="底部链接">
+          <a href="/privacy-policy/">隐私协议</a>
+          <span class="seo-static-separator">|</span>
+          <a href="/disclaimer/">免责声明</a>
+          <span class="seo-static-separator">|</span>
+          <a href="/contact-us/">联系我们</a>
+        </nav>
+      </footer>
+      </main>
+    </div>
+  </body>
+</html>
