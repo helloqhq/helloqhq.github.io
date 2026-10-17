@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Excel/CSV转JSON - 本地表格转换与工作表预览 | U途工具</title>
+    <meta name="description" content="在浏览器本地将 Excel、CSV 和粘贴表格转为 JSON，支持 XLSX 工作表选择、表头设置、字符串保留、类型转换、预览、复制与下载，文件不上传。" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content="Excel/CSV转JSON - 本地表格转换与工作表预览 | U途工具" />
+    <meta property="og:description" content="在浏览器本地将 Excel、CSV 和粘贴表格转为 JSON，支持 XLSX 工作表选择、表头设置、字符串保留、类型转换、预览、复制与下载，文件不上传。" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://utool.top/tools/excel-csv-to-json/" />
+    <meta property="og:site_name" content="U途工具" />
+    <meta property="og:image" content="https://utool.top/utool-social.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="UTool – Free online developer tools" />
+    <meta name="twitter:image" content="https://utool.top/utool-social.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Excel/CSV转JSON - 本地表格转换与工作表预览 | U途工具" />
+    <meta name="twitter:description" content="在浏览器本地将 Excel、CSV 和粘贴表格转为 JSON，支持 XLSX 工作表选择、表头设置、字符串保留、类型转换、预览、复制与下载，文件不上传。" />
+    <link rel="canonical" href="https://utool.top/tools/excel-csv-to-json/" />
+
+    <link rel="alternate" hreflang="zh-CN" href="https://utool.top/tools/excel-csv-to-json/" data-seo-managed="alternate" />
+    <link rel="alternate" hreflang="en" href="https://utool.top/en/tools/excel-csv-to-json/" data-seo-managed="alternate" />
+    <link rel="alternate" hreflang="x-default" href="https://utool.top/tools/excel-csv-to-json/" data-seo-managed="alternate" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script type="application/ld+json" data-seo-managed="json-ld">{"@context":"https://schema.org","@type":"SoftwareApplication","@id":"https://utool.top/tools/excel-csv-to-json/#application","name":"Excel/CSV转JSON","description":"在浏览器本地将 Excel、CSV 和粘贴表格转为 JSON，支持 XLSX 工作表选择、表头设置、字符串保留、类型转换、预览、复制与下载，文件不上传。","url":"https://utool.top/tools/excel-csv-to-json/","applicationCategory":"DeveloperApplication","isPartOf":{"@id":"https://utool.top/#website"},"operatingSystem":"Any","inLanguage":"zh-CN","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+    <script type="application/ld+json" data-seo-managed="json-ld">{"@context":"https://schema.org","@type":"WebSite","@id":"https://utool.top/#website","name":"U途工具","alternateName":"UTool","url":"https://utool.top/","inLanguage":["zh-CN","en"]}</script>
+    <script type="application/ld+json" data-seo-managed="json-ld">{"@context":"https://schema.org","@type":"WebPage","@id":"https://utool.top/tools/excel-csv-to-json/#page","url":"https://utool.top/tools/excel-csv-to-json/","name":"Excel/CSV转JSON - 本地表格转换与工作表预览","description":"在浏览器本地将 Excel、CSV 和粘贴表格转为 JSON，支持 XLSX 工作表选择、表头设置、字符串保留、类型转换、预览、复制与下载，文件不上传。","inLanguage":"zh-CN","isPartOf":{"@id":"https://utool.top/#website"},"mainEntity":{"@id":"https://utool.top/tools/excel-csv-to-json/#application"}}</script>
+    <script type="application/ld+json" data-seo-managed="json-ld">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"U途工具","item":"https://utool.top/"},{"@type":"ListItem","position":2,"name":"Excel/CSV转JSON","item":"https://utool.top/tools/excel-csv-to-json/"}]}</script>
+    <style>
+      #seo-static {
+        background: #ffffff;
+        color: #0f172a;
+      }
+
+      .seo-static-shell {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 32px 16px 56px;
+        font-family: Arial, sans-serif;
+        line-height: 1.7;
+      }
+
+      .seo-static-hero {
+        padding: 12px 0 24px;
+      }
+
+      .seo-static-hero--tool {
+        padding-top: 0;
+      }
+
+      .seo-static-kicker {
+        margin: 0 0 8px;
+        color: #1d4ed8;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .seo-static-hero h1,
+      .seo-static-card h2,
+      .seo-static-faq h3,
+      .seo-static-contact h3 {
+        margin: 0 0 12px;
+      }
+
+      .seo-static-hero h1 {
+        font-size: 36px;
+        line-height: 1.15;
+      }
+
+      .seo-static-breadcrumbs {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        margin-bottom: 24px;
+        font-size: 14px;
+      }
+
+      .seo-static-card,
+      .seo-static-footer {
+        margin-top: 20px;
+        padding: 24px;
+        border: 1px solid #dbe3f0;
+        border-radius: 18px;
+        background: #f8fbff;
+      }
+
+      .seo-static-links {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 10px 18px;
+        padding-left: 18px;
+      }
+
+      .seo-static-faq + .seo-static-faq,
+      .seo-static-contact + .seo-static-contact {
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid #dbe3f0;
+      }
+
+      .seo-static-contact-list {
+        display: grid;
+        gap: 16px;
+      }
+
+      .seo-static-footer nav {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .seo-static-separator {
+        color: #64748b;
+      }
+
+      #seo-static a {
+        color: #1d4ed8;
+        text-decoration: none;
+      }
+
+      #seo-static a:hover {
+        text-decoration: underline;
+      }
+
+      @media (max-width: 720px) {
+        .seo-static-shell {
+          padding: 24px 14px 40px;
+        }
+
+        .seo-static-hero h1 {
+          font-size: 28px;
+        }
+
+        .seo-static-card,
+        .seo-static-footer {
+          padding: 18px;
+        }
+      }
+    </style>
+    <script type="module" crossorigin src="/assets/chunk-main-CJ0httsY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/main-B7BP-o29.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    <div id="seo-static" data-static-content="true">
+      <main class="seo-static-shell">
+        <nav class="seo-static-breadcrumbs" aria-label="面包屑">
+          <a href="/">U途工具</a>
+          <span>/</span>
+          <span>Excel/CSV转JSON</span>
+        </nav>
+        <article class="seo-static-article">
+          <header class="seo-static-hero seo-static-hero--tool">
+            <p class="seo-static-kicker">数据与 JSON</p>
+            <h1>Excel/CSV转JSON</h1>
+            <p>在浏览器本地将 Excel、CSV 和粘贴表格转为 JSON，支持 XLSX 工作表选择、表头设置、字符串保留、类型转换、预览、复制与下载，文件不上传。</p>
+
+          </header>
+          <section class="seo-static-card">
+            <h2>工具介绍</h2>
+          <p>粘贴从 Excel 复制的表格，或导入 UTF-8 CSV、XLSX 文件，选择工作表和表头行，将数据转换为 JSON 对象数组。数据仅在浏览器本地处理。</p>
+          </section>
+          <section class="seo-static-card">
+            <h2>适用场景</h2>
+          <ul>
+            <li>将配置表、业务表格或测试样本整理为接口使用的 JSON 数据。</li>
+            <li>保留带前导零的编号和长编号，避免自动类型转换改变数据。</li>
+          </ul>
+          </section>
+          <section class="seo-static-card">
+            <h2>使用步骤</h2>
+          <ol>
+            <li>粘贴带表头的数据，或导入一个 CSV / XLSX 文件；XLSX 可选择工作表。</li>
+            <li>设置表头所在行、分隔符与类型选项，然后点击转换为 JSON。默认将所有值保留为字符串。</li>
+            <li>检查源数据预览与结果，复制或下载 JSON。表头必须非空且唯一。</li>
+          </ol>
+          </section>
+
+
+
+          <section class="seo-static-card"><h2>常见问题</h2><article class="seo-static-faq"><h3>支持多大的表格？</h3><p>每次最多 10 MiB、10,000 行、200 列和 200,000 个单元格。CSV 使用 UTF-8。超过限制会明确报错，不会静默截断。</p></article>
+<article class="seo-static-faq"><h3>公式和日期如何转换？</h3><p>读取 XLSX 已有的单元格显示值及公式缓存结果，不重新计算公式。日期保留显示文本；原文件已丢失的数字精度无法恢复。</p></article>
+<article class="seo-static-faq"><h3>与 JSON 转 CSV 有什么区别？</h3><p>本工具将表格导入为 JSON 对象数组；已有 JSON 转 CSV 用于反方向导出。空行跳过，缺少的单元格补为空字符串。</p></article></section>
+
+                    <section class="seo-static-card">
+            <h2>相关工具</h2>
+          <ul class="seo-static-links">
+            <li><a href="/tools/json-to-csv/">JSON转CSV</a></li>
+            <li><a href="/tools/json/">JSON格式化</a></li>
+            <li><a href="/tools/json-to-typescript/">JSON转TypeScript</a></li>
+          </ul>
+          </section>
+                    <section class="seo-static-card">
+            <h2>同类工具</h2>
+          <ul class="seo-static-links">
+            <li><a href="/tools/json/">JSON格式化</a></li>
+            <li><a href="/tools/mongodb-formatter/">Mongo数据格式化</a></li>
+            <li><a href="/tools/json-editor/">JSON编辑器</a></li>
+            <li><a href="/tools/xml-editor/">XML编辑器</a></li>
+            <li><a href="/tools/json-sort/">JSON排序</a></li>
+            <li><a href="/tools/json-diff/">JSON对比</a></li>
+            <li><a href="/tools/json-to-xml/">JSON转XML</a></li>
+            <li><a href="/tools/json-to-csv/">JSON转CSV</a></li>
+            <li><a href="/tools/json-to-yaml/">JSON转YAML</a></li>
+            <li><a href="/tools/json-to-java/">JSON转Java</a></li>
+          </ul>
+          </section>
+        </article>
+      <footer class="seo-static-footer">
+        <nav aria-label="底部链接">
+          <a href="/privacy-policy/">隐私协议</a>
+          <span class="seo-static-separator">|</span>
+          <a href="/disclaimer/">免责声明</a>
+          <span class="seo-static-separator">|</span>
+          <a href="/contact-us/">联系我们</a>
+          <span class="seo-static-separator">|</span>
+          <a href="/friends/">友情链接</a>
+        </nav>
+      </footer>
+      </main>
+    </div>
+  </body>
+</html>
