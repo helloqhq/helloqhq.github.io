@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>二维码识别 - 本地图片二维码解码工具 | U途工具</title>
+    <meta name="description" content="从 PNG、JPEG、WebP 图片或截图中识别二维码，支持选择、拖拽和粘贴图片，复制识别文本。图片在浏览器本地处理，不上传，不自动打开链接。" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content="二维码识别 - 本地图片二维码解码工具 | U途工具" />
+    <meta property="og:description" content="从 PNG、JPEG、WebP 图片或截图中识别二维码，支持选择、拖拽和粘贴图片，复制识别文本。图片在浏览器本地处理，不上传，不自动打开链接。" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://utool.top/tools/qr-code-reader/" />
+    <meta property="og:site_name" content="U途工具" />
+    <meta property="og:image" content="https://utool.top/utool-social.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="UTool – Free online developer tools" />
+    <meta name="twitter:image" content="https://utool.top/utool-social.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="二维码识别 - 本地图片二维码解码工具 | U途工具" />
+    <meta name="twitter:description" content="从 PNG、JPEG、WebP 图片或截图中识别二维码，支持选择、拖拽和粘贴图片，复制识别文本。图片在浏览器本地处理，不上传，不自动打开链接。" />
+    <link rel="canonical" href="https://utool.top/tools/qr-code-reader/" />
+
+    <link rel="alternate" hreflang="zh-CN" href="https://utool.top/tools/qr-code-reader/" data-seo-managed="alternate" />
+    <link rel="alternate" hreflang="en" href="https://utool.top/en/tools/qr-code-reader/" data-seo-managed="alternate" />
+    <link rel="alternate" hreflang="x-default" href="https://utool.top/tools/qr-code-reader/" data-seo-managed="alternate" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script type="application/ld+json" data-seo-managed="json-ld">{"@context":"https://schema.org","@type":"SoftwareApplication","@id":"https://utool.top/tools/qr-code-reader/#application","name":"二维码识别","description":"从 PNG、JPEG、WebP 图片或截图中识别二维码，支持选择、拖拽和粘贴图片，复制识别文本。图片在浏览器本地处理，不上传，不自动打开链接。","url":"https://utool.top/tools/qr-code-reader/","applicationCategory":"MultimediaApplication","isPartOf":{"@id":"https://utool.top/#website"},"operatingSystem":"Any","inLanguage":"zh-CN","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+    <script type="application/ld+json" data-seo-managed="json-ld">{"@context":"https://schema.org","@type":"WebSite","@id":"https://utool.top/#website","name":"U途工具","alternateName":"UTool","url":"https://utool.top/","inLanguage":["zh-CN","en"]}</script>
+    <script type="application/ld+json" data-seo-managed="json-ld">{"@context":"https://schema.org","@type":"WebPage","@id":"https://utool.top/tools/qr-code-reader/#page","url":"https://utool.top/tools/qr-code-reader/","name":"二维码识别 - 本地图片二维码解码工具","description":"从 PNG、JPEG、WebP 图片或截图中识别二维码，支持选择、拖拽和粘贴图片，复制识别文本。图片在浏览器本地处理，不上传，不自动打开链接。","inLanguage":"zh-CN","isPartOf":{"@id":"https://utool.top/#website"},"mainEntity":{"@id":"https://utool.top/tools/qr-code-reader/#application"}}</script>
+    <script type="application/ld+json" data-seo-managed="json-ld">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"U途工具","item":"https://utool.top/"},{"@type":"ListItem","position":2,"name":"二维码识别","item":"https://utool.top/tools/qr-code-reader/"}]}</script>
+    <style>
+      #seo-static {
+        background: #ffffff;
+        color: #0f172a;
+      }
+
+      .seo-static-shell {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 32px 16px 56px;
+        font-family: Arial, sans-serif;
+        line-height: 1.7;
+      }
+
+      .seo-static-hero {
+        padding: 12px 0 24px;
+      }
+
+      .seo-static-hero--tool {
+        padding-top: 0;
+      }
+
+      .seo-static-kicker {
+        margin: 0 0 8px;
+        color: #1d4ed8;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .seo-static-hero h1,
+      .seo-static-card h2,
+      .seo-static-faq h3,
+      .seo-static-contact h3 {
+        margin: 0 0 12px;
+      }
+
+      .seo-static-hero h1 {
+        font-size: 36px;
+        line-height: 1.15;
+      }
+
+      .seo-static-breadcrumbs {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        margin-bottom: 24px;
+        font-size: 14px;
+      }
+
+      .seo-static-card,
+      .seo-static-footer {
+        margin-top: 20px;
+        padding: 24px;
+        border: 1px solid #dbe3f0;
+        border-radius: 18px;
+        background: #f8fbff;
+      }
+
+      .seo-static-links {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 10px 18px;
+        padding-left: 18px;
+      }
+
+      .seo-static-faq + .seo-static-faq,
+      .seo-static-contact + .seo-static-contact {
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid #dbe3f0;
+      }
+
+      .seo-static-contact-list {
+        display: grid;
+        gap: 16px;
+      }
+
+      .seo-static-footer nav {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .seo-static-separator {
+        color: #64748b;
+      }
+
+      #seo-static a {
+        color: #1d4ed8;
+        text-decoration: none;
+      }
+
+      #seo-static a:hover {
+        text-decoration: underline;
+      }
+
+      @media (max-width: 720px) {
+        .seo-static-shell {
+          padding: 24px 14px 40px;
+        }
+
+        .seo-static-hero h1 {
+          font-size: 28px;
+        }
+
+        .seo-static-card,
+        .seo-static-footer {
+          padding: 18px;
+        }
+      }
+    </style>
+    <script type="module" crossorigin src="/assets/chunk-main-izvRApXN.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/main-B7BP-o29.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    <div id="seo-static" data-static-content="true">
+      <main class="seo-static-shell">
+        <nav class="seo-static-breadcrumbs" aria-label="面包屑">
+          <a href="/">U途工具</a>
+          <span>/</span>
+          <span>二维码识别</span>
+        </nav>
+        <article class="seo-static-article">
+          <header class="seo-static-hero seo-static-hero--tool">
+            <p class="seo-static-kicker">图片与画布</p>
+            <h1>二维码识别</h1>
+            <p>从 PNG、JPEG、WebP 图片或截图中识别二维码，支持选择、拖拽和粘贴图片，复制识别文本。图片在浏览器本地处理，不上传，不自动打开链接。</p>
+
+          </header>
+          <section class="seo-static-card">
+            <h2>工具介绍</h2>
+          <p>选择、拖拽或粘贴一张二维码图片，在浏览器本地读取其中的链接或文字。本站同时提供二维码生成工具，本页专门用于识别已有图片中的二维码。</p>
+          </section>
+          <section class="seo-static-card">
+            <h2>适用场景</h2>
+          <ul>
+            <li>读取电脑截图、文档配图或已保存图片中的二维码内容。</li>
+            <li>在打开链接之前核对二维码内的原始文本。</li>
+          </ul>
+          </section>
+          <section class="seo-static-card">
+            <h2>使用步骤</h2>
+          <ol>
+            <li>选择、拖拽或粘贴一张静态 PNG、JPEG 或 WebP 图片。上限 20 MiB、2,400 万像素，单边最多 8,192 像素。</li>
+            <li>图片读取后自动识别一个二维码；需要时可取消、重新识别或更换图片。</li>
+            <li>检查识别内容并复制；链接只显示为文本，不会自动访问。</li>
+          </ol>
+          </section>
+
+
+
+          <section class="seo-static-card"><h2>常见问题</h2><article class="seo-static-faq"><h3>识别后的链接安全吗？</h3><p>识别仅还原编码内容，不判断内容可信度或链接安全性。结果不会自动打开。</p></article>
+<article class="seo-static-faq"><h3>为什么清晰图片也可能识别失败？</h3><p>过小、遮挡、模糊或高密度二维码可能失败。长边超过 2,500 像素时会缩放，请尝试裁剪到二维码附近。本工具不承诺识别所有二维码。</p></article>
+<article class="seo-static-faq"><h3>支持摄像头、条形码或批量识别吗？</h3><p>首版仅从单张静态图片读取一个二维码，不支持摄像头、条形码、动画图片或批量处理。</p></article></section>
+
+                    <section class="seo-static-card">
+            <h2>相关工具</h2>
+          <ul class="seo-static-links">
+            <li><a href="/tools/qr-code-generator/">二维码生成</a></li>
+            <li><a href="/tools/image-crop/">图片裁剪</a></li>
+            <li><a href="/tools/image-resize/">图片缩放</a></li>
+          </ul>
+          </section>
+                    <section class="seo-static-card">
+            <h2>同类工具</h2>
+          <ul class="seo-static-links">
+            <li><a href="/tools/image-format-converter/">图片格式转换</a></li>
+            <li><a href="/tools/image-compress/">图片压缩</a></li>
+            <li><a href="/tools/batch-image-compress/">批量图片压缩</a></li>
+            <li><a href="/tools/image-to-pdf/">图片转PDF</a></li>
+            <li><a href="/tools/pdf-to-image/">PDF转图片</a></li>
+            <li><a href="/tools/image-crop/">图片裁剪</a></li>
+            <li><a href="/tools/nine-grid-cutter/">九宫格切图</a></li>
+            <li><a href="/tools/text-to-image/">文字生成图片</a></li>
+            <li><a href="/tools/image-resize/">图片缩放</a></li>
+            <li><a href="/tools/image-rotate/">图片旋转</a></li>
+          </ul>
+          </section>
+        </article>
+      <footer class="seo-static-footer">
+        <nav aria-label="底部链接">
+          <a href="/privacy-policy/">隐私协议</a>
+          <span class="seo-static-separator">|</span>
+          <a href="/disclaimer/">免责声明</a>
+          <span class="seo-static-separator">|</span>
+          <a href="/contact-us/">联系我们</a>
+          <span class="seo-static-separator">|</span>
+          <a href="/friends/">友情链接</a>
+        </nav>
+      </footer>
+      </main>
+    </div>
+  </body>
+</html>

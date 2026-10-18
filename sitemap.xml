@@ -114,6 +114,9 @@
   <url><loc>https://utool.top/tools/yaml-editor/</loc></url>
   <url><loc>https://utool.top/tools/html-formatter/</loc></url>
   <url><loc>https://utool.top/tools/css-formatter/</loc></url>
+  <url><loc>https://utool.top/tools/qr-code-reader/</loc></url>
+  <url><loc>https://utool.top/tools/subnet-calculator/</loc></url>
+  <url><loc>https://utool.top/tools/html-to-markdown/</loc></url>
   <url><loc>https://utool.top/en/tools/json/</loc></url>
   <url><loc>https://utool.top/en/tools/mongodb-formatter/</loc></url>
   <url><loc>https://utool.top/en/tools/json-editor/</loc></url>
@@ -218,4 +221,7 @@
   <url><loc>https://utool.top/en/tools/yaml-editor/</loc></url>
   <url><loc>https://utool.top/en/tools/html-formatter/</loc></url>
   <url><loc>https://utool.top/en/tools/css-formatter/</loc></url>
+  <url><loc>https://utool.top/en/tools/qr-code-reader/</loc></url>
+  <url><loc>https://utool.top/en/tools/subnet-calculator/</loc></url>
+  <url><loc>https://utool.top/en/tools/html-to-markdown/</loc></url>
 </urlset>

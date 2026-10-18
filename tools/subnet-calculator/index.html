@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IPv4子网计算器 - CIDR与子网掩码计算 | U途工具</title>
+    <meta name="description" content="输入 IPv4 地址和 CIDR 前缀或连续子网掩码，本地计算网络地址、广播地址、主机范围、地址数量和通配符掩码，支持 /0、/31、/32 边界。" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content="IPv4子网计算器 - CIDR与子网掩码计算 | U途工具" />
+    <meta property="og:description" content="输入 IPv4 地址和 CIDR 前缀或连续子网掩码，本地计算网络地址、广播地址、主机范围、地址数量和通配符掩码，支持 /0、/31、/32 边界。" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://utool.top/tools/subnet-calculator/" />
+    <meta property="og:site_name" content="U途工具" />
+    <meta property="og:image" content="https://utool.top/utool-social.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="UTool – Free online developer tools" />
+    <meta name="twitter:image" content="https://utool.top/utool-social.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="IPv4子网计算器 - CIDR与子网掩码计算 | U途工具" />
+    <meta name="twitter:description" content="输入 IPv4 地址和 CIDR 前缀或连续子网掩码，本地计算网络地址、广播地址、主机范围、地址数量和通配符掩码，支持 /0、/31、/32 边界。" />
+    <link rel="canonical" href="https://utool.top/tools/subnet-calculator/" />
+
+    <link rel="alternate" hreflang="zh-CN" href="https://utool.top/tools/subnet-calculator/" data-seo-managed="alternate" />
+    <link rel="alternate" hreflang="en" href="https://utool.top/en/tools/subnet-calculator/" data-seo-managed="alternate" />
+    <link rel="alternate" hreflang="x-default" href="https://utool.top/tools/subnet-calculator/" data-seo-managed="alternate" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script type="application/ld+json" data-seo-managed="json-ld">{"@context":"https://schema.org","@type":"SoftwareApplication","@id":"https://utool.top/tools/subnet-calculator/#application","name":"IPv4子网计算器","description":"输入 IPv4 地址和 CIDR 前缀或连续子网掩码，本地计算网络地址、广播地址、主机范围、地址数量和通配符掩码，支持 /0、/31、/32 边界。","url":"https://utool.top/tools/subnet-calculator/","applicationCategory":"DeveloperApplication","isPartOf":{"@id":"https://utool.top/#website"},"operatingSystem":"Any","inLanguage":"zh-CN","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+    <script type="application/ld+json" data-seo-managed="json-ld">{"@context":"https://schema.org","@type":"WebSite","@id":"https://utool.top/#website","name":"U途工具","alternateName":"UTool","url":"https://utool.top/","inLanguage":["zh-CN","en"]}</script>
+    <script type="application/ld+json" data-seo-managed="json-ld">{"@context":"https://schema.org","@type":"WebPage","@id":"https://utool.top/tools/subnet-calculator/#page","url":"https://utool.top/tools/subnet-calculator/","name":"IPv4子网计算器 - CIDR与子网掩码计算","description":"输入 IPv4 地址和 CIDR 前缀或连续子网掩码，本地计算网络地址、广播地址、主机范围、地址数量和通配符掩码，支持 /0、/31、/32 边界。","inLanguage":"zh-CN","isPartOf":{"@id":"https://utool.top/#website"},"mainEntity":{"@id":"https://utool.top/tools/subnet-calculator/#application"}}</script>
+    <script type="application/ld+json" data-seo-managed="json-ld">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"U途工具","item":"https://utool.top/"},{"@type":"ListItem","position":2,"name":"IPv4子网计算器","item":"https://utool.top/tools/subnet-calculator/"}]}</script>
+    <style>
+      #seo-static {
+        background: #ffffff;
+        color: #0f172a;
+      }
+
+      .seo-static-shell {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 32px 16px 56px;
+        font-family: Arial, sans-serif;
+        line-height: 1.7;
+      }
+
+      .seo-static-hero {
+        padding: 12px 0 24px;
+      }
+
+      .seo-static-hero--tool {
+        padding-top: 0;
+      }
+
+      .seo-static-kicker {
+        margin: 0 0 8px;
+        color: #1d4ed8;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .seo-static-hero h1,
+      .seo-static-card h2,
+      .seo-static-faq h3,
+      .seo-static-contact h3 {
+        margin: 0 0 12px;
+      }
+
+      .seo-static-hero h1 {
+        font-size: 36px;
+        line-height: 1.15;
+      }
+
+      .seo-static-breadcrumbs {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        margin-bottom: 24px;
+        font-size: 14px;
+      }
+
+      .seo-static-card,
+      .seo-static-footer {
+        margin-top: 20px;
+        padding: 24px;
+        border: 1px solid #dbe3f0;
+        border-radius: 18px;
+        background: #f8fbff;
+      }
+
+      .seo-static-links {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 10px 18px;
+        padding-left: 18px;
+      }
+
+      .seo-static-faq + .seo-static-faq,
+      .seo-static-contact + .seo-static-contact {
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid #dbe3f0;
+      }
+
+      .seo-static-contact-list {
+        display: grid;
+        gap: 16px;
+      }
+
+      .seo-static-footer nav {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .seo-static-separator {
+        color: #64748b;
+      }
+
+      #seo-static a {
+        color: #1d4ed8;
+        text-decoration: none;
+      }
+
+      #seo-static a:hover {
+        text-decoration: underline;
+      }
+
+      @media (max-width: 720px) {
+        .seo-static-shell {
+          padding: 24px 14px 40px;
+        }
+
+        .seo-static-hero h1 {
+          font-size: 28px;
+        }
+
+        .seo-static-card,
+        .seo-static-footer {
+          padding: 18px;
+        }
+      }
+    </style>
+    <script type="module" crossorigin src="/assets/chunk-main-izvRApXN.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/main-B7BP-o29.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    <div id="seo-static" data-static-content="true">
+      <main class="seo-static-shell">
+        <nav class="seo-static-breadcrumbs" aria-label="面包屑">
+          <a href="/">U途工具</a>
+          <span>/</span>
+          <span>IPv4子网计算器</span>
+        </nav>
+        <article class="seo-static-article">
+          <header class="seo-static-hero seo-static-hero--tool">
+            <p class="seo-static-kicker">网络与调试</p>
+            <h1>IPv4子网计算器</h1>
+            <p>输入 IPv4 地址和 CIDR 前缀或连续子网掩码，本地计算网络地址、广播地址、主机范围、地址数量和通配符掩码，支持 /0、/31、/32 边界。</p>
+
+          </header>
+          <section class="seo-static-card">
+            <h2>工具介绍</h2>
+          <p>输入 IPv4 地址及 CIDR 前缀或连续子网掩码，查看所属网段、网络地址、广播地址、主机范围和地址数量。所有计算在浏览器本地完成，不扫描网络。</p>
+          </section>
+          <section class="seo-static-card">
+            <h2>适用场景</h2>
+          <ul>
+            <li>核对局域网或服务器配置中的网段和地址边界。</li>
+            <li>将 CIDR 前缀与子网掩码互相核对，复制计算结果用于记录。</li>
+          </ul>
+          </section>
+          <section class="seo-static-card">
+            <h2>使用步骤</h2>
+          <ol>
+            <li>输入纯 IPv4 地址，例如 192.168.1.42。</li>
+            <li>输入 0–32 的前缀，例如 24 或 /24，也可输入 255.255.255.0 这样的连续子网掩码。</li>
+            <li>点击计算，查看网络地址、广播地址、主机范围及数量，并复制结果。</li>
+          </ol>
+          </section>
+
+
+
+          <section class="seo-static-card"><h2>常见问题</h2><article class="seo-static-faq"><h3>/31 和 /32 如何解释？</h3><p>/31 按点对点网络解释，两个地址均为端点，不设置广播地址；/32 表示一个主机地址，也不设置广播地址。</p></article>
+<article class="seo-static-faq"><h3>主机范围里的所有地址都能使用吗？</h3><p>这里只计算数值边界；特殊用途、保留地址及实际分配规则需另行核对，计算不代表地址可连接。</p></article>
+<article class="seo-static-faq"><h3>支持 IPv6 或非连续掩码吗？</h3><p>本页仅支持 IPv4，非连续掩码明确报错。不会展开或扫描整个地址列表。</p></article></section>
+
+                    <section class="seo-static-card">
+            <h2>相关工具</h2>
+          <ul class="seo-static-links">
+            <li><a href="/tools/ip-validator/">IP地址合法性检测</a></li>
+            <li><a href="/tools/ip-generator/">IP地址生成器</a></li>
+            <li><a href="/tools/ip-info/">IP与浏览器信息</a></li>
+          </ul>
+          </section>
+                    <section class="seo-static-card">
+            <h2>同类工具</h2>
+          <ul class="seo-static-links">
+            <li><a href="/tools/ip-validator/">IP地址合法性检测</a></li>
+            <li><a href="/tools/ip-generator/">IP地址生成器</a></li>
+            <li><a href="/tools/user-agent-generator/">UserAgent生成器</a></li>
+            <li><a href="/tools/mac-address-generator/">MAC地址生成器</a></li>
+            <li><a href="/tools/url-parser/">URL解析工具</a></li>
+            <li><a href="/tools/url-query-formatter/">URL GET参数格式化</a></li>
+            <li><a href="/tools/cookie-formatter/">Cookie格式化</a></li>
+            <li><a href="/tools/header-formatter/">Header格式化</a></li>
+            <li><a href="/tools/ip-info/">IP与浏览器信息</a></li>
+            <li><a href="/tools/cron-expression/">Cron表达式</a></li>
+          </ul>
+          </section>
+        </article>
+      <footer class="seo-static-footer">
+        <nav aria-label="底部链接">
+          <a href="/privacy-policy/">隐私协议</a>
+          <span class="seo-static-separator">|</span>
+          <a href="/disclaimer/">免责声明</a>
+          <span class="seo-static-separator">|</span>
+          <a href="/contact-us/">联系我们</a>
+          <span class="seo-static-separator">|</span>
+          <a href="/friends/">友情链接</a>
+        </nav>
+      </footer>
+      </main>
+    </div>
+  </body>
+</html>
