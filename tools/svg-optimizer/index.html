@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SVG在线压缩 - 静态SVG优化与前后对比 | U途工具</title>
+    <meta name="description" content="粘贴或导入静态 SVG，在浏览器本地压缩代码、调整小数精度，对比预览与文件体积并复制或下载。保留 viewBox 和 ID，拒绝脚本与外部资源。" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content="SVG在线压缩 - 静态SVG优化与前后对比 | U途工具" />
+    <meta property="og:description" content="粘贴或导入静态 SVG，在浏览器本地压缩代码、调整小数精度，对比预览与文件体积并复制或下载。保留 viewBox 和 ID，拒绝脚本与外部资源。" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://utool.top/tools/svg-optimizer/" />
+    <meta property="og:site_name" content="U途工具" />
+    <meta property="og:image" content="https://utool.top/utool-social.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="UTool – Free online developer tools" />
+    <meta name="twitter:image" content="https://utool.top/utool-social.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="SVG在线压缩 - 静态SVG优化与前后对比 | U途工具" />
+    <meta name="twitter:description" content="粘贴或导入静态 SVG，在浏览器本地压缩代码、调整小数精度，对比预览与文件体积并复制或下载。保留 viewBox 和 ID，拒绝脚本与外部资源。" />
+    <link rel="canonical" href="https://utool.top/tools/svg-optimizer/" />
+
+    <link rel="alternate" hreflang="zh-CN" href="https://utool.top/tools/svg-optimizer/" data-seo-managed="alternate" />
+    <link rel="alternate" hreflang="en" href="https://utool.top/en/tools/svg-optimizer/" data-seo-managed="alternate" />
+    <link rel="alternate" hreflang="x-default" href="https://utool.top/tools/svg-optimizer/" data-seo-managed="alternate" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script type="application/ld+json" data-seo-managed="json-ld">{"@context":"https://schema.org","@type":"SoftwareApplication","@id":"https://utool.top/tools/svg-optimizer/#application","name":"SVG压缩","description":"粘贴或导入静态 SVG，在浏览器本地压缩代码、调整小数精度，对比预览与文件体积并复制或下载。保留 viewBox 和 ID，拒绝脚本与外部资源。","url":"https://utool.top/tools/svg-optimizer/","applicationCategory":"MultimediaApplication","isPartOf":{"@id":"https://utool.top/#website"},"operatingSystem":"Any","inLanguage":"zh-CN","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+    <script type="application/ld+json" data-seo-managed="json-ld">{"@context":"https://schema.org","@type":"WebSite","@id":"https://utool.top/#website","name":"U途工具","alternateName":"UTool","url":"https://utool.top/","inLanguage":["zh-CN","en"]}</script>
+    <script type="application/ld+json" data-seo-managed="json-ld">{"@context":"https://schema.org","@type":"WebPage","@id":"https://utool.top/tools/svg-optimizer/#page","url":"https://utool.top/tools/svg-optimizer/","name":"SVG在线压缩 - 静态SVG优化与前后对比","description":"粘贴或导入静态 SVG，在浏览器本地压缩代码、调整小数精度，对比预览与文件体积并复制或下载。保留 viewBox 和 ID，拒绝脚本与外部资源。","inLanguage":"zh-CN","isPartOf":{"@id":"https://utool.top/#website"},"mainEntity":{"@id":"https://utool.top/tools/svg-optimizer/#application"}}</script>
+    <script type="application/ld+json" data-seo-managed="json-ld">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"U途工具","item":"https://utool.top/"},{"@type":"ListItem","position":2,"name":"SVG压缩","item":"https://utool.top/tools/svg-optimizer/"}]}</script>
+    <style>
+      #seo-static {
+        background: #ffffff;
+        color: #0f172a;
+      }
+
+      .seo-static-shell {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 32px 16px 56px;
+        font-family: Arial, sans-serif;
+        line-height: 1.7;
+      }
+
+      .seo-static-hero {
+        padding: 12px 0 24px;
+      }
+
+      .seo-static-hero--tool {
+        padding-top: 0;
+      }
+
+      .seo-static-kicker {
+        margin: 0 0 8px;
+        color: #1d4ed8;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .seo-static-hero h1,
+      .seo-static-card h2,
+      .seo-static-faq h3,
+      .seo-static-contact h3 {
+        margin: 0 0 12px;
+      }
+
+      .seo-static-hero h1 {
+        font-size: 36px;
+        line-height: 1.15;
+      }
+
+      .seo-static-breadcrumbs {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        margin-bottom: 24px;
+        font-size: 14px;
+      }
+
+      .seo-static-card,
+      .seo-static-footer {
+        margin-top: 20px;
+        padding: 24px;
+        border: 1px solid #dbe3f0;
+        border-radius: 18px;
+        background: #f8fbff;
+      }
+
+      .seo-static-links {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 10px 18px;
+        padding-left: 18px;
+      }
+
+      .seo-static-faq + .seo-static-faq,
+      .seo-static-contact + .seo-static-contact {
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid #dbe3f0;
+      }
+
+      .seo-static-contact-list {
+        display: grid;
+        gap: 16px;
+      }
+
+      .seo-static-footer nav {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .seo-static-separator {
+        color: #64748b;
+      }
+
+      #seo-static a {
+        color: #1d4ed8;
+        text-decoration: none;
+      }
+
+      #seo-static a:hover {
+        text-decoration: underline;
+      }
+
+      @media (max-width: 720px) {
+        .seo-static-shell {
+          padding: 24px 14px 40px;
+        }
+
+        .seo-static-hero h1 {
+          font-size: 28px;
+        }
+
+        .seo-static-card,
+        .seo-static-footer {
+          padding: 18px;
+        }
+      }
+    </style>
+    <script type="module" crossorigin src="/assets/chunk-main-CePNXObI.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/main-CBwEkCvh.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    <div id="seo-static" data-static-content="true">
+      <main class="seo-static-shell">
+        <nav class="seo-static-breadcrumbs" aria-label="面包屑">
+          <a href="/">U途工具</a>
+          <span>/</span>
+          <span>SVG压缩</span>
+        </nav>
+        <article class="seo-static-article">
+          <header class="seo-static-hero seo-static-hero--tool">
+            <p class="seo-static-kicker">图片与画布</p>
+            <h1>SVG压缩</h1>
+            <p>粘贴或导入静态 SVG，在浏览器本地压缩代码、调整小数精度，对比预览与文件体积并复制或下载。保留 viewBox 和 ID，拒绝脚本与外部资源。</p>
+
+          </header>
+          <section class="seo-static-card">
+            <h2>工具介绍</h2>
+          <p>导入或粘贴静态 SVG，使用 SVGO 在独立 Worker 中移除注释、编辑器元数据并优化数值、颜色和路径。优化后可对比代码、预览与 UTF-8 字节数。</p>
+          <p>保留 viewBox、ID、标题和描述，不直接将输入插入页面 DOM。降低小数精度可能影响细节，下载前请检查前后预览。</p>
+          </section>
+          <section class="seo-static-card">
+            <h2>适用场景</h2>
+          <ul>
+            <li>精简网站图标和静态插画的 SVG 代码。</li>
+            <li>清理设计软件导出文件中的注释与元数据。</li>
+            <li>比较不同小数精度对文件体积和细节的影响。</li>
+          </ul>
+          </section>
+          <section class="seo-static-card">
+            <h2>使用步骤</h2>
+          <ol>
+            <li>粘贴完整 SVG 或导入 UTF-8 编码的 .svg 文件。</li>
+            <li>选择 2–6 位小数精度，点击压缩 SVG。</li>
+            <li>对比结果及体积，复制代码或下载优化后的文件。</li>
+          </ol>
+          </section>
+
+          <section class="seo-static-card"><h2>能力范围与限制</h2>          <ul>
+            <li>最多 200,000 字符和 10,000 个元素，仅支持含 SVG 命名空间的完整静态文档。</li>
+            <li>拒绝脚本、事件、动画、foreignObject、DOCTYPE、嵌入图片、外部资源及 CSS @规则和转义写法。</li>
+            <li>资源引用仅支持文档内 #id；精度调整可能改变细节，已精简的文件不保证进一步缩小。</li>
+          </ul></section>
+          <section class="seo-static-card"><h2>数据处理说明</h2><p>解析与优化在本地 Worker 中执行，不上传 SVG，不加载 SVG 内的外部资源。</p></section>
+
+
+                    <section class="seo-static-card">
+            <h2>相关工具</h2>
+          <ul class="seo-static-links">
+            <li><a href="/tools/image-compress/">图片压缩</a></li>
+            <li><a href="/tools/html-formatter/">HTML格式化与压缩</a></li>
+            <li><a href="/tools/css-formatter/">CSS格式化与压缩</a></li>
+          </ul>
+          </section>
+                    <section class="seo-static-card">
+            <h2>同类工具</h2>
+          <ul class="seo-static-links">
+            <li><a href="/tools/image-format-converter/">图片格式转换</a></li>
+            <li><a href="/tools/image-compress/">图片压缩</a></li>
+            <li><a href="/tools/batch-image-compress/">批量图片压缩</a></li>
+            <li><a href="/tools/image-to-pdf/">图片转PDF</a></li>
+            <li><a href="/tools/pdf-to-image/">PDF转图片</a></li>
+            <li><a href="/tools/image-crop/">图片裁剪</a></li>
+            <li><a href="/tools/nine-grid-cutter/">九宫格切图</a></li>
+            <li><a href="/tools/text-to-image/">文字生成图片</a></li>
+            <li><a href="/tools/image-resize/">图片缩放</a></li>
+            <li><a href="/tools/image-rotate/">图片旋转</a></li>
+          </ul>
+          </section>
+        </article>
+      <footer class="seo-static-footer">
+        <nav aria-label="底部链接">
+          <a href="/privacy-policy/">隐私协议</a>
+          <span class="seo-static-separator">|</span>
+          <a href="/disclaimer/">免责声明</a>
+          <span class="seo-static-separator">|</span>
+          <a href="/contact-us/">联系我们</a>
+          <span class="seo-static-separator">|</span>
+          <a href="/friends/">友情链接</a>
+        </nav>
+      </footer>
+      </main>
+    </div>
+  </body>
+</html>
