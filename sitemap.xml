@@ -23,11 +23,13 @@
   <url><loc>https://utool.top/tools/json-to-typescript/</loc></url>
   <url><loc>https://utool.top/tools/json-to-python/</loc></url>
   <url><loc>https://utool.top/tools/json-to-go/</loc></url>
+  <url><loc>https://utool.top/tools/json-to-csharp/</loc></url>
   <url><loc>https://utool.top/tools/base64/</loc></url>
   <url><loc>https://utool.top/tools/base32/</loc></url>
   <url><loc>https://utool.top/tools/url-codec/</loc></url>
   <url><loc>https://utool.top/tools/unicode-converter/</loc></url>
   <url><loc>https://utool.top/tools/html-entity/</loc></url>
+  <url><loc>https://utool.top/tools/morse-code/</loc></url>
   <url><loc>https://utool.top/tools/ascii-converter/</loc></url>
   <url><loc>https://utool.top/tools/image-to-base64/</loc></url>
   <url><loc>https://utool.top/tools/jwt-tool/</loc></url>
@@ -118,6 +120,7 @@
   <url><loc>https://utool.top/tools/subnet-calculator/</loc></url>
   <url><loc>https://utool.top/tools/html-to-markdown/</loc></url>
   <url><loc>https://utool.top/tools/simplified-traditional/</loc></url>
+  <url><loc>https://utool.top/tools/full-half-converter/</loc></url>
   <url><loc>https://utool.top/tools/pinyin-converter/</loc></url>
   <url><loc>https://utool.top/tools/rmb-uppercase/</loc></url>
   <url><loc>https://utool.top/tools/barcode-generator/</loc></url>
@@ -139,11 +142,13 @@
   <url><loc>https://utool.top/en/tools/json-to-typescript/</loc></url>
   <url><loc>https://utool.top/en/tools/json-to-python/</loc></url>
   <url><loc>https://utool.top/en/tools/json-to-go/</loc></url>
+  <url><loc>https://utool.top/en/tools/json-to-csharp/</loc></url>
   <url><loc>https://utool.top/en/tools/base64/</loc></url>
   <url><loc>https://utool.top/en/tools/base32/</loc></url>
   <url><loc>https://utool.top/en/tools/url-codec/</loc></url>
   <url><loc>https://utool.top/en/tools/unicode-converter/</loc></url>
   <url><loc>https://utool.top/en/tools/html-entity/</loc></url>
+  <url><loc>https://utool.top/en/tools/morse-code/</loc></url>
   <url><loc>https://utool.top/en/tools/ascii-converter/</loc></url>
   <url><loc>https://utool.top/en/tools/image-to-base64/</loc></url>
   <url><loc>https://utool.top/en/tools/jwt-tool/</loc></url>
@@ -234,6 +239,7 @@
   <url><loc>https://utool.top/en/tools/subnet-calculator/</loc></url>
   <url><loc>https://utool.top/en/tools/html-to-markdown/</loc></url>
   <url><loc>https://utool.top/en/tools/simplified-traditional/</loc></url>
+  <url><loc>https://utool.top/en/tools/full-half-converter/</loc></url>
   <url><loc>https://utool.top/en/tools/pinyin-converter/</loc></url>
   <url><loc>https://utool.top/en/tools/rmb-uppercase/</loc></url>
   <url><loc>https://utool.top/en/tools/barcode-generator/</loc></url>

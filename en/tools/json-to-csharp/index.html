@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JSON to C# Class Generator - Nested Classes &amp; JsonProperty Attributes | UTool</title>
+    <meta name="description" content="Convert JSON to C# classes with recursive nested types, List&lt;T&gt; collections, type merging across array items, Newtonsoft.Json or System.Text.Json attributes and nullable annotations. Runs locally in your browser." />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content="JSON to C# Class Generator - Nested Classes &amp; JsonProperty Attributes | UTool" />
+    <meta property="og:description" content="Convert JSON to C# classes with recursive nested types, List&lt;T&gt; collections, type merging across array items, Newtonsoft.Json or System.Text.Json attributes and nullable annotations. Runs locally in your browser." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://utool.top/en/tools/json-to-csharp/" />
+    <meta property="og:site_name" content="UTool" />
+    <meta property="og:image" content="https://utool.top/utool-social.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="UTool – Free online developer tools" />
+    <meta name="twitter:image" content="https://utool.top/utool-social.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="JSON to C# Class Generator - Nested Classes &amp; JsonProperty Attributes | UTool" />
+    <meta name="twitter:description" content="Convert JSON to C# classes with recursive nested types, List&lt;T&gt; collections, type merging across array items, Newtonsoft.Json or System.Text.Json attributes and nullable annotations. Runs locally in your browser." />
+    <link rel="canonical" href="https://utool.top/en/tools/json-to-csharp/" />
+
+    <link rel="alternate" hreflang="zh-CN" href="https://utool.top/tools/json-to-csharp/" data-seo-managed="alternate" />
+    <link rel="alternate" hreflang="en" href="https://utool.top/en/tools/json-to-csharp/" data-seo-managed="alternate" />
+    <link rel="alternate" hreflang="x-default" href="https://utool.top/tools/json-to-csharp/" data-seo-managed="alternate" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script type="application/ld+json" data-seo-managed="json-ld">{"@context":"https://schema.org","@type":"SoftwareApplication","@id":"https://utool.top/en/tools/json-to-csharp/#application","name":"JSON to C#","description":"Convert JSON to C# classes with recursive nested types, List<T> collections, type merging across array items, Newtonsoft.Json or System.Text.Json attributes and nullable annotations. Runs locally in your browser.","url":"https://utool.top/en/tools/json-to-csharp/","applicationCategory":"DeveloperApplication","isPartOf":{"@id":"https://utool.top/#website"},"operatingSystem":"Any","inLanguage":"en","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+    <script type="application/ld+json" data-seo-managed="json-ld">{"@context":"https://schema.org","@type":"WebSite","@id":"https://utool.top/#website","name":"UTool","alternateName":"U途工具","url":"https://utool.top/","inLanguage":["zh-CN","en"]}</script>
+    <script type="application/ld+json" data-seo-managed="json-ld">{"@context":"https://schema.org","@type":"WebPage","@id":"https://utool.top/en/tools/json-to-csharp/#page","url":"https://utool.top/en/tools/json-to-csharp/","name":"JSON to C# Class Generator - Nested Classes & JsonProperty Attributes","description":"Convert JSON to C# classes with recursive nested types, List<T> collections, type merging across array items, Newtonsoft.Json or System.Text.Json attributes and nullable annotations. Runs locally in your browser.","inLanguage":"en","isPartOf":{"@id":"https://utool.top/#website"},"mainEntity":{"@id":"https://utool.top/en/tools/json-to-csharp/#application"}}</script>
+    <script type="application/ld+json" data-seo-managed="json-ld">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"UTool","item":"https://utool.top/"},{"@type":"ListItem","position":2,"name":"JSON to C#","item":"https://utool.top/en/tools/json-to-csharp/"}]}</script>
+    <style>
+      #seo-static {
+        background: #ffffff;
+        color: #0f172a;
+      }
+
+      .seo-static-shell {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 32px 16px 56px;
+        font-family: Arial, sans-serif;
+        line-height: 1.7;
+      }
+
+      .seo-static-hero {
+        padding: 12px 0 24px;
+      }
+
+      .seo-static-hero--tool {
+        padding-top: 0;
+      }
+
+      .seo-static-kicker {
+        margin: 0 0 8px;
+        color: #1d4ed8;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .seo-static-hero h1,
+      .seo-static-card h2,
+      .seo-static-faq h3,
+      .seo-static-contact h3 {
+        margin: 0 0 12px;
+      }
+
+      .seo-static-hero h1 {
+        font-size: 36px;
+        line-height: 1.15;
+      }
+
+      .seo-static-breadcrumbs {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        margin-bottom: 24px;
+        font-size: 14px;
+      }
+
+      .seo-static-card,
+      .seo-static-footer {
+        margin-top: 20px;
+        padding: 24px;
+        border: 1px solid #dbe3f0;
+        border-radius: 18px;
+        background: #f8fbff;
+      }
+
+      .seo-static-links {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 10px 18px;
+        padding-left: 18px;
+      }
+
+      .seo-static-faq + .seo-static-faq,
+      .seo-static-contact + .seo-static-contact {
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid #dbe3f0;
+      }
+
+      .seo-static-contact-list {
+        display: grid;
+        gap: 16px;
+      }
+
+      .seo-static-footer nav {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .seo-static-separator {
+        color: #64748b;
+      }
+
+      #seo-static a {
+        color: #1d4ed8;
+        text-decoration: none;
+      }
+
+      #seo-static a:hover {
+        text-decoration: underline;
+      }
+
+      @media (max-width: 720px) {
+        .seo-static-shell {
+          padding: 24px 14px 40px;
+        }
+
+        .seo-static-hero h1 {
+          font-size: 28px;
+        }
+
+        .seo-static-card,
+        .seo-static-footer {
+          padding: 18px;
+        }
+      }
+    </style>
+    <script type="module" crossorigin src="/assets/chunk-main-CCwG_4bj.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/main-CBwEkCvh.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    <div id="seo-static" data-static-content="true">
+      <main class="seo-static-shell">
+        <nav class="seo-static-breadcrumbs" aria-label="Breadcrumb">
+          <a href="/">UTool</a>
+          <span>/</span>
+          <span>JSON to C#</span>
+        </nav>
+        <article class="seo-static-article">
+          <header class="seo-static-hero seo-static-hero--tool">
+            <p class="seo-static-kicker">Data &amp; JSON</p>
+            <h1>JSON to C#</h1>
+            <p>Convert JSON to C# classes with recursive nested types, List&lt;T&gt; collections, type merging across array items, Newtonsoft.Json or System.Text.Json attributes and nullable annotations. Runs locally in your browser.</p>
+
+          </header>
+          <section class="seo-static-card">
+            <h2>About this tool</h2>
+          <p>Paste a JSON API sample and get ready-to-use C# classes. Nested objects become separate classes, arrays become List&lt;T&gt;, and fields are merged across every array element, with missing fields marked nullable.</p>
+          <p>Choose Newtonsoft.Json [JsonProperty] or System.Text.Json [JsonPropertyName] mapping attributes. Properties default to PascalCase or keep original keys; integers map to int/long by range and decimals to double.</p>
+          </section>
+          <section class="seo-static-card">
+            <h2>Best use cases</h2>
+          <ul>
+            <li>Turn JSON from API docs or network captures into C# deserialization models.</li>
+            <li>Draft DTOs, entity classes or configuration models for .NET projects.</li>
+            <li>Verify field types and nullability against a JSON sample instead of writing classes by hand.</li>
+          </ul>
+          </section>
+          <section class="seo-static-card">
+            <h2>How to use it</h2>
+          <ol>
+            <li>Paste a JSON object or array; a sample is preloaded.</li>
+            <li>Set the root type name and choose serializer attributes, naming and nullable options.</li>
+            <li>Select Generate C#, review the code, then copy or download the .cs file.</li>
+          </ol>
+          </section>
+
+          <section class="seo-static-card"><h2>Scope and limits</h2>          <ul>
+            <li>Up to 40 nesting levels and 20,000 nodes; the root must be an object or an array.</li>
+            <li>Numbers use JavaScript precision; encode integers beyond the safe range as strings.</li>
+            <li>Types are inferred from the sample only. Mixed-type fields fall back to object; review before shipping.</li>
+          </ul></section>
+          <section class="seo-static-card"><h2>Data processing</h2><p>Parsing and code generation run entirely in your browser. Nothing is uploaded or stored.</p></section>
+          <section class="seo-static-card"><h2>FAQ</h2><article class="seo-static-faq"><h3>How are array objects with different fields handled?</h3><p>Fields are merged across all array elements: common fields stay, fields missing in some objects become nullable (e.g. int?), and conflicting types widen (int→long→double) or fall back to object.</p></article>
+<article class="seo-static-faq"><h3>Newtonsoft.Json or System.Text.Json?</h3><p>Pick [JsonProperty] for Json.NET projects and [JsonPropertyName] for the built-in serializer in .NET Core 3.0+. Attributes are emitted only when the property name differs from the JSON key.</p></article>
+<article class="seo-static-faq"><h3>Is my JSON uploaded?</h3><p>No. Parsing and generation run locally in your browser, and nothing is retained after you close the page.</p></article></section>
+
+                    <section class="seo-static-card">
+            <h2>Related tools</h2>
+          <ul class="seo-static-links">
+            <li><a href="/en/tools/json-to-java/">JSON to Java</a></li>
+            <li><a href="/en/tools/json-to-typescript/">JSON to TypeScript</a></li>
+            <li><a href="/en/tools/json-to-json-schema/">JSON to JSON Schema</a></li>
+          </ul>
+          </section>
+                    <section class="seo-static-card">
+            <h2>More in this category</h2>
+          <ul class="seo-static-links">
+            <li><a href="/en/tools/json/">JSON Formatter</a></li>
+            <li><a href="/en/tools/mongodb-formatter/">MongoDB Formatter</a></li>
+            <li><a href="/en/tools/json-editor/">JSON Editor</a></li>
+            <li><a href="/en/tools/xml-editor/">XML Editor</a></li>
+            <li><a href="/en/tools/json-sort/">JSON Sort</a></li>
+            <li><a href="/en/tools/json-diff/">JSON Diff</a></li>
+            <li><a href="/en/tools/json-to-xml/">JSON to XML</a></li>
+            <li><a href="/en/tools/json-to-csv/">JSON to CSV</a></li>
+            <li><a href="/en/tools/json-to-yaml/">JSON to YAML</a></li>
+            <li><a href="/en/tools/json-to-java/">JSON to Java</a></li>
+          </ul>
+          </section>
+        </article>
+      <footer class="seo-static-footer">
+        <nav aria-label="Footer links">
+          <a href="/en/privacy-policy/">Privacy Policy</a>
+          <span class="seo-static-separator">|</span>
+          <a href="/en/disclaimer/">Disclaimer</a>
+          <span class="seo-static-separator">|</span>
+          <a href="/en/contact-us/">Contact Us</a>
+          <span class="seo-static-separator">|</span>
+          <a href="/en/friends/">Friend Links</a>
+        </nav>
+      </footer>
+      </main>
+    </div>
+  </body>
+</html>
