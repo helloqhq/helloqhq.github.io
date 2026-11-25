@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JSON &amp; GET Query Converter - JSON to Query String Online | UTool</title>
+    <meta name="description" content="Convert JSON objects and GET query parameters both ways locally. Supports dot/bracket nesting, URL encoding, full URLs, duplicate arrays, copy and download. No uploads or backend required." />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content="JSON &amp; GET Query Converter - JSON to Query String Online | UTool" />
+    <meta property="og:description" content="Convert JSON objects and GET query parameters both ways locally. Supports dot/bracket nesting, URL encoding, full URLs, duplicate arrays, copy and download. No uploads or backend required." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://utool.top/en/tools/json-get-converter/" />
+    <meta property="og:site_name" content="UTool" />
+    <meta property="og:image" content="https://utool.top/utool-social.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="UTool – Free online developer tools" />
+    <meta name="twitter:image" content="https://utool.top/utool-social.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="JSON &amp; GET Query Converter - JSON to Query String Online | UTool" />
+    <meta name="twitter:description" content="Convert JSON objects and GET query parameters both ways locally. Supports dot/bracket nesting, URL encoding, full URLs, duplicate arrays, copy and download. No uploads or backend required." />
+    <link rel="canonical" href="https://utool.top/en/tools/json-get-converter/" />
+
+    <link rel="alternate" hreflang="zh-CN" href="https://utool.top/tools/json-get-converter/" data-seo-managed="alternate" />
+    <link rel="alternate" hreflang="en" href="https://utool.top/en/tools/json-get-converter/" data-seo-managed="alternate" />
+    <link rel="alternate" hreflang="x-default" href="https://utool.top/tools/json-get-converter/" data-seo-managed="alternate" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script type="application/ld+json" data-seo-managed="json-ld">{"@context":"https://schema.org","@type":"SoftwareApplication","@id":"https://utool.top/en/tools/json-get-converter/#application","name":"JSON & GET Query Converter","description":"Convert JSON objects and GET query parameters both ways locally. Supports dot/bracket nesting, URL encoding, full URLs, duplicate arrays, copy and download. No uploads or backend required.","url":"https://utool.top/en/tools/json-get-converter/","applicationCategory":"DeveloperApplication","isPartOf":{"@id":"https://utool.top/#website"},"operatingSystem":"Any","inLanguage":"en","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+    <script type="application/ld+json" data-seo-managed="json-ld">{"@context":"https://schema.org","@type":"WebSite","@id":"https://utool.top/#website","name":"UTool","alternateName":"U途工具","url":"https://utool.top/","inLanguage":["zh-CN","en"]}</script>
+    <script type="application/ld+json" data-seo-managed="json-ld">{"@context":"https://schema.org","@type":"WebPage","@id":"https://utool.top/en/tools/json-get-converter/#page","url":"https://utool.top/en/tools/json-get-converter/","name":"JSON & GET Query Converter - JSON to Query String Online","description":"Convert JSON objects and GET query parameters both ways locally. Supports dot/bracket nesting, URL encoding, full URLs, duplicate arrays, copy and download. No uploads or backend required.","inLanguage":"en","isPartOf":{"@id":"https://utool.top/#website"},"mainEntity":{"@id":"https://utool.top/en/tools/json-get-converter/#application"}}</script>
+    <script type="application/ld+json" data-seo-managed="json-ld">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"UTool","item":"https://utool.top/"},{"@type":"ListItem","position":2,"name":"JSON & GET Query Converter","item":"https://utool.top/en/tools/json-get-converter/"}]}</script>
+    <style>
+      #seo-static {
+        background: #ffffff;
+        color: #0f172a;
+      }
+
+      .seo-static-shell {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 32px 16px 56px;
+        font-family: Arial, sans-serif;
+        line-height: 1.7;
+      }
+
+      .seo-static-hero {
+        padding: 12px 0 24px;
+      }
+
+      .seo-static-hero--tool {
+        padding-top: 0;
+      }
+
+      .seo-static-kicker {
+        margin: 0 0 8px;
+        color: #1d4ed8;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .seo-static-hero h1,
+      .seo-static-card h2,
+      .seo-static-faq h3,
+      .seo-static-contact h3 {
+        margin: 0 0 12px;
+      }
+
+      .seo-static-hero h1 {
+        font-size: 36px;
+        line-height: 1.15;
+      }
+
+      .seo-static-breadcrumbs {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        margin-bottom: 24px;
+        font-size: 14px;
+      }
+
+      .seo-static-card,
+      .seo-static-footer {
+        margin-top: 20px;
+        padding: 24px;
+        border: 1px solid #dbe3f0;
+        border-radius: 18px;
+        background: #f8fbff;
+      }
+
+      .seo-static-links {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 10px 18px;
+        padding-left: 18px;
+      }
+
+      .seo-static-faq + .seo-static-faq,
+      .seo-static-contact + .seo-static-contact {
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid #dbe3f0;
+      }
+
+      .seo-static-contact-list {
+        display: grid;
+        gap: 16px;
+      }
+
+      .seo-static-footer nav {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .seo-static-separator {
+        color: #64748b;
+      }
+
+      #seo-static a {
+        color: #1d4ed8;
+        text-decoration: none;
+      }
+
+      #seo-static a:hover {
+        text-decoration: underline;
+      }
+
+      @media (max-width: 720px) {
+        .seo-static-shell {
+          padding: 24px 14px 40px;
+        }
+
+        .seo-static-hero h1 {
+          font-size: 28px;
+        }
+
+        .seo-static-card,
+        .seo-static-footer {
+          padding: 18px;
+        }
+      }
+    </style>
+    <script type="module" crossorigin src="/assets/chunk-main-BrS13hJM.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/main-CBwEkCvh.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    <div id="seo-static" data-static-content="true">
+      <main class="seo-static-shell">
+        <nav class="seo-static-breadcrumbs" aria-label="Breadcrumb">
+          <a href="/">UTool</a>
+          <span>/</span>
+          <span>JSON &amp; GET Query Converter</span>
+        </nav>
+        <article class="seo-static-article">
+          <header class="seo-static-hero seo-static-hero--tool">
+            <p class="seo-static-kicker">Data &amp; JSON</p>
+            <h1>JSON &amp; GET Query Converter</h1>
+            <p>Convert JSON objects and GET query parameters both ways locally. Supports dot/bracket nesting, URL encoding, full URLs, duplicate arrays, copy and download. No uploads or backend required.</p>
+
+          </header>
+          <section class="seo-static-card">
+            <h2>About this tool</h2>
+          <p>Convert between JSON objects and GET query parameters in one workspace. Nested JSON objects use dot notation and arrays use indexes such as [0] and [1]; the reverse conversion restores objects and arrays.</p>
+          <p>Paste a full URL, a query string with a ? prefix or bare parameters. Names and values are URL-encoded by default, including Chinese, spaces, &amp; and =. Repeated parameters become arrays instead of being silently overwritten.</p>
+          </section>
+          <section class="seo-static-card">
+            <h2>Best use cases</h2>
+          <ul>
+            <li>Turn JSON request samples from API documentation into GET parameters for browsers, cURL or debugging tools.</li>
+            <li>Restore captured URLs and log entries to JSON to inspect nesting, repeated values and empty parameters.</li>
+            <li>Prepare analytics, search and pagination parameters as a copy-ready query string.</li>
+          </ul>
+          </section>
+          <section class="seo-static-card">
+            <h2>How to use it</h2>
+          <ol>
+            <li>Paste content into the JSON or GET parameters editor, or load the example to see both formats.</li>
+            <li>Adjust URL encoding and nested restoration if needed, then select JSON → GET or GET → JSON.</li>
+            <li>Review parameter counts, duplicates and skipped empty containers, then copy or download the result.</li>
+          </ol>
+          </section>
+
+          <section class="seo-static-card"><h2>Scope and limits</h2>          <ul>
+            <li>Up to 200,000 characters, 40 nesting levels and 20,000 parameters per conversion.</li>
+            <li>Query values remain strings; JSON numbers, booleans and null become their textual forms.</li>
+            <li>Empty objects and arrays are skipped and counted. Array indexes must be continuous from 0, and conflicting paths report an error.</li>
+          </ul></section>
+          <section class="seo-static-card"><h2>Data processing</h2><p>JSON parsing, URL encoding and decoding, structure restoration, copying and downloading run entirely in your browser. Input is never uploaded, stored or executed.</p></section>
+          <section class="seo-static-card"><h2>FAQ</h2><article class="seo-static-faq"><h3>How are nested objects and arrays represented?</h3><p>By default, filter.status=ok represents a nested object and tags[0]=json represents an array. Reverse conversion restores the structure from dots and brackets. Literal dots and brackets in JSON keys are encoded so they cannot be confused with path syntax.</p></article>
+<article class="seo-static-faq"><h3>Are repeated parameters lost?</h3><p>No. Repeated parameters become arrays of strings, so dup=1&amp;dup=2 becomes &quot;dup&quot;: [&quot;1&quot;, &quot;2&quot;]. If the same path is used as both a value and a container, conversion stops with a conflict error.</p></article>
+<article class="seo-static-faq"><h3>Is any data uploaded?</h3><p>No. Parsing, encoding, nested restoration and file generation run entirely in the current browser without backend requests.</p></article></section>
+
+                    <section class="seo-static-card">
+            <h2>Related tools</h2>
+          <ul class="seo-static-links">
+            <li><a href="/en/tools/json/">JSON Formatter</a></li>
+            <li><a href="/en/tools/url-query-formatter/">URL Query Formatter</a></li>
+            <li><a href="/en/tools/json-to-json-schema/">JSON to JSON Schema</a></li>
+          </ul>
+          </section>
+                    <section class="seo-static-card">
+            <h2>More in this category</h2>
+          <ul class="seo-static-links">
+            <li><a href="/en/tools/json/">JSON Formatter</a></li>
+            <li><a href="/en/tools/mongodb-formatter/">MongoDB Formatter</a></li>
+            <li><a href="/en/tools/json-editor/">JSON Editor</a></li>
+            <li><a href="/en/tools/xml-editor/">XML Editor</a></li>
+            <li><a href="/en/tools/json-sort/">JSON Sort</a></li>
+            <li><a href="/en/tools/json-diff/">JSON Diff</a></li>
+            <li><a href="/en/tools/json-to-xml/">JSON to XML</a></li>
+            <li><a href="/en/tools/json-to-csv/">JSON to CSV</a></li>
+            <li><a href="/en/tools/json-to-yaml/">JSON to YAML</a></li>
+            <li><a href="/en/tools/json-to-java/">JSON to Java</a></li>
+          </ul>
+          </section>
+        </article>
+      <footer class="seo-static-footer">
+        <nav aria-label="Footer links">
+          <a href="/en/privacy-policy/">Privacy Policy</a>
+          <span class="seo-static-separator">|</span>
+          <a href="/en/disclaimer/">Disclaimer</a>
+          <span class="seo-static-separator">|</span>
+          <a href="/en/contact-us/">Contact Us</a>
+          <span class="seo-static-separator">|</span>
+          <a href="/en/friends/">Friend Links</a>
+        </nav>
+      </footer>
+      </main>
+    </div>
+  </body>
+</html>
