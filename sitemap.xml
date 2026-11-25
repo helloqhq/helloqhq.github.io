@@ -130,6 +130,7 @@
   <url><loc>https://utool.top/tools/json-to-sql/</loc></url>
   <url><loc>https://utool.top/tools/json-to-json-schema/</loc></url>
   <url><loc>https://utool.top/tools/xml-json-converter/</loc></url>
+  <url><loc>https://utool.top/tools/gzip/</loc></url>
   <url><loc>https://utool.top/en/tools/json/</loc></url>
   <url><loc>https://utool.top/en/tools/mongodb-formatter/</loc></url>
   <url><loc>https://utool.top/en/tools/json-editor/</loc></url>
@@ -250,4 +251,5 @@
   <url><loc>https://utool.top/en/tools/json-to-sql/</loc></url>
   <url><loc>https://utool.top/en/tools/json-to-json-schema/</loc></url>
   <url><loc>https://utool.top/en/tools/xml-json-converter/</loc></url>
+  <url><loc>https://utool.top/en/tools/gzip/</loc></url>
 </urlset>
