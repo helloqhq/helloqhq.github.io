@@ -137,6 +137,8 @@
   <url><loc>https://utool.top/tools/gzip/</loc></url>
   <url><loc>https://utool.top/tools/java-formatter/</loc></url>
   <url><loc>https://utool.top/tools/json-generator/</loc></url>
+  <url><loc>https://utool.top/tools/runjs/</loc></url>
+  <url><loc>https://utool.top/tools/xpath/</loc></url>
   <url><loc>https://utool.top/en/tools/json/</loc></url>
   <url><loc>https://utool.top/en/tools/mongodb-formatter/</loc></url>
   <url><loc>https://utool.top/en/tools/json-editor/</loc></url>
@@ -264,4 +266,6 @@
   <url><loc>https://utool.top/en/tools/gzip/</loc></url>
   <url><loc>https://utool.top/en/tools/java-formatter/</loc></url>
   <url><loc>https://utool.top/en/tools/json-generator/</loc></url>
+  <url><loc>https://utool.top/en/tools/runjs/</loc></url>
+  <url><loc>https://utool.top/en/tools/xpath/</loc></url>
 </urlset>
